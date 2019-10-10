@@ -1,38 +1,23 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
+// import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 
-class Books extends Component {
-  constructor(props){
-      super(props);
-      this.state = {
-    owner: "",
-    petname: "",
-    petType: "",
-    petsize: "",
-    dateTo: "",
-    dateFrom: "",
-      }
-    }
-    
-  componentDidMount() {
-    this.loadBooks();
-  }
 
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
-      .catch(err => console.log(err));
+class Booknow extends Component {
+  state = {
+    bookhotels: [],
+    owner_name: "",
+    pet_name: "",
+    select_pet: "",
+    select_pet_size:"",
+    select_date_to: "",
+    select_date_from: "",
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
+  
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -40,84 +25,136 @@ class Books extends Component {
       [name]: value
     });
   };
-
+  loadPage = () => {
+        alert("Booking is confirmed")
+        this.setState({ 
+            owner_name: "", 
+            pet_name: "", 
+            select_pet: "",
+            select_pet_size:"",
+            select_date_to: "",
+            select_date_from: "",
+        })
+  };
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
+    if (
+        this.state.owner_name && 
+        this.state.pet_name &&
+        this.state.select_pet &&
+        this.state.select_pet_size &&
+        this.state.select_date_to &&
+        this.state.select_date_from ) {
+      API.saveBookhotel({
+        owner_name: this.state.owner_name,
+        pet_name: this.state.pet_name,
+        select_pet: this.state.select_pet,
+        select_pet_size: this.state.select_pet_size,
+        select_date_to: this.state.select_date_to,
+        select_date_from: this.state.select_date_from,
+        
       })
-        .then(res => this.loadBooks())
+        .then(res => this.loadPage())
         .catch(err => console.log(err));
     }
+    else{
+        alert("Please complete Form before Submit")
+    }
   };
-
+  
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-3"></Col>
-          <Col size="md-6">
-           <h1 className="text-center"> Book hotel form </h1>
-            <form onSubmit={this.handleFormSubmit}>
-              <label>Owner Name:</label>
-              <Input
-                value={this.state.owner}
-                onChange={this.handleInputChange}
-                name="owner"
-                placeholder="Owner (required)"
-              />
 
-              <label>Pet Name:</label>
+      <Container >
+    
+        <Row>
+            <Col size="md-3"></Col>
+          <Col size="md-6">
+              <h1>Add Bookhotel</h1>
+            <form>
               <Input
-                value={this.state.petname}
+                value={this.state.owner_name}
                 onChange={this.handleInputChange}
-                name="petname"
+                name="owner_name"
+                placeholder="Owner Name (required)"
+              />
+              <Input
+                value={this.state.pet_name}
+                onChange={this.handleInputChange}
+                name="pet_name"
                 placeholder="Pet Name (required)"
               />
               <label>Select Your Pet:</label>
-              <select className="form-control" id="petType" name="petType" value={this.state.petType} onChange={this.handleInputChange}>
+              <select 
+                className="form-control"
+                name="select_pet" 
+                value={this.state.select_pet}
+                onChange={this.handleInputChange}>
                 <option>Cat</option>
                 <option>Dog</option>
                 <option>Rat</option>
                 <option>Rabbit</option>
               </select>
+
               <br/>
-              <label htmlFor="petsize">Select Pet Size:</label>
-              <select  className="form-control" id="petsize" name="petsize" value={this.state.petsize} onChange={this.handleInputChange}>
-                <option>Large</option>
-                <option>Medium</option>
+              <label>Select Pet Size:</label>
+              <select 
+                className="form-control"
+                name="select_pet_size" 
+                value={this.state.select_pet_size}
+                onChange={this.handleInputChange}>
                 <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
               </select>
+
               <br/>
               <label htmlFor="petsize">Select Date:</label>
-              <div className="row">
-                <div className="col-sm-6">
-                  <div className="form-group">
-                    <label >From</label>
-                    <input type="date" name="dateFrom" value={this.state.dateFrom} onChange={this.handleInputChange} max="3000-12-31" 
-                            min="1000-01-01" className="form-control"/>
-                  </div>
-                </div>
-                <div className="col-sm-6">
-                  <div className="form-group">
+              <Row>
+                  <Col size="sm-6">
                     <label >To</label>
-                    <input type="date" name="dateTo" value={this.state.dateTo} onChange={this.handleInputChange} min="1000-01-01"
-                            max="3000-12-31" className="form-control"/>
-                  </div>
-                </div>
-              </div>
-              <FormBtn>
-                Submit Form
+                    <Input
+                        type="date" 
+                        value={this.state.select_date_to}
+                        onChange={this.handleInputChange}
+                        name="select_date_to"
+                        placeholder="Pet Name (required)"
+                        min="1000-01-01"
+                        max="3000-12-31" 
+                    />
+                  </Col>
+                  <Col size="sm-6"> 
+                    <label >From</label>
+                    <Input
+                        type="date" 
+                        value={this.state.select_date_from}
+                        onChange={this.handleInputChange}
+                        name="select_date_from"
+                        placeholder="Pet Name (required)"
+                        min="1000-01-01"
+                        max="3000-12-31" 
+                    />
+                  </Col>
+              </Row>
+              <FormBtn
+                disabled={!(this.state.pet_name && 
+                    this.state.owner_name && 
+                    this.state.select_pet &&
+                    this.state.select_pet_size &&
+                    this.state.select_date_to &&
+                    this.state.select_date_from)}
+                onClick={this.handleFormSubmit}
+              >
+               Add Bookhotel
               </FormBtn>
             </form>
           </Col>
+         
         </Row>
       </Container>
+    
     );
   }
 }
 
-export default Books;
+export default Booknow;

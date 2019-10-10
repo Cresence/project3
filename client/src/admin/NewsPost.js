@@ -68,12 +68,12 @@ class NewsPost extends Component {
                 name="news_title"
                 placeholder="News Title (required)"
               />
-              <Input
-                value={this.state.category}
-                onChange={this.handleInputChange}
-                name="category"
-                placeholder="Category (required)"
-              />
+             <label>Select category</label>
+              <select className="form-control" id="category" name="category" value={this.state.category} onChange={this.handleInputChange}>
+                <option>Announcement</option>
+                <option>News</option>
+              </select>
+              <br/>
               <TextArea
                 value={this.state.description}
                 onChange={this.handleInputChange}

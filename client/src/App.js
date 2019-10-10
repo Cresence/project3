@@ -15,8 +15,10 @@ import Nav from "./components/Nav";
 import Testimonial from "./admin/Testimonial";
 import NewsPost from "./admin/NewsPost";
 import UpdatePost from "./admin/UpdatePost";
+import ManageBooking from "./admin/ManageBooking"
 import News from "./pages/News";
 import PostDetail from "./pages/PostDetail"
+import "./style.css";
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
           <Route exact path="/testimonials/:id" component={UpdateTestimonial} />
           <Route exact path="/admin/news" component={NewsPost} />
           <Route exact path="/posts/:id" component={UpdatePost} />
+          <Route exact path="/admin/booking" component={ManageBooking} />
           <Route exact path="/news" component={News} />
           <Route exact path="/post-detail/:id" component={PostDetail} />
 

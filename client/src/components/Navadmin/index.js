@@ -18,11 +18,12 @@ function Navadmin() {
             <a className="nav-link" href="/admin/news">Manage News</a>
           </li>
           <li className="nav-item">
+            <a className="nav-link" href="/admin/booking">Manage Booking</a>
+          </li>  
+          <li className="nav-item">
             <a className="nav-link" href="/admin">Add Services</a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/admin">Manage Booking</a>
-          </li>    
+           
         </ul>
       </div>  
       </div>
