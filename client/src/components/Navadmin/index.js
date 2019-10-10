@@ -12,14 +12,18 @@ function Navadmin() {
       <div className="collapse navbar-collapse" id="collapsibleNavbaradmin">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" href="/admin">Add Testimonial</a>
+            <a className="nav-link" href="/admin">Manage Testimonial</a>
           </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/admin/news">Manage News</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/admin/booking">Manage Booking</a>
+          </li>  
           <li className="nav-item">
             <a className="nav-link" href="/admin">Add Services</a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/admin">Manage Booking</a>
-          </li>    
+           
         </ul>
       </div>  
       </div>

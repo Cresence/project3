@@ -32,6 +32,38 @@ export default {
   // Saves a book to the database
   saveTestimonial: function(testimonialData) {
     return axios.post("/api/testimonials", testimonialData);
-  }
+  },
+
+  getPosts: function() {
+    return axios.get("/api/posts");
+  },
+  // Gets the book with the given id
+  getPost: function(id) {
+    return axios.get("/api/posts/" + id);
+  },
+  // Deletes the book with the given id
+  deletePost: function(id) {
+    return axios.delete("/api/posts/" + id);
+  },
+  // Saves a book to the database
+  savePost: function(postData) {
+    return axios.post("/api/posts", postData);
+  },
+
+  getBookhotels: function() {
+    return axios.get("/api/bookhotels");
+  },
+  // Gets the book with the given id
+  getBookhotel: function(id) {
+    return axios.get("/api/bookhotels/" + id);
+  },
+  // Deletes the book with the given id
+  deleteBookhotel: function(id) {
+    return axios.delete("/api/bookhotels/" + id);
+  },
+  // Saves a book to the database
+  saveBookhotel: function(bookhotelData) {
+    return axios.post("/api/bookhotels", bookhotelData);
+  },
 };
 

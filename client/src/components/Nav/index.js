@@ -22,8 +22,14 @@ const Nav = () => {
             <a className="nav-link" href="/services">Services</a>
           </li>
           <li className="nav-item">
+            <a className="nav-link" href="/news">News and  Announcements</a>
+          </li>
+          <li className="nav-item">
             <a className="nav-link" href="/contact">Contact Us</a>
-          </li>    
+          </li>  
+          <li className="nav-item">
+            <a className="nav-link" href="/booknow">Book Hotel</a>
+          </li>  
         </ul>
         <div>
       {!isAuthenticated && (
