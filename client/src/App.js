@@ -11,6 +11,7 @@ import NoMatch from "./pages/NoMatch";
 import Headertop from "./components/Headertop";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
+import Dashboard from "./admin/dashboard"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/services" component={Services} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/booknow" component={Booknow} />
+          <Route exact path="/admin" component={Dashboard} />
           <Route exact path="/books" component={Books} />
           <Route exact path="/books/:id" component={Detail} />
           <Route component={NoMatch} />
