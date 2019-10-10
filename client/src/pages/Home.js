@@ -68,7 +68,7 @@ render() {
         <Row>
         <Col size="sm-12">
             
-            <h1>Testimonials List</h1>
+            <h1 className="text-center">Testimonials List</h1>
          
           {this.state.testimonials.length ? (
             <List>
