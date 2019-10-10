@@ -16,5 +16,22 @@ export default {
   // Saves a book to the database
   saveBook: function(bookData) {
     return axios.post("/api/books", bookData);
+  },
+
+  getTestimonials: function() {
+    return axios.get("/api/testimonials");
+  },
+  // Gets the book with the given id
+  getTestimonial: function(id) {
+    return axios.get("/api/testimonials/" + id);
+  },
+  // Deletes the book with the given id
+  deleteTestimonial: function(id) {
+    return axios.delete("/api/testimonials/" + id);
+  },
+  // Saves a book to the database
+  saveTestimonial: function(testimonialData) {
+    return axios.post("/api/testimonials", testimonialData);
   }
 };
+

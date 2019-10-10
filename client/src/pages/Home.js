@@ -1,9 +1,36 @@
-import React from "react";
+import React, { Component } from "react";
 import Banner from "../components/Banner";
+import API from "../utils/API";
+import { Link } from "react-router-dom";
+import { Col, Row, Container } from "../components/Grid";
+import { List, ListItem } from "../components/List";
+import { Input, TextArea, FormBtn } from "../components/Form";
+// import Courosel from "./Courosel";
+class Home extends Component {
+    state = {
+        testimonials: [],
+        person_name: "",
+        address: "",
+        description: ""
+    };
+    
+    componentDidMount() {
+        this.loadTestimonials();
+    }
+    
+    loadTestimonials = () => {
+        API.getTestimonials()
+          .then(res =>
+            this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
+          )
+          .catch(err => console.log(err));
+    };
+    
 
-function Home() {
+render() {
   return (
     <div>
+    {/* <Courosel/> */}
     <Banner />
     <div className="container">
         <div className="row">
@@ -38,16 +65,30 @@ function Home() {
                 </p>
             </div>
         </div>
-        <div className="row">
-            <div className="col-sm-12">
-                <h1 className="text-center">Our Testimonial</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-        </div>
+        <Row>
+        <Col size="sm-12">
+            
+            <h1>Testimonials List</h1>
+         
+          {this.state.testimonials.length ? (
+            <List>
+              {this.state.testimonials.map(testimonial => (
+              <ListItem key={testimonial._id}>
+                   <p> {testimonial.description}</p>
+                  <h4> {testimonial.person_name}</h4>
+                  <h5> {testimonial.address}</h5>
+                </ListItem>
+              ))}
+            </List>
+          ) : (
+            <h3>No Results to Display</h3>
+          )}
+        </Col>
+        </Row>
     </div>
     </div>
   );
+}
 }
 
 export default Home;
