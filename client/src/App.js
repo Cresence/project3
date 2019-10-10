@@ -11,9 +11,21 @@ import NoMatch from "./pages/NoMatch";
 import Headertop from "./components/Headertop";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
-import Dashboard from "./admin/dashboard"
+import Dashboard from "./admin/dashboard";
+import Profile from "./pages/Profile"
+import { useAuth0 } from "./react-auth0-wrapper";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import ExternalApi from "./components/ExternalApi/ExternalApi";
 
 function App() {
+  const { loading } = useAuth0();
+
+  if (loading) {
+    return (
+      <div>Loading...</div>
+    );
+  }
+
   return (
     <Router>
       <div>
@@ -29,7 +41,9 @@ function App() {
           <Route exact path="/books" component={Books} />
           <Route exact path="/books/:id" component={Detail} />
           <Route component={NoMatch} />
-        </Switch>
+          <PrivateRoute path="/profile" component={Profile} /> 
+          <PrivateRoute path="/external-api" component={ExternalApi} />       
+          </Switch>
          <Footer />
       </div>
     </Router>
