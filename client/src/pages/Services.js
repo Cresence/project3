@@ -1,10 +1,12 @@
 import React from "react";
-
+import { Col, Row, Container } from "../components/Grid";
 
 function Services() {
   return (
-    <div className="container">
-       <h1>Pet Services</h1>
+    <Container>
+      <Row>
+        <Col size="sm-12">
+        <h1>Pet Services</h1>
         <p>We welcome your pet at our comfy place at Sandy’s. We will be sure to accommodate your pets needs and hospitality.</p> 
         <h6>Dogs</h6>
         <ul>
@@ -44,8 +46,11 @@ function Services() {
 
         <p>We can schedule to pick up your family pet in a luxury fashion to our facility within a 30 mile radius. Just let us know when!</p>
         <p>Call us at 1-800-Sandys</p>
-    </div>
-  
+   
+        </Col>
+      </Row>
+    </Container>
+   
   );
 }
 
