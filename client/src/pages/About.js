@@ -4,10 +4,11 @@ import React from "react";
 function About() {
   return (
     <div className="container">
-        <h1>This is the h1 tag for About page demo </h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            
+       <h1>About Us</h1>
+        <p>At Sandy's Pet Hotel we are pet lovers and experienced pet owners of all types of domestic creatures. We're in a large studio to welcome and take care of your pet while you are out of town or for any personal reason. When you call us at Sandy's, you will experience a genuine family type atmosphere. You will be greeted by a warm and friendly staff member and recieve prompt and courteous service at all times.
         </p>
+        <h6>Our Philosophy</h6>
+        <p>We are fully focused on the health of each pet as each one has it's own needs. We serve to cater to them and treat them with gentleness. For some animals, we understand that temporarily moving to new environment may be stressful so we ensure a safe and kind environment.</p>
     </div>
   );
 }

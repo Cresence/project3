@@ -1,4 +1,5 @@
 import React from "react";
+import images from "../../images"
 
 function Headertop() {
   return (
@@ -6,7 +7,8 @@ function Headertop() {
       <div className="container">
         <div className="row">
           <div className="col-sm-4">
-            <h1>Logo</h1>
+          <img src={`${images[1]}`} alt="banner" width="100%"/>
+
           </div>
           <div className="col-sm-8">
            
