@@ -3,7 +3,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+// import { Input, TextArea, FormBtn } from "../components/Form";
 class News extends Component {
     state = {
         posts: [],
@@ -28,10 +28,10 @@ class News extends Component {
 
 render() {
   return (
-    <div>
    
    
-    <div className="container">
+   
+    <Container>
         
         <Row>
         <Col size="sm-12">
@@ -44,7 +44,7 @@ render() {
                 <ListItem key={post._id}>
                     <h4> {post.news_title}</h4>
                     <h5> {post.category}</h5>
-                    <p> {post.description}</p>
+                    
                     <p> {post.date}</p>
 
                       
@@ -60,8 +60,7 @@ render() {
             )}
           </Col>
         </Row>
-    </div>
-    </div>
+    </Container>
   );
 }
 }
