@@ -46,7 +46,6 @@ render() {
           <Col size="sm-12">
             <h1 className="text-center">What we do</h1>
           </Col>
-          
           <Col size="sm-12">
             <p>Sandy's Pet Hotel provides pet boarding for dogs, cars and exotics in a impeccably clean indoor canine kennels and separate kitty condos, complete with toys, fresh filtered air, ambient music and nature sounds, and plenty of love and attention! Best of all, you can rest assured that your pet is in a clean, safe, supervised environment while you are gone. 
             </p>
@@ -60,7 +59,7 @@ render() {
             <List>
               {this.state.testimonials.map(testimonial => (
               <ListItem key={testimonial._id}>
-                   <p> {testimonial.description}</p>
+                  <p> {testimonial.description}</p>
                   <h4> {testimonial.person_name}</h4>
                   <h5> {testimonial.address}</h5>
                 </ListItem>
