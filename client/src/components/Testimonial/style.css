@@ -1,0 +1,26 @@
+#myTestimonial{
+  margin: 30px 0px;
+}
+#myTestimonial .carousel-inner{
+  text-align: center;
+  max-width: 70%;
+  margin: 0 auto;
+}
+#myTestimonial  .carousel-inner img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+#myTestimonial .carousel-indicators{
+  position: relative;
+}
+#myTestimonial .fa-angle-left:before,
+#myTestimonial .fa-angle-right:before
+{
+  color:#000;
+}
+#myTestimonial .carousel-indicators li{
+  background-color: #000;
+}
