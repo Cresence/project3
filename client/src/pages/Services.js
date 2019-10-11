@@ -55,7 +55,7 @@ function Services() {
 {/*  */}
 <div className="card-deck">
         <div className="card">
-        <img src={`${images[2]}`} alt="banner" width="100%"/>
+        <img src={`${images[6]}`} alt="banner" width="100%"/>
 
           <div className="card-body">
             <h5 className="card-title">Reptiles (Snakes, Iguana, Lizards)</h5>
@@ -70,7 +70,7 @@ function Services() {
           </div>
         </div>
         <div className="card">
-        <img src={`${images[3]}`} alt="banner" width="100%"/>
+        <img src={`${images[5]}`} alt="banner" width="100%"/>
           <div className="card-body">
             <h5 className="card-title">Birds</h5>
             <p>We keep our feline friends separate from our canine friends.</p>
@@ -83,7 +83,7 @@ function Services() {
           </div>
         </div>
         <div className="card">
-        <img src={`${images[4]}`} alt="banner" width="100%"/>
+        <img src={`${images[7]}`} alt="banner" width="100%"/>
           <div className="card-body">
             <h5 className="card-title">Small Animal (Hamsters, Guinea Pigs, Rats, Gerbils, Mice,Ferrets, Rabbits)</h5>
             <ul>
