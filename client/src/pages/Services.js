@@ -92,10 +92,6 @@ function Services() {
         </div>
       </div>
 
-      <p>Specials</p>
-      <p>Food can be cooked here or provided by pet parent</p>
-
-
       <h3>All rooms include:</h3>
       <ul>
         <li>24/7 onsite care &#38; on-call veterinarian</li>

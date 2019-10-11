@@ -70,6 +70,15 @@ class Contact extends Component {
             <p><i className="fas fa-envelope mt-4 fa-2x" /> contact@mdbootstrap.com</p>
           </li>
         </ul>
+
+        <h5>Connect with us!</h5>
+        <ul className="list-unstyled mb-0">
+        <li>
+        <p><i class="fab fa-instagram"/></p></li>
+        <li><p><i class="fab fa-facebook-square"/></p></li>
+        <li><p><i class="fab fa-twitter"/></p></li>
+        <li><p><i class="fab fa-youtube"/></p></li>
+        </ul>
         </Col>
       </Row>
     </Container>
