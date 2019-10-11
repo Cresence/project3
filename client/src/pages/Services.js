@@ -37,6 +37,7 @@ function Services() {
           <li>Cuddles</li>
           <li>Grooming</li>
           <li>Treats!</li>
+          <li>Relief area with litter boxes</li>
         </ul>
           </div>
         </div>
@@ -90,6 +91,21 @@ function Services() {
           </div>
         </div>
       </div>
+
+      <p>Specials</p>
+      <p>Food can be cooked here or provided by pet parent</p>
+
+
+      <h3>All rooms include:</h3>
+      <ul>
+        <li>24/7 onsite care &#38; on-call veterinarian</li>
+        <li>Convenient drop off &#38; pick up times</li>
+        <li>Temperature-controlled environments with separate ventilation systems for all animals</li>
+        <li>Exercise walks at least twice daily in our large playrooms (dogs only)</li>
+        <li>Individual playtime daily with pet-loving staff</li>
+        <li>Pets Eat Free - complimentary meals provided by Authority® & Simply Nourish® (Food or treats can also be brought from home. Single-meal servings or treats must be in containers labeled with pet's name & include written instructions.)</li>
+        <li>Medication dispensing – must be in original packaging (additional cost)</li>
+      </ul>
 
         <p>We can schedule to pick up your family pet in a luxury fashion to our facility within a 30 mile radius. Just let us know when!</p>
         <p>Call us at 1-800-Sandys</p>
