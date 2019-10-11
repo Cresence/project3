@@ -17,8 +17,6 @@ class Booknow extends Component {
     select_date_from: "",
   };
 
-  
-
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -66,7 +64,6 @@ class Booknow extends Component {
     return (
 
       <Container >
-    
         <Row>
             <Col size="md-3"></Col>
           <Col size="md-6">
@@ -145,11 +142,10 @@ class Booknow extends Component {
                     this.state.select_date_from)}
                 onClick={this.handleFormSubmit}
               >
-               Add Bookhotel
+              Add Bookhotel
               </FormBtn>
             </form>
           </Col>
-         
         </Row>
       </Container>
     

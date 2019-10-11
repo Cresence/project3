@@ -18,7 +18,8 @@ render() {
       <Container>
         <Row>
           <Col size="sm-12">
-            <h1 className="text-center">Book hotel for your Pet Now </h1>
+            <h1 className="text-center">Best hotel for your pet!</h1>
+            <h5 className="text-center">We offer a broad range of services to pamper your pet.</h5>
             <div className="text-center">
                 <a className="btn btn-info" href="/booknow"> Book now</a>
             </div>
@@ -26,28 +27,18 @@ render() {
         </Row>
         <Row>
           <Col size="sm-12">
-            <h1 className="text-center">Our services</h1>
+            <h1 className="text-center">What we do</h1>
           </Col>
-          <Col size="sm-3">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <Col size="sm-12">
+            <p>Sandy's Pet Hotel provides pet boarding for dogs, cars and exotics in a impeccably clean indoor canine kennels and separate kitty condos, complete with toys, fresh filtered air, ambient music and nature sounds, and plenty of love and attention! Best of all, you can rest assured that your pet is in a clean, safe, supervised environment while you are gone. 
             </p>
           </Col>
-          <Col size="sm-3">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </Col>
-          <Col size="sm-3">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </Col>
-          <Col size="sm-3">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </Col>
+
         </Row>
         
         <Row>
         <Col size="sm-12">
+
         <h1 className="text-center">Testimonials</h1>
         <Testimonial />
 
