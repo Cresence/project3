@@ -12,7 +12,7 @@ import NoMatch from "./pages/NoMatch";
 import Headertop from "./components/Headertop";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
-import Dashboard from "./admin/dashboard";
+// import Dashboard from "./admin/dashboard";
 import Profile from "./pages/Profile"
 import { useAuth0 } from "./react-auth0-wrapper";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
@@ -21,6 +21,7 @@ import Testimonial from "./admin/Testimonial";
 import NewsPost from "./admin/NewsPost";
 import UpdatePost from "./admin/UpdatePost";
 import ManageBooking from "./admin/ManageBooking"
+// import Login from "./admin/Login"
 import News from "./pages/News";
 import PostDetail from "./pages/PostDetail"
 import "./style.css";
@@ -50,6 +51,7 @@ function App() {
           <Route exact path="/admin/news" component={NewsPost} />
           <Route exact path="/posts/:id" component={UpdatePost} />
           <Route exact path="/admin/booking" component={ManageBooking} />
+          {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/news" component={News} />
           <Route exact path="/post-detail/:id" component={PostDetail} />
 

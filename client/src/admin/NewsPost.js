@@ -5,6 +5,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Navadmin from "../components/Navadmin";
+// import {Mainheading} from "../components/Mainheading"
 
 class NewsPost extends Component {
   state = {
@@ -12,7 +13,8 @@ class NewsPost extends Component {
     news_title: "",
     category: "",
     description: "",
-    date:""
+    date:"",
+    post_image:""
   };
 
   componentDidMount() {
@@ -22,7 +24,7 @@ class NewsPost extends Component {
   loadPosts = () => {
     API.getPosts()
       .then(res =>
-        this.setState({ posts: res.data, news_title: "", category: "", description: "",date: "" })
+        this.setState({ posts: res.data, news_title: "", category: "", description: "",date: "",post_image: "" })
       )
       .catch(err => console.log(err));
   };
@@ -46,7 +48,8 @@ class NewsPost extends Component {
       API.savePost({
         news_title: this.state.news_title,
         category: this.state.category,
-        description: this.state.description
+        description: this.state.description,
+        post_image: this.state.post_image
       })
         .then(res => this.loadPosts())
         .catch(err => console.log(err));
@@ -70,18 +73,31 @@ class NewsPost extends Component {
               />
              <label>Select category</label>
               <select className="form-control" id="category" name="category" value={this.state.category} onChange={this.handleInputChange}>
-                <option>Announcement</option>
-                <option>News</option>
+                <option value="">Select</option>
+                <option value="Announcement">Announcement</option>
+                <option value="News">News</option>
               </select>
               <br/>
+
+              
               <TextArea
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
                 placeholder="Description "
               />
+             
+              <div class="form-group">
+                <input 
+                  type="file" 
+                  class="form-control-file border" 
+                  name="post_image"
+                  value={this.state.post_image}
+                  onChange={this.handleInputChange}
+                />
+              </div>
               <FormBtn
-                disabled={!(this.state.category && this.state.news_title)}
+                disabled={!(this.state.news_title && this.state.news_title  && this.state.description && this.state.post_image)}
                 onClick={this.handleFormSubmit}
               >
                Add Post
@@ -100,6 +116,7 @@ class NewsPost extends Component {
                     <h5> {post.category}</h5>
                     <p> {post.description}</p>
                     <p> {post.date}</p>
+                    <p>{post.post_image}</p>
 
                       
                     <Link to={"/posts/" + post._id} className="btn btn-info">
