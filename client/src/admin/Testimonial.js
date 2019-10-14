@@ -41,7 +41,7 @@ class Dashboard extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.person_name && this.state.address) {
+    if (this.state.person_name && this.state.address && this.state.description) {
       API.saveTestimonial({
         person_name: this.state.person_name,
         address: this.state.address,
@@ -80,7 +80,7 @@ class Dashboard extends Component {
                 placeholder="Description "
               />
               <FormBtn
-                disabled={!(this.state.address && this.state.person_name)}
+                disabled={!(this.state.address && this.state.person_name && this.state.description)}
                 onClick={this.handleFormSubmit}
               >
                Add Testimonial

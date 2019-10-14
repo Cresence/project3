@@ -4,7 +4,7 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
-
+import {Mainheading} from "../components/Mainheading"
 
 class Booknow extends Component {
   state = {
@@ -62,12 +62,12 @@ class Booknow extends Component {
   
   render() {
     return (
-
+      <div className="py-5">
       <Container >
         <Row>
             <Col size="md-3"></Col>
           <Col size="md-6">
-              <h1>Add Bookhotel</h1>
+              <Mainheading>Add Bookhotel</Mainheading>
             <form>
               <Input
                 value={this.state.owner_name}
@@ -87,10 +87,11 @@ class Booknow extends Component {
                 name="select_pet" 
                 value={this.state.select_pet}
                 onChange={this.handleInputChange}>
-                <option>Cat</option>
-                <option>Dog</option>
-                <option>Rat</option>
-                <option>Rabbit</option>
+                <option value="">Select</option>
+                <option value="Cat">Cat</option>
+                <option value="Dog">Dog</option>
+                <option value="Rat">Rat</option>
+                <option value="Rabbit">Rabbit</option>
               </select>
 
               <br/>
@@ -100,9 +101,10 @@ class Booknow extends Component {
                 name="select_pet_size" 
                 value={this.state.select_pet_size}
                 onChange={this.handleInputChange}>
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
+                <option value="">Select</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
               </select>
 
               <br/>
@@ -142,13 +144,13 @@ class Booknow extends Component {
                     this.state.select_date_from)}
                 onClick={this.handleFormSubmit}
               >
-              Add Bookhotel
+              Submit
               </FormBtn>
             </form>
           </Col>
         </Row>
       </Container>
-    
+      </div>
     );
   }
 }

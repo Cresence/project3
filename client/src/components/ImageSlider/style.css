@@ -1,0 +1,37 @@
+#carouselExampleFade .carousel-control-next-icon,
+#carouselExampleFade .carousel-control-prev-icon {
+  width: 35px;
+  height: 35px;
+}
+
+#carouselExampleFade .carousel-control-prev-icon {
+   left: -35px;
+  position: absolute;
+  color: #000;
+  width: 15px;
+}
+
+#carouselExampleFade .carousel-control-next-icon {
+  right: -35px;
+  position: absolute;
+  color: #000;
+  width: 15px;
+}
+#carouselExampleFade .carousel-inner img{
+  height: auto;
+}
+#carouselExampleFade .pet-name{
+  text-align: center;
+  background-color: #fe908b;
+  padding: 10px;
+  font-size: 1.2rem;
+
+}
+.image-slider-box{
+  background-color: grey;
+  background-image: url(../../images/services-bg.jpg);
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  background-size: cover;
+}
