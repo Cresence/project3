@@ -5,14 +5,18 @@ import API from "../utils/API";
 
 class Detail extends Component {
   state = {
-    testimonial: {},
+    testimonial: {person_name:'', address: '', description: ''},
   };
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   componentDidMount() {
+    this.loadTestimonials();
+  }
+  loadTestimonials = () => {
     API.getTestimonial(this.props.match.params.id)
-      .then(res => this.setState({ testimonial: res.data }))
-      .catch(err => console.log(err));
+    .then(res => this.setState({ testimonial: res.data }))
+    .catch(err => console.log(err));
+
   }
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -24,7 +28,7 @@ class Detail extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.person_name && this.state.address) {
-      API.saveTestimonial({
+      API.updateTestimonial({
         person_name: this.state.testimonial.person_name,
         address: this.state.testimonial.address,
         description: this.state.testimonial.description

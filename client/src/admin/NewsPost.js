@@ -87,10 +87,10 @@ class NewsPost extends Component {
                 placeholder="Description "
               />
              
-              <div class="form-group">
+              <div className="form-group">
                 <input 
                   type="file" 
-                  class="form-control-file border" 
+                  className="form-control-file border" 
                   name="post_image"
                   value={this.state.post_image}
                   onChange={this.handleInputChange}

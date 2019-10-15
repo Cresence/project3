@@ -1,21 +1,15 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, TextArea, FormBtn } from "../components/Form";
-// import API from "../utils/API";
+import API from "../utils/API";
 import {Mainheading} from "../components/Mainheading"
-import axios from "axios";
 class Contact extends Component {
-  constructor(){
-    super()
-
-  this.state = {
+  state = {
     name: "",
     email: "",
     message: ""
   };
-  this.handleInputChange=this.handleInputChange.bind(this)
-  this.handleFormSubmit=this.handleFormSubmit.bind(this)
-}
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -23,6 +17,7 @@ class Contact extends Component {
     });
   };
   loadPage = () => {
+    console.log('Loadpage method loaded.')
     alert("Message is send")
     this.setState({ 
       name:"",
@@ -30,38 +25,23 @@ class Contact extends Component {
       message:""
     })
 };
-  async handleFormSubmit(event) {
-    event.preventDefault();
-    const {name, email, message} =this.state;
 
-    const form= await axios.post('/api/form', {
-      name,
-      email,
-      message
-
-    }).then(res => this.loadpage())
-    .catch(err => console.log(err));
-    // if (
-    //     this.state.name && 
-    //     this.state.email &&
-    //     this.state.message ) {
-    //   API.contactForm({
-    //     name: this.state.name,
-    //     email: this.state.email,
-    //     message: this.state.message,
-        
-    //   })
-    //     .then(res => alert("Something"))
-    //     .catch(err => console.log(err));
-    // }
-    // else{
-    //     alert("Please complete Form before Submit")
-    // }
-  };
+handleFormSubmit = event => {
+  // event.preventDefault();
+  if (this.state.name && this.state.email && this.state.message) {
+    API.postContact({
+      name: this.state.name,
+      email: this.state.email,
+      message: this.state.message,
+    })
+      .then(res => this.loadPage())
+      .catch(err => console.log(err));
+  }
+};
   render() {
   return (
     <div className="py-5">
-    <Container>
+      <Container>
       <Row>
         <Col size="sm-12">
         <div className="text-center">
@@ -73,7 +53,7 @@ class Contact extends Component {
       </Row>
       <Row>
         <Col size="sm-6">
-        <form onSubmit={this.handleFormSubmit}>
+        <form >
         <label>Your Name</label>
         <Input
           value={this.state.name}
@@ -124,10 +104,10 @@ class Contact extends Component {
         <h5>Connect with us!</h5>
         <ul className="list-inline">
         <li className="list-inline-item" >
-        <p><i class="fab fa-instagram"/></p></li>
-        <li className="list-inline-item"><p><i class="fab fa-facebook-square"/></p></li>
-        <li className="list-inline-item"><p><i class="fab fa-twitter"/></p></li>
-        <li className="list-inline-item"><p><i class="fab fa-youtube"/></p></li>
+        <p><i className="fab fa-instagram"/></p></li>
+        <li className="list-inline-item"><p><i className="fab fa-facebook-square"/></p></li>
+        <li className="list-inline-item"><p><i className="fab fa-twitter"/></p></li>
+        <li className="list-inline-item"><p><i className="fab fa-youtube"/></p></li>
         </ul>
         </Col>
       </Row>

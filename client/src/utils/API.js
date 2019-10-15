@@ -33,6 +33,9 @@ export default {
   saveTestimonial: function(testimonialData) {
     return axios.post("/api/testimonials", testimonialData);
   },
+  updateTestimonial: function(id){
+    return axios.put("/api/testimonials/:" + id);
+  },
 
   getPosts: function() {
     return axios.get("/api/posts");
@@ -48,6 +51,9 @@ export default {
   // Saves a book to the database
   savePost: function(postData) {
     return axios.post("/api/posts", postData);
+  },
+  updatePost: function(id){
+    return axios.put("/api/posts" + id);
   },
 
   getBookhotels: function() {
@@ -65,6 +71,9 @@ export default {
   saveBookhotel: function(bookhotelData) {
     return axios.post("/api/bookhotels", bookhotelData);
   },
- 
+  
+  postContact: function(postData) {
+    return axios.post("/api/form", postData);
+  },
 };
 

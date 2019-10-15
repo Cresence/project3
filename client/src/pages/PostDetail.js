@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+import {Mainheading} from "../components/Mainheading"
+
 
 class PostDetail extends Component {
   state = {
@@ -17,21 +19,25 @@ class PostDetail extends Component {
 
   render() {
     return (
+      <div className="py-5 text-center">
       <Container>
         <Row>
-          <Col size="md-10 md-offset-1">
+          <Col size="sm-12">
+            <Mainheading>News Detail</Mainheading>
             <article>
-              <h1> {this.state.post.news_title}</h1>
-              <h3>{this.state.post.category}</h3>
-              <h3>{this.state.post.date}</h3>
+              <img src={this.state.post.post_image ? this.state.post.post_image :"https://placehold.it/128x197?text=No%20Preview" } alt="news-post"/>
+              <h3>Title : {this.state.post.news_title}</h3>
+              <h5>Category : {this.state.post.category}</h5>
+              <h6>News Post Date: {this.state.post.date}</h6>
               <p>
-                {this.state.post.description}
+                Discription : {this.state.post.description}
               </p>
             </article>
           </Col>
         </Row>
         
       </Container>
+      </div>
     );
   }
 }
