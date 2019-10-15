@@ -23,7 +23,13 @@ function Navadmin() {
           <li className="nav-item">
             <a className="nav-link" href="/admin">Add Services</a>
           </li>
-           
+          <li className="nav-item">
+        <a className="nav-link" href="/Profile">Profile</a>
+       </li>
+        {/* NEW - Add a link to the /external-api route */}
+      <li className="nav-item">
+        <a className="nav-link" href="/external-api">External API</a>
+      </li>
         </ul>
       </div>  
       </div>

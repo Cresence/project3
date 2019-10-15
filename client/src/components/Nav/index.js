@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth0 } from "../../react-auth0-wrapper";
 import { Link } from "react-router-dom";
+import NavAdmin from '../Navadmin/index';
 
 const Nav = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -33,7 +34,7 @@ const Nav = () => {
         </ul>
         <div>
       {!isAuthenticated && (
-        <button
+        <button //{ Stylize the [Log in] button here with classes and such}
           onClick={() =>
             loginWithRedirect({})
           }
@@ -42,16 +43,23 @@ const Nav = () => {
         </button>
       )}
 
-      {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+      {isAuthenticated && <button // {Stylize the logout button here.} //
+        onClick={() => logout()}>Log out</button>
+      }
 
       {/* NEW - add a link to the home and profile pages */}
       {
   isAuthenticated && (
     <span>
-      <Link to="/">Home</Link>&nbsp;
-      <Link to="/profile">Profile</Link>&nbsp;
+      {/* What appears under here is only viewable once users are logged in */}
+      <NavAdmin />
+      <li className="nav-item">
+        <a className="nav-link" href="/Profile">Profile</a>
+       </li>
       {/* NEW - Add a link to the /external-api route */}
-      <Link to="/external-api">External API</Link>
+      <li className="nav-item">
+        <a className="nav-link" href="/external-api">External API</a>
+      </li>
     </span>
   )}
     </div>
