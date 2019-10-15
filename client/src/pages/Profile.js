@@ -18,21 +18,23 @@ const Profile = () => {
 
   console.log(user);
 
-  function renderAdmin(keys) {
-    if (user.email === keys.id) {
-      console.log('Admin Logged In...');
-      return <Navadmin />
-    } else {
-      console.log('Regular User Logged In...');
-    };
-  }  
+  const doStuff = () => {
+    for (var i = 0; i < keys.adminEmail.length; i++) {
+      if (user.email === i) {
+        console.log('Admin Logged In...');
+        // return <Navadmin />
+      } else {
+        console.log('Regular User Logged In...');
+      };
+    }
+  }
 
+  doStuff()
+  
 
   return (
     <Fragment>
-      {/* {renderAdmin()} */}
       <img src={user.picture} alt="Profile" />
-
       <h2>{user.name}</h2>
       <p>{user.email}</p>
       <code>{JSON.stringify(user, null, 2)}</code>
