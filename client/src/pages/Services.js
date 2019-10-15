@@ -1,14 +1,15 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import images from "../images"
-
+import {Mainheading} from "../components/Mainheading"
 
 function Services() {
   return (
+    <div className="py-5">
     <Container>
       <Row>
-        <Col size="sm-12">
-        <h1>Pet Services</h1>
+        <Col size="sm-12 ">
+        <Mainheading>Pet Services</Mainheading>
         <p>We welcome your pet at our comfy place at Sandy’s. We will be sure to accommodate your pets needs and hospitality. We take care of the following animals:</p> 
 
         <div className="card-deck">
@@ -109,7 +110,7 @@ function Services() {
         </Col>
       </Row>
     </Container>
-   
+   </div>
   );
 }
 

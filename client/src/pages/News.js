@@ -3,6 +3,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
+import {Mainheading} from "../components/Mainheading"
 // import { Input, TextArea, FormBtn } from "../components/Form";
 class News extends Component {
     state = {
@@ -28,15 +29,12 @@ class News extends Component {
 
 render() {
   return (
-   
-   
-   
+    <div className="py-5">
     <Container>
-        
         <Row>
         <Col size="sm-12">
             
-            <h1 className="text-center">News and Announcements</h1>
+            <Mainheading>News and Announcements</Mainheading>
          
             {this.state.posts.length ? (
               <List>
@@ -61,6 +59,7 @@ render() {
           </Col>
         </Row>
     </Container>
+    </div>
   );
 }
 }

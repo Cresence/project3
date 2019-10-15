@@ -2,3 +2,15 @@
     width: 100%;
     height: 100%;
   }
+#demo::after {
+  /* content: "";
+  width: 100%;
+  height: 96px;
+  background: url(../../images/clouds.png);
+  position: absolute;
+  z-index: 1;
+  background-size: contain;
+  left: 0;
+  bottom: -18px;
+  background-repeat: no-repeat; */
+}

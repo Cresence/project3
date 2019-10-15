@@ -65,5 +65,6 @@ export default {
   saveBookhotel: function(bookhotelData) {
     return axios.post("/api/bookhotels", bookhotelData);
   },
+ 
 };
 
