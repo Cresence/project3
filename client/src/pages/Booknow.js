@@ -67,7 +67,8 @@ class Booknow extends Component {
         <Row>
             <Col size="md-3"></Col>
           <Col size="md-6">
-              <Mainheading>Add Bookhotel</Mainheading>
+              <Mainheading  color="dark">Add Bookhotel</Mainheading>
+              <div className="form-outer">
             <form>
               <Input
                 value={this.state.owner_name}
@@ -148,6 +149,7 @@ class Booknow extends Component {
               Submit
               </FormBtn>
             </form>
+            </div>
           </Col>
         </Row>
       </Container>

@@ -35,7 +35,7 @@ render() {
         <Row>
         <Col size="sm-12">
             
-            <Mainheading>News and Announcements</Mainheading>
+            <Mainheading  color="dark">News and Announcements</Mainheading>
          
             {this.state.posts.length ? (
               <ul className="list-group news-section">

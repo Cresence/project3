@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
-
+import Navadmin from "../components/Navadmin";
+import {Mainheading} from "../components/Mainheading"
 class Detail extends Component {
   state = {
     testimonial: {},
@@ -46,10 +47,14 @@ class Detail extends Component {
   };
   render() {
     return (
+      <div>
+      <Navadmin />
+      <div className="py-5">
       <Container fluid>
         <Row>
           <Col size="md-6">
-              <h1>Update Testimonial</h1>
+            <Mainheading color="dark">Update Testimonial</Mainheading>
+            <div className="form-outer">
             <form>
               <Input
                 value={this.state.person_name}
@@ -76,6 +81,7 @@ class Detail extends Component {
                Update Testimonial
               </FormBtn>
             </form>
+            </div>
           </Col>
           
           {/* <Col size="md-12">
@@ -88,6 +94,8 @@ class Detail extends Component {
         </Row>
       
       </Container>
+      </div>
+      </div>
     );
   }
 }

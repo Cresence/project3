@@ -7,7 +7,7 @@ function About() {
     <Container>
       <Row >
         <Col size="sm-12">
-        <Mainheading>About Us</Mainheading>
+        <Mainheading color="dark">About Us</Mainheading>
         <p>At Sandy's Pet Hotel we are pet lovers and experienced pet owners of all types of domestic creatures. We're in a large studio to welcome and take care of your pet while you are out of town or for any personal reason. When you call us at Sandy's, you will experience a genuine family type atmosphere. You will be greeted by a warm and friendly staff member and recieve prompt and courteous service at all times.
         </p>
         <h6>Our Philosophy</h6>

@@ -5,7 +5,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Navadmin from "../components/Navadmin";
-// import {Mainheading} from "../components/Mainheading"
+import {Mainheading} from "../components/Mainheading"
 
 class NewsPost extends Component {
   state = {
@@ -58,12 +58,14 @@ class NewsPost extends Component {
   
   render() {
     return (
-
-      <Container fluid>
+      <div>
       <Navadmin />
+      <div className="py-5">
+      <Container fluid>
         <Row>
           <Col size="md-6">
-              <h1>Add Post</h1>
+            <Mainheading color="dark">Add Post</Mainheading>
+            <div className="form-outer">
             <form>
               <Input
                 value={this.state.news_title}
@@ -103,11 +105,11 @@ class NewsPost extends Component {
                Add Post
               </FormBtn>
             </form>
+            </div>
           </Col>
           <Col size="md-6 sm-12">
+            <Mainheading color="dark">Post List</Mainheading>
             
-              <h1>Posts List</h1>
-           
             {this.state.posts.length ? (
               <List>
                 {this.state.posts.map(post => (
@@ -119,10 +121,10 @@ class NewsPost extends Component {
                     <p>{post.post_image}</p>
 
                       
-                    <Link to={"/posts/" + post._id} className="btn btn-info">
+                    <Link to={"/posts/" + post._id} className="btn btn-theme">
                        Update Post
                     </Link>
-                    <button onClick={() => this.deletePost(post._id)} type="button" className="btn btn-danger">
+                    <button onClick={() => this.deletePost(post._id)} type="button" className="btn btn-theme-danger">
                         Delete Post
                     </button>
                   </ListItem>
@@ -134,7 +136,8 @@ class NewsPost extends Component {
           </Col>
         </Row>
       </Container>
-    
+      </div>
+      </div>
     );
   }
 }
