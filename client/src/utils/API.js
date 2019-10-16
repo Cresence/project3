@@ -34,7 +34,7 @@ export default {
     return axios.post("/api/testimonials", testimonialData);
   },
   updateTestimonial: function(id){
-    return axios.put("/api/testimonials/:" + id);
+    return axios.put("/api/testimonials/" + id);
   },
 
   getPosts: function() {

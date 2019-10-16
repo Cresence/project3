@@ -110,6 +110,18 @@ class Booknow extends Component {
               <br/>
               <label htmlFor="petsize">Select Date:</label>
               <Row>
+              <Col size="sm-6"> 
+                    <label >From</label>
+                    <Input
+                        type="date" 
+                        value={this.state.select_date_from}
+                        onChange={this.handleInputChange}
+                        name="select_date_from"
+                        placeholder="Pet Name (required)"
+                        min="1000-01-01"
+                        max="3000-12-31" 
+                    />
+                  </Col>
                   <Col size="sm-6">
                     <label >To</label>
                     <Input
@@ -122,18 +134,7 @@ class Booknow extends Component {
                         max="3000-12-31" 
                     />
                   </Col>
-                  <Col size="sm-6"> 
-                    <label >From</label>
-                    <Input
-                        type="date" 
-                        value={this.state.select_date_from}
-                        onChange={this.handleInputChange}
-                        name="select_date_from"
-                        placeholder="Pet Name (required)"
-                        min="1000-01-01"
-                        max="3000-12-31" 
-                    />
-                  </Col>
+                  
               </Row>
               <FormBtn
                 disabled={!(this.state.pet_name && 

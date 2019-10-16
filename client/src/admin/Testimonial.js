@@ -42,12 +42,12 @@ class Dashboard extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.person_name && this.state.address && this.state.description) {
-      API.saveTestimonial({
+      API.updateTestimonial({
         person_name: this.state.person_name,
         address: this.state.address,
         description: this.state.description
       })
-        .then(res => this.loadTestimonials())
+        .then(res => console.log("something"))
         .catch(err => console.log(err));
     }
   };
