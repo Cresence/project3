@@ -3,6 +3,8 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import {Mainheading} from "../components/Mainheading"
+import Map from "../components/Map/Map"
+
 class Contact extends Component {
   state = {
     name: "",
@@ -109,6 +111,7 @@ handleFormSubmit = event => {
         <li className="list-inline-item"><p><i className="fab fa-twitter"/></p></li>
         <li className="list-inline-item"><p><i className="fab fa-youtube"/></p></li>
         </ul>
+        <Map/>
         </Col>
       </Row>
     </Container>
