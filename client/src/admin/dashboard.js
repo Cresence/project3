@@ -5,6 +5,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Navadmin from "../components/Navadmin";
+import {Mainheading} from "../components/Mainheading"
 
 class Dashboard extends Component {
   state = {
@@ -54,12 +55,14 @@ class Dashboard extends Component {
   
   render() {
     return (
-
-      <Container fluid>
+      <div>
       <Navadmin />
+      <div className="py-5">
+      <Container fluid>
         <Row>
           <Col size="md-6">
-              <h1>Add Testimonial</h1>
+            <Mainheading color="dark">Add Testimonial</Mainheading>
+            <div className="form-outer">
             <form>
               <Input
                 value={this.state.person_name}
@@ -86,11 +89,11 @@ class Dashboard extends Component {
                Add Testimonial
               </FormBtn>
             </form>
+            </div>
           </Col>
           <Col size="md-6 sm-12">
-            
-              <h1>Testimonials List</h1>
-           
+            <Mainheading color="dark">Testimonials Listm</Mainheading>
+             
             {this.state.testimonials.length ? (
               <List>
                 {this.state.testimonials.map(testimonial => (
@@ -99,10 +102,10 @@ class Dashboard extends Component {
                     <h5> {testimonial.address}</h5>
                     <p> {testimonial.description}</p>
                       
-                    <Link to={"/testimonials/" + testimonial._id} className="btn btn-info">
+                    <Link to={"/testimonials/" + testimonial._id} className="btn btn-theme">
                        Update Testimonial
                     </Link>
-                    <button onClick={() => this.deleteTestimonial(testimonial._id)} type="button" className="btn btn-danger">
+                    <button onClick={() => this.deleteTestimonial(testimonial._id)} type="button" className="btn btn-theme-danger">
                         Delete Testimonial
                     </button>
                   </ListItem>
@@ -114,7 +117,8 @@ class Dashboard extends Component {
           </Col>
         </Row>
       </Container>
-    
+      </div>
+      </div>
     );
   }
 }

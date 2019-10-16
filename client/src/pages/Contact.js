@@ -47,7 +47,7 @@ handleFormSubmit = event => {
       <Row>
         <Col size="sm-12">
         <div className="text-center">
-        <Mainheading>Contact Us</Mainheading>
+        <Mainheading  color="dark">Contact Us</Mainheading>
         <p>Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.
         </p>
         </div>
@@ -55,6 +55,7 @@ handleFormSubmit = event => {
       </Row>
       <Row>
         <Col size="sm-6">
+        <div  className="form-outer">
         <form >
         <label>Your Name</label>
         <Input
@@ -88,7 +89,7 @@ handleFormSubmit = event => {
           Submit
         </FormBtn>
       </form>
-      <br/>
+        </div>
         </Col>
         <Col size="sm-6">
         <ul className="list-unstyled mb-0">

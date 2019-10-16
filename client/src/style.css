@@ -6,9 +6,44 @@
 body{
     background-image: url(../src/images/main-bg4.png);
 }
+.form-outer button, .btn-theme, .home-form-booking .btn{
+    margin-bottom: 10px;
+    background-color: #000758 !important;
+    color: #fff;
+    border-radius: 0;
+    margin-right: 10px;
+    border: 5px solid transparent;
+  -webkit-border-image: url(../src/images/border-img.png) 30 round; /* Safari 3.1-5 */
+  -o-border-image: url(../src/images/border-img.png) 30 round; /* Opera 11-12.1 */
+  border-image: url(../src/images/border-img.png) 30 round;
+}
+.form-outer button:hover, .btn-theme:hover, .home-form-booking .btn:hover{
+  background-color: #0634b9 !important;
+  color: #fff;
+}
+.btn-theme-danger{
+    margin-bottom: 10px;
+    background-color: #ff0000 !important;
+    color:#fff;
+    border-radius: 0;
+    margin-right: 10px;
+    border: 5px solid transparent;
+  -webkit-border-image: url(../src/images/border-img.png) 30 round; /* Safari 3.1-5 */
+  -o-border-image: url(../src/images/border-img.png) 30 round; /* Opera 11-12.1 */
+  border-image: url(../src/images/border-img.png) 30 round;
+}
+.btn-theme-danger:hover{
+    background-color:#e00000 !important;
+    color: #fff;
+}
 .home-form-booking{
     background-color: #fff;
     border-bottom: 5px solid #000758;
+}
+.home-form-booking .btn{
+    padding: 4px 23px 6px;
+    font-size: 1.5em;
+    margin: 30px auto;
 }
 .news-section{
     background-color: grey;
@@ -29,4 +64,38 @@ body{
 }
 .theme-color-dark {
     background-color: #000758!important;
+}
+.form-outer{
+    box-shadow: 1px 2px 6.5px #d0d0d0;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #dedcdc;
+}
+
+.left-navigationbar{
+    float: left;
+    background-color: #fff;
+    padding: 20px 0px;
+}
+.left-navigationbar ul{
+    padding: 0;
+    list-style-type: none;
+    margin: 0;
+}
+.left-navigationbar ul li{
+    padding: 6px 15px;
+    border-bottom: 1px solid #e6e6e6;
+}
+.left-navigationbar ul li a{
+    color: #000758;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+.left-navigationbar ul li a:hover{
+    text-decoration: none;
+}
+.left-navigationbar ul li a i{
+    color: #ff7d77;
+    font-size: 1.2em;
+    padding-right: 8px;
 }

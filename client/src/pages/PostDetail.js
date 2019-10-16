@@ -23,7 +23,7 @@ class PostDetail extends Component {
       <Container>
         <Row>
           <Col size="sm-12">
-            <Mainheading>News Detail</Mainheading>
+            <Mainheading  color="dark">News Detail</Mainheading>
             <article>
               <img src={this.state.post.post_image ? this.state.post.post_image :"https://placehold.it/128x197?text=No%20Preview" } alt="news-post"/>
               <h3>Title : {this.state.post.news_title}</h3>
