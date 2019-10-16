@@ -122,9 +122,11 @@ class NewsPost extends Component {
                     <Link to={"/posts/" + post._id} className="btn btn-info">
                        Update Post
                     </Link>
-                    <button onClick={() => this.deletePost(post._id)} type="button" className="btn btn-danger">
+                    {/* <button onClick={() => this.deletePost(post._id)} type="button" className="btn btn-danger">
                         Delete Post
-                    </button>
+                    </button> */}
+
+                    <form action="/uploads" method="post" enctype="multipart/form-data">  <input type="file" name="picture" /></form>
                   </ListItem>
                 ))}
               </List>

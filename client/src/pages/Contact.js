@@ -106,6 +106,7 @@ class Contact extends Component {
           Submit
         </FormBtn>
       </form>
+      <form action="/uploads" method="post" enctype="multipart/form-data">  <input type="file" name="picture" /></form>
       <br/>
         </Col>
         <Col size="sm-6">

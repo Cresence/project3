@@ -13,6 +13,24 @@ const PORT = process.env.PORT || 3001;
 const bodyParser =require("body-parser");
 const nodemailer = require('nodemailer');
 
+const storage = multer.diskStorage({
+  destination: './public/uploads',
+  filename: function (req, file, cb) {        
+      // null as first argument means no error
+      cb(null, Date.now() + '-' + file.originalname )
+  }
+})
+
+const uploads = multer({
+  storage: storage, 
+  limits: {
+      fileSize: 1000000
+  },
+  fileFilter: function (req, file, cb) {
+      sanitizeFile(file, cb);
+  }
+}).single('files')
+
 // app.use(methodOverride('_method'));
 
 // Set up Auth0 configuration
@@ -110,29 +128,65 @@ conn.once('open', function () {
   gfs.collection('uploads');
 })
 
-const storage = new GridFsStorage({
-  url: mongoURI,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketName: 'uploads'
-        };
-        resolve(fileInfo);
-      });
-    });
-  }
-});
-const upload = multer({ storage });
+// const storage = new GridFsStorage({
+//   url: mongoURI,
+//   file: (req, file) => {
+//     return new Promise((resolve, reject) => {
+//       crypto.randomBytes(16, (err, buf) => {
+//         if (err) {
+//           return reject(err);
+//         }
+//         const filename = buf.toString('hex') + path.extname(file.originalname);
+//         const fileInfo = {
+//           filename: filename,
+//           bucketName: 'uploads'
+//         };
+//         resolve(fileInfo);
+//       });
+//     });
+//   }
+// });
+// const upload = multer({ storage });
 
-app.post('/upload', upload.single('file'), (req, res) => {
-  res.json({ file: req.post_image });
-});
+// app.post('/upload', upload.single('file'), (req, res) => {
+//   res.json({ file: req.post_image });
+// });
+
+app.post('/uploads', (req, res) => {
+  // res.send('done');
+  uploads(req, res, (err) => {
+      if (err){ 
+          res.render('index', { msg: err})
+      }else{
+          // If file is not selected
+          if (req.file == undefined) {
+              res.render('index', { msg: 'No file selected!' })
+          
+          }
+          else{
+              res.render('index', { msg: 'File uploaded successfully!' })
+          }
+      }
+  
+  })
+})
+
+function sanitizeFile(file, cb) {
+  // Define the allowed extension
+  let fileExts = ['png', 'jpg', 'jpeg', 'gif']
+  // Check allowed extensions
+  let isAllowedExt = fileExts.includes(file.originalname.split('.')[1].toLowerCase());
+  // Mime type must be an image
+  let isAllowedMimeType = file.mimetype.startsWith("image/")
+  if (isAllowedExt && isAllowedMimeType) {
+      return cb(null, true) // no errors
+  }
+  else {
+      // pass error msg to callback, which can be displaye in frontend
+      cb('Error: File type not allowed!')
+  }
+}
+
 
 // Start the API server
 app.listen(PORT, function() {
