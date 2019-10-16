@@ -18,7 +18,6 @@ const Profile = () => {
 
   console.log(user);
 
-  const doStuff = () => {
     for (var i = 0; i < keys.adminEmail.length; i++) {
       if (user.email === i) {
         console.log('Admin Logged In...');
@@ -26,11 +25,7 @@ const Profile = () => {
       } else {
         console.log('Regular User Logged In...');
       };
-    }
-  }
-
-  doStuff()
-  
+    }  
 
   return (
     <Fragment>

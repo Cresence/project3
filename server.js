@@ -2,11 +2,11 @@ const express = require("express");
 const jwt = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
 const mongoose = require("mongoose");
-// const multer = require('multer');
-// const crypto = require('crypto');
-// const GridFsStorage = require('multer-gridfs-storage');
-// const Grid = require('gridfs-stream');
-// const methodOverride = require('method-override')
+const multer = require('multer');
+const crypto = require('crypto');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const methodOverride = require('method-override')
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -87,6 +87,7 @@ app.post('/api/form',(req, res)=>{
   })
 })
 // Define middleware here
+// app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
@@ -97,41 +98,41 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://user:P@ssw0rd@project3-8sn7w.mongodb.net/test");
-// const mongoURI = "mongodb+srv://user:P@ssw0rd@project3-8sn7w.mongodb.net/test";
+// mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://user:P@ssw0rd@project3-8sn7w.mongodb.net/test");
+const mongoURI = "mongodb+srv://user:P@ssw0rd@project3-8sn7w.mongodb.net/test";
 
-// const conn = mongoose.createConnection(mongoURI);
+const conn = mongoose.createConnection(mongoURI);
 
-// let gfs;
+let gfs;
 
-// conn.once('open', function () {
-//   gfs = Grid(conn.db, mongoose.mongo);
-//   gfs.collection('uploads');
-// })
+conn.once('open', function () {
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+})
 
-// var storage = new GridFsStorage({
-//   url: mongoURI,
-//   file: (req, file) => {
-//     return new Promise((resolve, reject) => {
-//       crypto.randomBytes(16, (err, buf) => {
-//         if (err) {
-//           return reject(err);
-//         }
-//         const filename = buf.toString('hex') + path.extname(file.originalname);
-//         const fileInfo = {
-//           filename: filename,
-//           bucketName: 'uploads'
-//         };
-//         resolve(fileInfo);
-//       });
-//     });
-//   }
-// });
-// const upload = multer({ storage });
+const storage = new GridFsStorage({
+  url: mongoURI,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'uploads'
+        };
+        resolve(fileInfo);
+      });
+    });
+  }
+});
+const upload = multer({ storage });
 
-// app.post('/upload', upload.single('file'), (req, res) => {
-//   res.json({ file: req.file });
-// });
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.json({ file: req.post_image });
+});
 
 // Start the API server
 app.listen(PORT, function() {

@@ -26,14 +26,15 @@ import News from "./pages/News";
 import PostDetail from "./pages/PostDetail"
 import "./style.css";
 
+
 function App() {
   const { loading } = useAuth0();
 
-  // if (loading) {
-  //   return (
-  //     <div>Loading...</div>
-  //   );
-  // }
+  if (loading) {
+    return (
+      <div>Loading...</div>
+    );
+  }
 
   return (
     <Router>
@@ -46,16 +47,16 @@ function App() {
           <Route exact path="/services" component={Services} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/booknow" component={Booknow} />
-          <PrivateRoute exact path="/admin" component={Testimonial} />
-          <PrivateRoute exact path="/testimonials/:id" component={UpdateTestimonial} />
-          <PrivateRoute exact path="/admin/news" component={NewsPost} />
-          <PrivateRoute exact path="/posts/:id" component={UpdatePost} />
-          <PrivateRoute exact path="/admin/booking" component={ManageBooking} />
+          <Route exact path="/admin" component={Testimonial} />
+          <Route exact path="/testimonials/:id" component={UpdateTestimonial} />
+          <Route exact path="/admin/news" component={NewsPost} />
+          <Route exact path="/posts/:id" component={UpdatePost} />
+          <Route exact path="/admin/booking" component={ManageBooking} />
           {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/news" component={News} />
-          <PrivateRoute exact path="/post-detail/:id" component={PostDetail} />
-          <PrivateRoute exact path="/books" component={Books} />
-          <PrivateRoute exact path="/books/:id" component={Detail} />
+          <Route exact path="/post-detail/:id" component={PostDetail} />
+          <Route exact path="/books" component={Books} />
+          <Route exact path="/books/:id" component={Detail} />
           <PrivateRoute path="/profile" component={Profile} /> 
           <PrivateRoute path="/external-api" component={ExternalApi} />       
           <Route component={NoMatch} />

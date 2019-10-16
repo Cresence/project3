@@ -2,6 +2,7 @@ import React from "react";
 import { useAuth0 } from "../../react-auth0-wrapper";
 import { Link } from "react-router-dom";
 import "./style.css";
+import NavAdmin from '../Navadmin/index'
 
 const Nav = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -51,9 +52,7 @@ const Nav = () => {
       {
   isAuthenticated && (
     <React.Fragment>
-       <li  className="nav-item"><Link to="/" className="nav-link">Home</Link> </li>
-       <li  className="nav-item"><Link to="/profile" className="nav-link">Profile</Link></li>
-       <li  className="nav-item"><Link to="/external-api" className="nav-link">External API</Link></li>
+      <NavAdmin />
     </React.Fragment>
   )}
   {isAuthenticated && <li  className="nav-item"><button onClick={() => logout()}>Log out</button></li>}
