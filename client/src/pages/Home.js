@@ -17,8 +17,8 @@ render() {
   return (
     <div>
     <Banner />
+      <div className="home-form-booking py-5">
       <Container>
-        <div className="py-5">
         <Row>
           <Col size="sm-12">
             <Mainheading color="dark">Best hotel for your pet!</Mainheading>
@@ -28,7 +28,10 @@ render() {
             </div>
           </Col>
         </Row>
+        
+        </Container> 
         </div>
+        <Container>
         <div className="py-5">
         <Row>
           <Col size="sm-12">

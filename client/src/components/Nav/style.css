@@ -1,7 +1,7 @@
 nav .decor_semicircle {
     width: 100%;
     height: 10px;
-    background: url(../../images/decor_semicircle.png);
+    background: url(../../images/semi-circle.png);
     position: absolute;
     z-index: 1;
     background-size: contain;

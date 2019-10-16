@@ -3,6 +3,13 @@
     min-height: 100vh;
     padding-bottom: 77px;
 }
+body{
+    background-image: url(../src/images/main-bg4.png);
+}
+.home-form-booking{
+    background-color: #fff;
+    border-bottom: 5px solid #000758;
+}
 .news-section{
     background-color: grey;
 }
@@ -19,4 +26,7 @@
 .news-section .content-box{
     float: left;
     padding-left: 20px;
+}
+.theme-color-dark {
+    background-color: #000758!important;
 }

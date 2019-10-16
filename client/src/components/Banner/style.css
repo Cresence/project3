@@ -3,14 +3,14 @@
     height: 100%;
   }
 #demo::after {
-  /* content: "";
+  content: "";
   width: 100%;
-  height: 96px;
-  background: url(../../images/clouds.png);
+  height: 65px;
+  background: url(../../images/cloud.png);
   position: absolute;
   z-index: 1;
   background-size: contain;
   left: 0;
   bottom: -18px;
-  background-repeat: no-repeat; */
+  background-repeat: repeat-x;
 }
