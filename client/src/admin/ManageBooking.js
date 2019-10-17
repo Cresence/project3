@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+// import { Link } from "react-router-dom";
+import { Col, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import Navadmin from "../components/Navadmin";
 import {Mainheading} from "../components/Mainheading"
@@ -49,11 +49,10 @@ class ManageBooking extends Component {
     return (
       <div>
       <Navadmin />
-      <div className="py-5">
       <Container fluid>
       
-        <Row>
-          
+        <div  className="row admin-content-box py-5">
+          <Col size="md-3"></Col>
           <Col size="md-6 sm-12">
             <Mainheading color="dark">Bookhotel List</Mainheading>
            
@@ -68,9 +67,9 @@ class ManageBooking extends Component {
                     <p><strong>Start Booking Date:</strong> {bookhotel.select_date_to}</p>
                     <p><strong>End Booking Date:</strong> {bookhotel.select_date_from}</p>
                       
-                    <Link to={"/bookhotels/" + bookhotel._id} className="btn btn-theme">
+                    {/* <Link to={"/bookhotels/" + bookhotel._id} className="btn btn-theme">
                        Update Bookhotel
-                    </Link>
+                    </Link> */}
                     <button onClick={() => this.deleteBookhotel(bookhotel._id)} type="button" className="btn btn-theme-danger">
                         Delete Bookhotel
                     </button>
@@ -81,9 +80,10 @@ class ManageBooking extends Component {
               <h3>No Results to Display</h3>
             )}
           </Col>
-        </Row>
+          <Col size="md-3"></Col>
+        </div>
+       
       </Container>
-      </div>
       </div>
     );
   }

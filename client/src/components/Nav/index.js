@@ -9,7 +9,6 @@ const Nav = () => {
   return (
     <nav className="navbar navbar-expand-md theme-color-dark navbar-dark sticky-top">
       <div className="container">
-      {/* <a className="navbar-brand" href="/">Home</a> */}
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span className="navbar-toggler-icon"></span>
       </button>
