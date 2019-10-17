@@ -58,8 +58,8 @@ new window.google.maps.marker({
         visible={this.state.showingInfoWindow}>
           
             <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-              <button type="button" onClick={this.send}>Show Details</button>
+              <h3>{this.state.selectedPlace.name}</h3>
+              <button type="button" onClick={this.send} className="btn btn-theme">Show Details</button>
             </div>
         </InfoWindow>
         

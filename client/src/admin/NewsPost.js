@@ -14,7 +14,9 @@ class NewsPost extends Component {
     category: "",
     description: "",
     date:"",
-    post_image:""
+    post_image:"",
+    success:"none",
+    danger:"none",
   };
 
   componentDidMount() {
@@ -51,8 +53,13 @@ class NewsPost extends Component {
         description: this.state.description,
         post_image: this.state.post_image
       })
-        .then(res => this.loadPosts())
+        .then(res => {
+          this.setState({success:"block", danger:"none"})
+          this.loadPosts()
+        })
         .catch(err => console.log(err));
+    }else{
+      this.setState({danger:"block", success:"none"})
     }
   };
   
@@ -66,13 +73,14 @@ class NewsPost extends Component {
             <Mainheading color="dark">Add Post</Mainheading>
             <div className="form-outer">
             <form>
+              <label>News Title</label>
               <Input
                 value={this.state.news_title}
                 onChange={this.handleInputChange}
                 name="news_title"
                 placeholder="News Title (required)"
               />
-             <label>Select category</label>
+             <label>Select Category</label>
               <select className="form-control" id="category" name="category" value={this.state.category} onChange={this.handleInputChange}>
                 <option value="">Select</option>
                 <option value="Announcement">Announcement</option>
@@ -80,14 +88,14 @@ class NewsPost extends Component {
               </select>
               <br/>
 
-              
+              <label>Description</label>
               <TextArea
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
-                placeholder="Description "
+                placeholder=" "
               />
-             
+              <label>Upload Image</label>
               <div className="form-group">
                 <input 
                   type="file" 
@@ -97,13 +105,18 @@ class NewsPost extends Component {
                   onChange={this.handleInputChange}
                 />
               </div>
-              <FormBtn
-                disabled={!(this.state.news_title && this.state.news_title  && this.state.description && this.state.post_image)}
-                onClick={this.handleFormSubmit}
-              >
+              <FormBtn onClick={this.handleFormSubmit} >
                Add Post
               </FormBtn>
             </form>
+            <div className="alert alert-success alert-dismissible" style={{display: this.state.success}}>
+              <button type="button" className="close" data-dismiss="alert">&times;</button>
+               Post is added Successfully.
+            </div>
+            <div className="alert alert-danger alert-dismissible"  style={{display: this.state.danger}}>
+              <button type="button" className="close" data-dismiss="alert">&times;</button>
+              Please Complete the form before Submition 
+            </div>
             </div>
           </Col>
           <Col size="md-6 sm-12">
@@ -113,11 +126,11 @@ class NewsPost extends Component {
               <List>
                 {this.state.posts.map(post => (
                 <ListItem key={post._id}>
-                    <h4> {post.news_title}</h4>
-                    <h5> {post.category}</h5>
-                    <p> {post.description}</p>
-                    <p> {post.date}</p>
-                    <p>{post.post_image}</p>
+                    <h5><strong>News Title : </strong> {post.news_title}</h5>
+                    <h6><strong>Category : </strong> {post.category}</h6>
+                    <p><strong>Description : </strong> {post.description}</p>
+                    <p><strong>Date : </strong> {post.date}</p>
+                    <p><strong>Image Url : </strong>{post.post_image}</p>
 
                       
                     <Link to={"/posts/" + post._id} className="btn btn-theme">

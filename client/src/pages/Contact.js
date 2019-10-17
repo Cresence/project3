@@ -9,7 +9,9 @@ class Contact extends Component {
   state = {
     name: "",
     email: "",
-    message: ""
+    message: "",
+    success:"none",
+    danger:"none",
   };
 
   handleInputChange = event => {
@@ -19,8 +21,7 @@ class Contact extends Component {
     });
   };
   loadPage = () => {
-    console.log('Loadpage method loaded.')
-    alert("Message is send")
+    this.setState({success:"block", danger:"none"})
     this.setState({ 
       name:"",
       email:"",
@@ -42,9 +43,9 @@ handleFormSubmit = event => {
    catch(err){
     alert("Something");
    }
-   
-    // }).then(res =>console.log(res))
-    //   .catch(err => console.log(err));
+  }
+  else{
+    this.setState({danger:"block", success:"none"})
   }
 };
   render() {
@@ -98,10 +99,19 @@ handleFormSubmit = event => {
           Submit
         </FormBtn>
       </form>
+        <div className="alert alert-success alert-dismissible" style={{display: this.state.success}}>
+          <button type="button" className="close" data-dismiss="alert">&times;</button>
+          Thank You for Contacting Us!.
+        </div>
+        <div className="alert alert-danger alert-dismissible"  style={{display: this.state.danger}}>
+          <button type="button" className="close" data-dismiss="alert">&times;</button>
+          Please Complete the form before Submition !
+        </div>
         </div>
         </Col>
         <Col size="sm-6">
-        <ul className="list-unstyled mb-0">
+        <div className="contact-right-section">
+        <ul className="list-unstyled ">
           <li>
             <p><i className="fas fa-map-marker-alt fa-2x" /> Philadelphia, PA 19140, USA</p>
           </li>
@@ -114,14 +124,14 @@ handleFormSubmit = event => {
         </ul>
 
         <h5>Connect with us!</h5>
-        <ul className="list-inline">
+        <ul className="list-inline social-media-link">
         <li className="list-inline-item" >
         <p><i className="fab fa-instagram"/></p></li>
         <li className="list-inline-item"><p><i className="fab fa-facebook-square"/></p></li>
         <li className="list-inline-item"><p><i className="fab fa-twitter"/></p></li>
         <li className="list-inline-item"><p><i className="fab fa-youtube"/></p></li>
         </ul>
-       
+        </div>
         </Col>
       </Row>
     </Container>

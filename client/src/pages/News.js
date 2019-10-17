@@ -52,7 +52,7 @@ render() {
                       <p> {post.date}</p>
 
                         
-                      <Link to={"/post-detail/" + post._id} className="btn btn-info">
+                      <Link to={"/post-detail/" + post._id} className="btn btn-theme">
                         Read More
                       </Link>
                     </div>

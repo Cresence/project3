@@ -53,18 +53,21 @@ class Detail extends Component {
             <Mainheading color="dark">Update Testimonial</Mainheading>
             <div className="form-outer">
             <form>
+              <label>Update Person Name</label>
               <Input
                 value={this.state.person_name}
                 onChange={this.handleInputChange}
                 name="person_name"
-                placeholder="Person Name (required)"
+                placeholder="Person Name"
               />
+              <label>Update Address</label>
               <Input
                 value={this.state.address}
                 onChange={this.handleInputChange}
                 name="address"
-                placeholder="Address (required)"
+                placeholder="Address"
               />
+              <label>Update Message</label>
               <TextArea
                 value={this.state.description}
                 onChange={this.handleInputChange}

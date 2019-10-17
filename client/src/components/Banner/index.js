@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import banner1 from "../../images/banner1.jpg"
+import banner1 from "../../images/banner3.jpg"
 import banner2 from "../../images/banner2.jpg"
 import banner3 from "../../images/banner3.jpg"
 import banner4 from "../../images/banner4.jpg"
@@ -17,6 +17,8 @@ function Banner() {
       <li data-target="#demo" data-slide-to="0" className="active"></li>
       <li data-target="#demo" data-slide-to="1"></li>
       <li data-target="#demo" data-slide-to="2"></li>
+      <li data-target="#demo" data-slide-to="3"></li>
+      <li data-target="#demo" data-slide-to="4"></li>
     </ul>
     <div className="carousel-inner">
       <div className="carousel-item active">
