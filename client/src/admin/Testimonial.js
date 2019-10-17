@@ -12,7 +12,9 @@ class Dashboard extends Component {
     testimonials: [],
     person_name: "",
     address: "",
-    description: ""
+    description: "",
+    success:"none",
+    danger:"none",
   };
 
   componentDidMount() {
@@ -43,13 +45,18 @@ class Dashboard extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.person_name && this.state.address && this.state.description) {
-      API.updateTestimonial({
+      API.saveTestimonial({
         person_name: this.state.person_name,
         address: this.state.address,
         description: this.state.description
       })
-        .then(res => console.log("something"))
+        .then(res => {
+          this.setState({success:"block",danger:"none"})
+          this.loadPosts()
+        })
         .catch(err => console.log(err));
+    }else{
+      this.setState({danger:"block", success:"none"})
     }
   };
   
@@ -64,31 +71,39 @@ class Dashboard extends Component {
             <Mainheading color="dark">Add Testimonial</Mainheading>
             <div className="form-outer">
             <form>
+              <label>Person Name</label>
               <Input
                 value={this.state.person_name}
                 onChange={this.handleInputChange}
                 name="person_name"
                 placeholder="Person Name (required)"
               />
+              <label>Address</label>
               <Input
                 value={this.state.address}
                 onChange={this.handleInputChange}
                 name="address"
                 placeholder="Address (required)"
               />
+              <label>Message</label>
               <TextArea
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
                 placeholder="Description "
               />
-              <FormBtn
-                disabled={!(this.state.address && this.state.person_name && this.state.description)}
-                onClick={this.handleFormSubmit}
-              >
+              <FormBtn onClick={this.handleFormSubmit} >
                Add Testimonial
               </FormBtn>
             </form>
+            <div className="alert alert-success alert-dismissible" style={{display: this.state.success}}>
+              <button type="button" className="close" data-dismiss="alert">&times;</button>
+               Testimonial is added Successfully.
+            </div>
+            <div className="alert alert-danger alert-dismissible"  style={{display: this.state.danger}}>
+              <button type="button" className="close" data-dismiss="alert">&times;</button>
+              Please Complete the form before Submition 
+            </div>
             </div>
           </Col>
           <Col size="md-6 sm-12">
@@ -97,9 +112,9 @@ class Dashboard extends Component {
               <List>
                 {this.state.testimonials.map(testimonial => (
                 <ListItem key={testimonial._id}>
-                    <h4> {testimonial.person_name}</h4>
-                    <h5> {testimonial.address}</h5>
-                    <p> {testimonial.description}</p>
+                    <h5><strong>Person Name :</strong> {testimonial.person_name}</h5>
+                    <h6><strong>Address :</strong> {testimonial.address}</h6>
+                    <p><strong>Testimonial :</strong> {testimonial.description}</p>
                       
                     <Link to={"/testimonials/" + testimonial._id} className="btn btn-theme">
                        Update Testimonial

@@ -58,13 +58,14 @@ class Detail extends Component {
             <Mainheading color="dark">Update Post</Mainheading>
             <div className="form-outer">
             <form>
+              <label>Update News Title</label>
               <Input
                 value={this.state.news_title}
                 onChange={this.handleInputChange}
                 name="news_title"
                 placeholder="news_title"
               />
-              <label>Update category</label>
+              <label>Update Category</label>
               <select className="form-control" id="category" name="category" value={this.state.category} onChange={this.handleInputChange}>
                 <option value="">Select</option>
                 <option value="Announcement">Announcement</option>
@@ -77,6 +78,7 @@ class Detail extends Component {
                 name="category"
                 placeholder="category"
               /> */}
+              <label>Update Description</label>
               <TextArea
                 value={this.state.description}
                 onChange={this.handleInputChange}
