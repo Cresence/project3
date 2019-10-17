@@ -29,19 +29,28 @@ class Contact extends Component {
 };
 
 handleFormSubmit = event => {
-  // event.preventDefault();
+  event.preventDefault();
   if (this.state.name && this.state.email && this.state.message) {
-    API.postContact({
-      name: this.state.name,
-      email: this.state.email,
-      message: this.state.message,
-    })
-      .then(res => this.loadPage())
-      .catch(err => console.log(err));
+    try{
+      API.postContact({
+        name: this.state.name,
+        email: this.state.email,
+        message: this.state.message,
+      })
+      this.loadPage();
+    }
+   catch(err){
+    alert("Something");
+   }
+   
+    // }).then(res =>console.log(res))
+    //   .catch(err => console.log(err));
   }
 };
   render() {
   return (
+    <div>
+    <Map/>
     <div className="py-5">
       <Container>
       <Row>
@@ -83,7 +92,7 @@ handleFormSubmit = event => {
           placeholder=" "
         />
         <FormBtn
-          disabled={!(this.state.name && this.state.email && this.state.message)}
+          // disabled={!(this.state.name && this.state.email)}
           onClick={this.handleFormSubmit}
         >
           Submit
@@ -112,10 +121,11 @@ handleFormSubmit = event => {
         <li className="list-inline-item"><p><i className="fab fa-twitter"/></p></li>
         <li className="list-inline-item"><p><i className="fab fa-youtube"/></p></li>
         </ul>
-        <Map/>
+       
         </Col>
       </Row>
     </Container>
+    </div>
     </div>
   );
   }

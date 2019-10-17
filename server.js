@@ -44,11 +44,13 @@ app.post('/api/form',(req, res)=>{
 
     transporter.sendMail(mailOptions, (err, info)=>{
       if(err){
+        res.sendStatus(400);
         return console.log(err);
       }
-
+      res.sendStatus(200);
       console.log('Message sent: %s', info)
       console.log('Message URL: %', nodemailer.getTestMessageUrl(info));
+
     })
   })
 })

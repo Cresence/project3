@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Navadmin from "../components/Navadmin";
@@ -60,9 +60,8 @@ class NewsPost extends Component {
     return (
       <div>
       <Navadmin />
-      <div className="py-5">
       <Container fluid>
-        <Row>
+        <div  className="row admin-content-box py-5">
           <Col size="md-6">
             <Mainheading color="dark">Add Post</Mainheading>
             <div className="form-outer">
@@ -134,9 +133,9 @@ class NewsPost extends Component {
               <h3>No Results to Display</h3>
             )}
           </Col>
-        </Row>
+        </div>
+       
       </Container>
-      </div>
       </div>
     );
   }

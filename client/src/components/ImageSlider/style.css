@@ -19,7 +19,10 @@
 }
 #carouselExampleFade .carousel-inner img{
   height: auto;
+  border-radius: 0;
+ 
 }
+
 #carouselExampleFade .pet-name{
   text-align: center;
   background-color: #ff7d77;

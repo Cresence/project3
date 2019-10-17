@@ -37,7 +37,7 @@ new window.google.maps.marker({
 
  render() {
     return (
-      <div className="map-container">
+      <div className="map-container" style={{  height: 330 }}>
         <Map 
         google={this.props.google} 
         initialCenter={{

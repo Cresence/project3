@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import images from "../../images"
+import testimonial_img from "../../images/testimonial.png"
 import "./style.css";
 import API from "../../utils/API";
 
@@ -32,7 +32,7 @@ render(){
               {this.state.testimonials.map((testimonial, index) => (
               
                 <div className={index === 0 ? 'item carousel-item active' : 'item carousel-item'} key={testimonial._id}>
-                <div className="img-box"><img src={`${images[0]}`} alt="" /></div>
+                <div className="img-box"><img src={`${testimonial_img}`} alt="" /></div>
                 <p className="testimonial">{testimonial.description}</p>
                 <p className="overview"><b>{testimonial.person_name}</b>, {testimonial.address}</p>
               </div>
