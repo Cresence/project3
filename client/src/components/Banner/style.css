@@ -1,4 +1,4 @@
-.carousel-inner img {
+#demo .carousel-inner img {
     width: 100%;
     height: 100%;
   }
@@ -13,4 +13,33 @@
   left: 0;
   bottom: -18px;
   background-repeat: repeat-x;
+}
+#demo .carousel-caption{
+  top:40%;
+}
+#demo .carousel-indicators{
+  bottom: 10px;
+}
+#demo .carousel-caption h3,
+#demo .carousel-caption p{
+  text-shadow: 1px 2px 6.5px #000;
+}
+@media only screen and (max-width: 768px) {
+  #demo::after{
+    height: 48px;
+  }
+  #demo .carousel-caption{
+    top: auto;
+  }
+  #demo .carousel-indicators{
+    bottom: 10px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  #demo .carousel-caption h3{
+    font-size: 1rem;
+  }
+  #demo .carousel-caption p{
+    font-size: .7rem;
+  }
 }

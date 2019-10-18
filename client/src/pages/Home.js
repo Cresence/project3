@@ -24,7 +24,7 @@ render() {
             <Mainheading color="dark">Best hotel for your pet!</Mainheading>
             <h5 className="text-center">We offer a broad range of services to pamper your pet.</h5>
             <div className="text-center">
-                <a className="btn btn-info" href="/booknow"> Book now</a>
+                <a className="btn btn-info" href="/booknow"> Book Now</a>
             </div>
           </Col>
         </Row>
