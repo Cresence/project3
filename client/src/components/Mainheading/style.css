@@ -4,6 +4,7 @@
   .main-heading h1{
     margin-bottom: 1.5em;
     text-align: center;
+    text-shadow: 1px 0px 1.5px #000;
     /* font-size: 2em; */
   }
   .main-heading .tile_underline {
@@ -58,12 +59,15 @@
     min-width: 2em;
     left: 0;
     bottom: -7px;
+    
   }
   .main-heading .dark{
     color: #000b88;
+    
   }
   .main-heading .light{
     color:#fff;
+    
 }
 .main-heading .light:after{
     border-top: 1px solid #a2a2a2;

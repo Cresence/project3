@@ -97,10 +97,10 @@ nav button{
     margin-bottom: 0;
     font-weight: 500;
 }
-.contact-right-section .social-media-link p{
+.social-media-link p{
     background-color: #fff;
 }
-.contact-right-section .social-media-link i{
+.social-media-link i{
     border: 1px solid #fff;
     border-radius: 0;
     text-align: center;
@@ -108,23 +108,25 @@ nav button{
     margin-right: 0;
     padding-top: 5px;
     font-size: 28px;
+    width: 40px;
+    height: 40px;
     box-shadow: none;
     border: 1px solid #e0e3e7;
 }
-.contact-right-section .social-media-link i.fa-instagram{
+.social-media-link i.fa-instagram{
     background: -webkit-linear-gradient(#ff5757 , #bd00de);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.contact-right-section .social-media-link i.fa-facebook-square{
+.social-media-link i.fa-facebook-square{
     color: #395499;
     background-color: #fff;
 }
-.contact-right-section .social-media-link i.fa-twitter{
+.social-media-link i.fa-twitter{
     color: #1c9deb;
     background-color: #fff;
 }
-.contact-right-section .social-media-link i.fa-youtube{
+.social-media-link i.fa-youtube{
     color: #f70000;
     background-color: #fff;
 }

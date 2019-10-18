@@ -1,0 +1,11 @@
+.header-top {
+    padding: 15px 0px 8px;
+}
+.header-top .logo{
+    max-width: 215px;
+}
+.header-top .social-media-link{
+    float: right;
+    margin-bottom: 0px;
+    margin-top: 12px;
+}
