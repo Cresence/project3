@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import {Mainheading} from "../components/Mainheading"
+
 // import { Input, TextArea, FormBtn } from "../components/Form";
+// import images from "../../public/uploads"
 class News extends Component {
     state = {
         posts: [],
@@ -42,7 +44,8 @@ render() {
                 {this.state.posts.map(post => (
                 <li className="list-group-item" key={post._id}>
                     <div className="image-box">
-                      <img src={post.post_image ? post.post_image :"https://placehold.it/128x197?text=No%20Preview" } alt="news-post"/>
+                      {console.log( post.post_image)}
+                      <img src={post.post_image ?  post.post_image :"https://placehold.it/128x197?text=No%20Preview" } alt="news-post"/>
                       
                     </div>
                     <div className="content-box">
