@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
+// import { List, ListItem } from "../components/List";
 import {Mainheading} from "../components/Mainheading"
 // import { Input, TextArea, FormBtn } from "../components/Form";
 class News extends Component {
@@ -11,7 +11,8 @@ class News extends Component {
         news_title: "",
         category: "",
         description: "",
-        date:""
+        date:"",
+        post_image: "",
       };
     
       componentDidMount() {
@@ -34,25 +35,30 @@ render() {
         <Row>
         <Col size="sm-12">
             
-            <Mainheading>News and Announcements</Mainheading>
+            <Mainheading  color="dark">News and Announcements</Mainheading>
          
             {this.state.posts.length ? (
-              <List>
+              <ul className="list-group news-section">
                 {this.state.posts.map(post => (
-                <ListItem key={post._id}>
-                    <h4> {post.news_title}</h4>
-                    <h5> {post.category}</h5>
-                    
-                    <p> {post.date}</p>
-
+                <li className="list-group-item" key={post._id}>
+                    <div className="image-box">
+                      <img src={post.post_image ? post.post_image :"https://placehold.it/128x197?text=No%20Preview" } alt="news-post"/>
                       
-                    <Link to={"/post-detail/" + post._id} className="btn btn-info">
-                       Read More
-                    </Link>
-                  
-                  </ListItem>
+                    </div>
+                    <div className="content-box">
+                      <h4> {post.news_title}</h4>
+                      <h5> {post.category}</h5>
+                      
+                      <p> {post.date}</p>
+
+                        
+                      <Link to={"/post-detail/" + post._id} className="btn btn-theme">
+                        Read More
+                      </Link>
+                    </div>
+                  </li>
                 ))}
-              </List>
+              </ul>
             ) : (
               <h3>No Results to Display</h3>
             )}

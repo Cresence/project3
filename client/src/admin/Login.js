@@ -16,6 +16,7 @@ export default function Login(props) {
 
   return (
     <div className="Login">
+      <div className="form-outer">
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="email" bsSize="large">
           <ControlLabel>Email</ControlLabel>
@@ -38,6 +39,7 @@ export default function Login(props) {
           Login
         </Button>
       </form>
+      </div>
     </div>
   );
 }

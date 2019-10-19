@@ -15,6 +15,8 @@ class Booknow extends Component {
     select_pet_size:"",
     select_date_to: "",
     select_date_from: "",
+    success:"none",
+    danger:"none",
   };
 
   handleInputChange = event => {
@@ -24,39 +26,38 @@ class Booknow extends Component {
     });
   };
   loadPage = () => {
-        alert("Booking is confirmed")
-        this.setState({ 
-            owner_name: "", 
-            pet_name: "", 
-            select_pet: "",
-            select_pet_size:"",
-            select_date_to: "",
-            select_date_from: "",
-        })
+    this.setState({success:"block", danger:"none"})
+    this.setState({ 
+      owner_name: "", 
+      pet_name: "", 
+      select_pet: "",
+      select_pet_size:"",
+      select_date_to: "",
+      select_date_from: "",
+    })
   };
   handleFormSubmit = event => {
     event.preventDefault();
     if (
-        this.state.owner_name && 
-        this.state.pet_name &&
-        this.state.select_pet &&
-        this.state.select_pet_size &&
-        this.state.select_date_to &&
-        this.state.select_date_from ) {
-      API.saveBookhotel({
-        owner_name: this.state.owner_name,
-        pet_name: this.state.pet_name,
-        select_pet: this.state.select_pet,
-        select_pet_size: this.state.select_pet_size,
-        select_date_to: this.state.select_date_to,
-        select_date_from: this.state.select_date_from,
-        
-      })
-        .then(res => this.loadPage())
-        .catch(err => console.log(err));
-    }
+      this.state.owner_name && 
+      this.state.pet_name &&
+      this.state.select_pet &&
+      this.state.select_pet_size &&
+      this.state.select_date_to &&
+      this.state.select_date_from ) {
+    API.saveBookhotel({
+      owner_name: this.state.owner_name,
+      pet_name: this.state.pet_name,
+      select_pet: this.state.select_pet,
+      select_pet_size: this.state.select_pet_size,
+      select_date_to: this.state.select_date_to,
+      select_date_from: this.state.select_date_from,
+    })
+      .then(res => this.loadPage())
+      .catch(err => console.log(err));
+  }
     else{
-        alert("Please complete Form before Submit")
+      this.setState({danger:"block", success:"none"})
     }
   };
   
@@ -65,16 +66,19 @@ class Booknow extends Component {
       <div className="py-5">
       <Container >
         <Row>
-            <Col size="md-3"></Col>
+          <Col size="md-3"></Col>
           <Col size="md-6">
-              <Mainheading>Add Bookhotel</Mainheading>
+            <Mainheading  color="dark">Add Bookhotel</Mainheading>
+            <div className="form-outer">
             <form>
+              <label>Pet Owner Name:</label>
               <Input
                 value={this.state.owner_name}
                 onChange={this.handleInputChange}
                 name="owner_name"
                 placeholder="Owner Name (required)"
               />
+              <label>Pet Nick Name:</label>
               <Input
                 value={this.state.pet_name}
                 onChange={this.handleInputChange}
@@ -88,10 +92,12 @@ class Booknow extends Component {
                 value={this.state.select_pet}
                 onChange={this.handleInputChange}>
                 <option value="">Select</option>
-                <option value="Cat">Cat</option>
                 <option value="Dog">Dog</option>
-                <option value="Rat">Rat</option>
+                <option value="Cat">Cat</option>
+                <option value="Fish">Fish</option>
+                <option value="Reptiles">Reptiles</option>
                 <option value="Rabbit">Rabbit</option>
+                <option value="Turtle">Turtle</option>
               </select>
 
               <br/>
@@ -110,6 +116,18 @@ class Booknow extends Component {
               <br/>
               <label htmlFor="petsize">Select Date:</label>
               <Row>
+              <Col size="sm-6"> 
+                    <label >From</label>
+                    <Input
+                        type="date" 
+                        value={this.state.select_date_from}
+                        onChange={this.handleInputChange}
+                        name="select_date_from"
+                        placeholder="Pet Name (required)"
+                        min="1000-01-01"
+                        max="3000-12-31" 
+                    />
+                  </Col>
                   <Col size="sm-6">
                     <label >To</label>
                     <Input
@@ -122,31 +140,20 @@ class Booknow extends Component {
                         max="3000-12-31" 
                     />
                   </Col>
-                  <Col size="sm-6"> 
-                    <label >From</label>
-                    <Input
-                        type="date" 
-                        value={this.state.select_date_from}
-                        onChange={this.handleInputChange}
-                        name="select_date_from"
-                        placeholder="Pet Name (required)"
-                        min="1000-01-01"
-                        max="3000-12-31" 
-                    />
-                  </Col>
               </Row>
-              <FormBtn
-                disabled={!(this.state.pet_name && 
-                    this.state.owner_name && 
-                    this.state.select_pet &&
-                    this.state.select_pet_size &&
-                    this.state.select_date_to &&
-                    this.state.select_date_from)}
-                onClick={this.handleFormSubmit}
-              >
+              <FormBtn onClick={this.handleFormSubmit} >
               Submit
               </FormBtn>
             </form>
+            <div className="alert alert-success alert-dismissible" style={{display: this.state.success}}>
+              <button type="button" className="close" data-dismiss="alert">&times;</button>
+              Booking is confirmed!.
+            </div>
+            <div className="alert alert-danger alert-dismissible"  style={{display: this.state.danger}}>
+              <button type="button" className="close" data-dismiss="alert">&times;</button>
+              Please Complete the form before Submition !
+            </div>
+            </div>
           </Col>
         </Row>
       </Container>

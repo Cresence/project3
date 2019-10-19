@@ -1,23 +1,7 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
-  getBooks: function() {
-    return axios.get("/api/books");
-  },
-  // Gets the book with the given id
-  getBook: function(id) {
-    return axios.get("/api/books/" + id);
-  },
-  // Deletes the book with the given id
-  deleteBook: function(id) {
-    return axios.delete("/api/books/" + id);
-  },
-  // Saves a book to the database
-  saveBook: function(bookData) {
-    return axios.post("/api/books", bookData);
-  },
-
+ 
   getTestimonials: function() {
     return axios.get("/api/testimonials");
   },
@@ -32,6 +16,9 @@ export default {
   // Saves a book to the database
   saveTestimonial: function(testimonialData) {
     return axios.post("/api/testimonials", testimonialData);
+  },
+  updateTestimonial: function(id, data){
+    return axios.put("/api/testimonials/" + id, data);
   },
 
   getPosts: function() {
@@ -49,6 +36,9 @@ export default {
   savePost: function(postData) {
     return axios.post("/api/posts", postData);
   },
+  updatePost: function(id, data){
+    return axios.put("/api/posts/" + id, data);
+  },
 
   getBookhotels: function() {
     return axios.get("/api/bookhotels");
@@ -65,6 +55,12 @@ export default {
   saveBookhotel: function(bookhotelData) {
     return axios.post("/api/bookhotels", bookhotelData);
   },
- 
+  updateBookhotel: function(id, data){
+    return axios.put("/api/bookhotels/" + id, data);
+  },
+  
+  postContact: function(postData) {
+    return axios.post("/api/form", postData);
+  },
 };
 

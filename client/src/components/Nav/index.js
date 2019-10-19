@@ -8,9 +8,8 @@ const Nav = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   return (
-    <nav className="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
+    <nav className="navbar navbar-expand-md theme-color-dark navbar-dark sticky-top">
       <div className="container">
-      {/* <a className="navbar-brand" href="/">Home</a> */}
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span className="navbar-toggler-icon"></span>
       </button>

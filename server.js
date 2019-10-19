@@ -77,30 +77,34 @@ app.post('/api/form',(req, res)=>{
     <p> ${req.body.message} </p>
     `
     const transporter = nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
-      port: 587,
+      service: 'Gmail',
       auth: {
-          user: 'immanuel77@ethereal.email',
-          pass: 'JSv392CF1SREKfgkXR'
+          user: 'shubhi.test.upenn@gmail.com',
+          pass: 'rnkdssbn'
+      },
+      tls:{
+        rejectUnauthorized:false
       }
     });
 
     let mailOptions={
-      from: 'test@testaccount.com',
-      to: 'immanuel77@ethereal.email',
+      from: '"Sandy Pet Hotel" <test@testaccount.com>',
+      to: 'dheeru.singh228@gmail.com',
       replyTo: 'test@testaccount.com',
-      subject:'New Message',
+      subject:'Sandy Pet Hotel',
       text: req.body.message,
       html: htmlEmail
     }
 
     transporter.sendMail(mailOptions, (err, info)=>{
       if(err){
+        res.sendStatus(400);
         return console.log(err);
       }
-
+      res.sendStatus(200);
       console.log('Message sent: %s', info)
-      console.log('Message URL: %', nodemailer.getTestMessageUrl(info))
+      console.log('Message URL: %', nodemailer.getTestMessageUrl(info));
+
     })
   })
 })

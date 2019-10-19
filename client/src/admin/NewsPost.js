@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Navadmin from "../components/Navadmin";
-// import {Mainheading} from "../components/Mainheading"
+import {Mainheading} from "../components/Mainheading"
 
 class NewsPost extends Component {
   state = {
@@ -14,7 +14,9 @@ class NewsPost extends Component {
     category: "",
     description: "",
     date:"",
-    post_image:""
+    post_image:"",
+    success:"none",
+    danger:"none",
   };
 
   componentDidMount() {
@@ -51,27 +53,34 @@ class NewsPost extends Component {
         description: this.state.description,
         post_image: this.state.post_image
       })
-        .then(res => this.loadPosts())
+        .then(res => {
+          this.setState({success:"block", danger:"none"})
+          this.loadPosts()
+        })
         .catch(err => console.log(err));
+    }else{
+      this.setState({danger:"block", success:"none"})
     }
   };
   
   render() {
     return (
-
-      <Container fluid>
+      <div>
       <Navadmin />
-        <Row>
+      <Container fluid>
+        <div  className="row admin-content-box py-5">
           <Col size="md-6">
-              <h1>Add Post</h1>
+            <Mainheading color="dark">Add Post</Mainheading>
+            <div className="form-outer">
             <form>
+              <label>News Title</label>
               <Input
                 value={this.state.news_title}
                 onChange={this.handleInputChange}
                 name="news_title"
                 placeholder="News Title (required)"
               />
-             <label>Select category</label>
+             <label>Select Category</label>
               <select className="form-control" id="category" name="category" value={this.state.category} onChange={this.handleInputChange}>
                 <option value="">Select</option>
                 <option value="Announcement">Announcement</option>
@@ -79,15 +88,20 @@ class NewsPost extends Component {
               </select>
               <br/>
 
-              
+              <label>Description</label>
               <TextArea
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
-                placeholder="Description "
+                placeholder=" "
               />
+<<<<<<< HEAD
              
               <div className="form-group" action="/upload" method="POST" enctype="multipart/form-data">
+=======
+              <label>Upload Image</label>
+              <div className="form-group">
+>>>>>>> c4b98a77c1382b46cd88bcadd476eefe599a345a
                 <input 
                   type="file" 
                   className="form-control-file border" 
@@ -96,33 +110,42 @@ class NewsPost extends Component {
                   onChange={this.handleInputChange}
                 />
               </div>
-              <FormBtn
-                disabled={!(this.state.news_title && this.state.news_title  && this.state.description && this.state.post_image)}
-                onClick={this.handleFormSubmit}
-              >
+              <FormBtn onClick={this.handleFormSubmit} >
                Add Post
               </FormBtn>
             </form>
+            <div className="alert alert-success alert-dismissible" style={{display: this.state.success}}>
+              <button type="button" className="close" data-dismiss="alert">&times;</button>
+               Post is added Successfully.
+            </div>
+            <div className="alert alert-danger alert-dismissible"  style={{display: this.state.danger}}>
+              <button type="button" className="close" data-dismiss="alert">&times;</button>
+              Please Complete the form before Submition 
+            </div>
+            </div>
           </Col>
           <Col size="md-6 sm-12">
+            <Mainheading color="dark">Post List</Mainheading>
             
-              <h1>Posts List</h1>
-           
             {this.state.posts.length ? (
               <List>
                 {this.state.posts.map(post => (
                 <ListItem key={post._id}>
-                    <h4> {post.news_title}</h4>
-                    <h5> {post.category}</h5>
-                    <p> {post.description}</p>
-                    <p> {post.date}</p>
-                    <p>{post.post_image}</p>
+                    <h5><strong>News Title : </strong> {post.news_title}</h5>
+                    <h6><strong>Category : </strong> {post.category}</h6>
+                    <p><strong>Description : </strong> {post.description}</p>
+                    <p><strong>Date : </strong> {post.date}</p>
+                    <p><strong>Image Url : </strong>{post.post_image}</p>
 
                       
-                    <Link to={"/posts/" + post._id} className="btn btn-info">
+                    <Link to={"/posts/" + post._id} className="btn btn-theme">
                        Update Post
                     </Link>
+<<<<<<< HEAD
                     {/* <button onClick={() => this.deletePost(post._id)} type="button" className="btn btn-danger">
+=======
+                    <button onClick={() => this.deletePost(post._id)} type="button" className="btn btn-theme-danger">
+>>>>>>> c4b98a77c1382b46cd88bcadd476eefe599a345a
                         Delete Post
                     </button> */}
 
@@ -134,9 +157,10 @@ class NewsPost extends Component {
               <h3>No Results to Display</h3>
             )}
           </Col>
-        </Row>
+        </div>
+       
       </Container>
-    
+      </div>
     );
   }
 }

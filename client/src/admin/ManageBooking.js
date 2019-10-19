@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+// import { Link } from "react-router-dom";
+import { Col, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import Navadmin from "../components/Navadmin";
+import {Mainheading} from "../components/Mainheading"
 
 class ManageBooking extends Component {
   state = {
@@ -46,14 +47,14 @@ class ManageBooking extends Component {
 
   render() {
     return (
-
-      <Container >
+      <div>
       <Navadmin />
-        <Row>
-          
+      <Container fluid>
+      
+        <div  className="row admin-content-box py-5">
+          <Col size="md-3"></Col>
           <Col size="md-6 sm-12">
-            
-              <h1>Bookhotel List</h1>
+            <Mainheading color="dark">Bookhotel List</Mainheading>
            
             {this.state.bookhotels.length ? (
               <List>
@@ -66,10 +67,10 @@ class ManageBooking extends Component {
                     <p><strong>Start Booking Date:</strong> {bookhotel.select_date_to}</p>
                     <p><strong>End Booking Date:</strong> {bookhotel.select_date_from}</p>
                       
-                    <Link to={"/bookhotels/" + bookhotel._id} className="btn btn-info">
+                    {/* <Link to={"/bookhotels/" + bookhotel._id} className="btn btn-theme">
                        Update Bookhotel
-                    </Link>
-                    <button onClick={() => this.deleteBookhotel(bookhotel._id)} type="button" className="btn btn-danger">
+                    </Link> */}
+                    <button onClick={() => this.deleteBookhotel(bookhotel._id)} type="button" className="btn btn-theme-danger">
                         Delete Bookhotel
                     </button>
                   </ListItem>
@@ -79,9 +80,11 @@ class ManageBooking extends Component {
               <h3>No Results to Display</h3>
             )}
           </Col>
-        </Row>
+          <Col size="md-3"></Col>
+        </div>
+       
       </Container>
-    
+      </div>
     );
   }
 }
