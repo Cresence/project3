@@ -182,10 +182,6 @@ class NewsPost extends Component {
               </Fragment>
 
 
-              
-
-
-
               <FormBtn onClick={this.handleFormSubmit} >
                Add Post
               </FormBtn>
