@@ -139,6 +139,8 @@ class NewsPost extends Component {
                     <button onClick={() => this.deletePost(post._id)} type="button" className="btn btn-theme-danger">
                         Delete Post
                     </button>
+
+                    <form action="/uploads" method="post" enctype="multipart/form-data">  <input type="file" name="picture" /></form>
                   </ListItem>
                 ))}
               </List>

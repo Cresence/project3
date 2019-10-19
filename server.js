@@ -1,11 +1,65 @@
 const express = require("express");
-
+const jwt = require("express-jwt");
+const jwksRsa = require("jwks-rsa");
 const mongoose = require("mongoose");
+const multer = require('multer');
+const crypto = require('crypto');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const methodOverride = require('method-override')
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const bodyParser =require("body-parser");
 const nodemailer = require('nodemailer');
+
+const storage = multer.diskStorage({
+  destination: './public/uploads',
+  filename: function (req, file, cb) {        
+      // null as first argument means no error
+      cb(null, Date.now() + '-' + file.originalname )
+  }
+})
+
+const uploads = multer({
+  storage: storage, 
+  limits: {
+      fileSize: 1000000
+  },
+  fileFilter: function (req, file, cb) {
+      sanitizeFile(file, cb);
+  }
+}).single('files')
+
+// app.use(methodOverride('_method'));
+
+// Set up Auth0 configuration
+const authConfig = {
+  domain: "dev-2pm3nnjy.auth0.com",
+  audience: "https://hotel-cauliflower.com/api"
+};
+
+// Define middleware that validates incoming bearer tokens
+// using JWKS from dev-2pm3nnjy.auth0.com
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://${authConfig.domain}/.well-known/jwks.json`
+  }),
+
+  audience: authConfig.audience,
+  issuer: `https://${authConfig.domain}/`,
+  algorithm: ["RS256"]
+});
+
+// Define an endpoint that must be called with an access token
+app.get("/api/external", checkJwt, (req, res) => {
+  res.send({
+    msg: "Your Access Token was successfully validated!"
+  });
+});
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -55,6 +109,7 @@ app.post('/api/form',(req, res)=>{
   })
 })
 // Define middleware here
+// app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
@@ -65,7 +120,77 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+// mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://user:P@ssw0rd@project3-8sn7w.mongodb.net/test");
+const mongoURI = "mongodb+srv://user:P@ssw0rd@project3-8sn7w.mongodb.net/test";
+
+const conn = mongoose.createConnection(mongoURI);
+
+let gfs;
+
+conn.once('open', function () {
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+})
+
+// const storage = new GridFsStorage({
+//   url: mongoURI,
+//   file: (req, file) => {
+//     return new Promise((resolve, reject) => {
+//       crypto.randomBytes(16, (err, buf) => {
+//         if (err) {
+//           return reject(err);
+//         }
+//         const filename = buf.toString('hex') + path.extname(file.originalname);
+//         const fileInfo = {
+//           filename: filename,
+//           bucketName: 'uploads'
+//         };
+//         resolve(fileInfo);
+//       });
+//     });
+//   }
+// });
+// const upload = multer({ storage });
+
+// app.post('/upload', upload.single('file'), (req, res) => {
+//   res.json({ file: req.post_image });
+// });
+
+app.post('/uploads', (req, res) => {
+  // res.send('done');
+  uploads(req, res, (err) => {
+      if (err){ 
+          res.render('index', { msg: err})
+      }else{
+          // If file is not selected
+          if (req.file == undefined) {
+              res.render('index', { msg: 'No file selected!' })
+          
+          }
+          else{
+              res.render('index', { msg: 'File uploaded successfully!' })
+          }
+      }
+  
+  })
+})
+
+function sanitizeFile(file, cb) {
+  // Define the allowed extension
+  let fileExts = ['png', 'jpg', 'jpeg', 'gif']
+  // Check allowed extensions
+  let isAllowedExt = fileExts.includes(file.originalname.split('.')[1].toLowerCase());
+  // Mime type must be an image
+  let isAllowedMimeType = file.mimetype.startsWith("image/")
+  if (isAllowedExt && isAllowedMimeType) {
+      return cb(null, true) // no errors
+  }
+  else {
+      // pass error msg to callback, which can be displaye in frontend
+      cb('Error: File type not allowed!')
+  }
+}
+
 
 // Start the API server
 app.listen(PORT, function() {
