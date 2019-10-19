@@ -52,7 +52,7 @@ class Dashboard extends Component {
       })
         .then(res => {
           this.setState({success:"block",danger:"none"})
-          this.loadPosts()
+          this.loadTestimonials()
         })
         .catch(err => console.log(err));
     }else{

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Container } from "../components/Grid";
@@ -6,6 +6,8 @@ import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Navadmin from "../components/Navadmin";
 import {Mainheading} from "../components/Mainheading"
+// import FileUpload from '../components/FileUpload';
+import axios from 'axios';
 
 class NewsPost extends Component {
   state = {
@@ -17,6 +19,10 @@ class NewsPost extends Component {
     post_image:"",
     success:"none",
     danger:"none",
+
+    file: "",
+    filename:"Choose File",
+    uploadedFile:""
   };
 
   componentDidMount() {
@@ -46,12 +52,12 @@ class NewsPost extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.news_title && this.state.category) {
+    if (this.state.news_title && this.state.category && this.state.description) {
       API.savePost({
         news_title: this.state.news_title,
         category: this.state.category,
         description: this.state.description,
-        post_image: this.state.post_image
+        post_image: this.state.filePath 
       })
         .then(res => {
           this.setState({success:"block", danger:"none"})
@@ -62,6 +68,48 @@ class NewsPost extends Component {
       this.setState({danger:"block", success:"none"})
     }
   };
+  onChangeUpload = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
+    this.setState({file:e.target.files[0]});
+    this.setState({filename:e.target.files[0].name});
+  };
+  
+  onSubmit = async e => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('file', this.state.file);
+
+    try{
+      const res=await axios.post('/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      const { fileName, filePath } = res.data;
+      console.log(res.data);
+      // date time
+      var today = new Date();
+      var date = today.getFullYear()+''+(today.getMonth()+1)+''+today.getDate();
+      var time = today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+      var dateTime = date+''+time;
+      console.log(dateTime);
+      // date time end
+      this.setState({fileName: res.data.fileName, filePath: res.data.filePath});
+      // setUploadedFile({ fileName, filePath });
+
+    } catch(err){
+      if(err.response.status=== 500){
+        console.log("Server error")
+      }else{
+        console.log(err.response.data.msg)
+      }
+    }
+
+  }
+
   
   render() {
     return (
@@ -96,7 +144,7 @@ class NewsPost extends Component {
                 placeholder=" "
               />
               <label>Upload Image</label>
-              <div className="form-group">
+              {/* <div className="form-group">
                 <input 
                   type="file" 
                   className="form-control-file border" 
@@ -104,7 +152,40 @@ class NewsPost extends Component {
                   value={this.state.post_image}
                   onChange={this.handleInputChange}
                 />
+              </div> */}
+              {/* <FileUpload 
+                type={"file"}
+                name={"post_image"}
+                value={this.state.post_image}
+                onChange={this.handleInputChange}
+              /> */}
+              <Fragment>
+                <div className='custom-file mb-4'>
+                  <input
+                    type='file'
+                    className='custom-file-input'
+                    name="post_image"
+                    id='customFile'
+                    onChange={this.onChangeUpload}
+                    value={this.state.post_image}
+                  />
+                <label className='custom-file-label' htmlFor='customFile'>
+                  {this.state.filename}
+                </label>
               </div>
+              <input
+                type='submit'
+                value='Upload'
+                className='btn btn-primary btn-block mt-4'
+                onClick={this.onSubmit}
+              />
+              </Fragment>
+
+
+              
+
+
+
               <FormBtn onClick={this.handleFormSubmit} >
                Add Post
               </FormBtn>
@@ -139,8 +220,6 @@ class NewsPost extends Component {
                     <button onClick={() => this.deletePost(post._id)} type="button" className="btn btn-theme-danger">
                         Delete Post
                     </button>
-
-                    <form action="/uploads" method="post" enctype="multipart/form-data">  <input type="file" name="picture" /></form>
                   </ListItem>
                 ))}
               </List>
