@@ -1,5 +1,5 @@
 import React from "react";
-import images from "../../images"
+import SandyspetHotel_LOGO from "../../images/SandyspetHotel_LOGO.gif"
 import "./style.css";
 
 function Headertop() {
@@ -8,7 +8,7 @@ function Headertop() {
       <div className="container">
         <div className="row">
           <div className="col-sm-4">
-          <img src={`${images[1]}`} alt="logo" width="100%" className="logo"/>
+          <img src={SandyspetHotel_LOGO} alt="logo" width="100%" className="logo"/>
 
           </div>
           <div className="col-sm-8">
