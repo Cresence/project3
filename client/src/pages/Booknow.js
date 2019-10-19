@@ -17,13 +17,45 @@ class Booknow extends Component {
     select_date_from: "",
     success:"none",
     danger:"none",
+    count: 0,
+    days: 0
   };
+
+
+  handleClickPlus = () => {
+    var newCount = this.state.count + 1;
+    this.setState({count: newCount });
+  }
+
+  handleClickMinus = () => {
+    var newCount = this.state.count - 1;
+    this.setState({count: newCount });
+    if(this.state.count === 0){
+      this.setState({
+          count:0
+      });
+    }else {
+      this.setState({
+          count: this.state.count - 1
+      });
+    }
+  }
+
+
+  handleDate = () => {
+    const date1 = new Date(this.state.select_date_from); 
+    const date2 = new Date(this.state.select_date_to); 
+    const Difference_In_Time = date2.getTime() - date1.getTime(); 
+    const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+
+    return Difference_In_Days
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
-    });
+    });  
   };
   loadPage = () => {
     this.setState({success:"block", danger:"none"})
@@ -44,7 +76,8 @@ class Booknow extends Component {
       this.state.select_pet &&
       this.state.select_pet_size &&
       this.state.select_date_to &&
-      this.state.select_date_from ) {
+      this.state.select_date_from,
+      this.state.count ) {
     API.saveBookhotel({
       owner_name: this.state.owner_name,
       pet_name: this.state.pet_name,
@@ -52,6 +85,7 @@ class Booknow extends Component {
       select_pet_size: this.state.select_pet_size,
       select_date_to: this.state.select_date_to,
       select_date_from: this.state.select_date_from,
+      count: this.state.count,
     })
       .then(res => this.loadPage())
       .catch(err => console.log(err));
@@ -62,13 +96,16 @@ class Booknow extends Component {
   };
   
   render() {
+
+    const days = this.handleDate()
+   
     return (
       <div className="py-5">
       <Container >
         <Row>
           <Col size="md-3"></Col>
           <Col size="md-6">
-            <Mainheading  color="dark">Add Bookhotel</Mainheading>
+            <Mainheading  color="dark">Reserve your pets stay</Mainheading>
             <div className="form-outer">
             <form>
               <label>Pet Owner Name:</label>
@@ -78,7 +115,7 @@ class Booknow extends Component {
                 name="owner_name"
                 placeholder="Owner Name (required)"
               />
-              <label>Pet Nick Name:</label>
+              <label>Pet Name:</label>
               <Input
                 value={this.state.pet_name}
                 onChange={this.handleInputChange}
@@ -114,6 +151,19 @@ class Booknow extends Component {
               </select>
 
               <br/>
+
+            
+              <h6 className="card-title">$20 per night</h6>
+              <h6 className="card-title">Nights Total: {  days}</h6>
+              <div>
+              <p>Animal Amount: {this.state.count}</p>
+             
+              <button type="button" class="btn btn-primary" onClick={this.handleClickMinus}><i class="fas fa-minus-circle"></i></button>
+              <button type="button" class="btn btn-primary" onClick={this.handleClickPlus}><i class="fas fa-plus-circle"></i></button>
+              </div>
+
+              <hr/>
+
               <label htmlFor="petsize">Select Date:</label>
               <Row>
               <Col size="sm-6"> 
@@ -122,6 +172,7 @@ class Booknow extends Component {
                         type="date" 
                         value={this.state.select_date_from}
                         onChange={this.handleInputChange}
+                        onClick={this.handleDate}
                         name="select_date_from"
                         placeholder="Pet Name (required)"
                         min="1000-01-01"
@@ -134,6 +185,7 @@ class Booknow extends Component {
                         type="date" 
                         value={this.state.select_date_to}
                         onChange={this.handleInputChange}
+                        onClick={this.handleDate}
                         name="select_date_to"
                         placeholder="Pet Name (required)"
                         min="1000-01-01"
@@ -141,6 +193,7 @@ class Booknow extends Component {
                     />
                   </Col>
               </Row>
+       
               <FormBtn onClick={this.handleFormSubmit} >
               Submit
               </FormBtn>
@@ -151,7 +204,7 @@ class Booknow extends Component {
             </div>
             <div className="alert alert-danger alert-dismissible"  style={{display: this.state.danger}}>
               <button type="button" className="close" data-dismiss="alert">&times;</button>
-              Please Complete the form before Submition !
+              Please Complete the form before submission!
             </div>
             </div>
           </Col>

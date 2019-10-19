@@ -1,11 +1,11 @@
 .header-top {
-    padding: 15px 0px 8px;
+    padding: 4px 0px 4px;;
 }
 .header-top .logo{
-    max-width: 215px;
+    max-width: 265px;
 }
 .header-top .social-media-link{
     float: right;
     margin-bottom: 0px;
-    margin-top: 12px;
+    margin-top: 20px;
 }
