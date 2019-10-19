@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import "./Map.css"
+import keys from "./keys"
+
 
 
 export class MapContainer extends Component {
@@ -56,10 +58,14 @@ new window.google.maps.marker({
         onClose={this.onInfoWindowClose}
         marker={this.state.activeMarker}
         visible={this.state.showingInfoWindow}>
-          
-            <div className="text-center">
-              <h4>{this.state.selectedPlace.name}</h4>
-              <button type="button" onClick={this.send} className="btn btn-theme">Show Details</button>
+
+//             <div className="text-center">
+//               <h4>{this.state.selectedPlace.name}</h4>
+//               <button type="button" onClick={this.send} className="btn btn-theme">Show Details</button>
+
+            <div>
+              <h3>{this.state.selectedPlace.name}</h3>
+
             </div>
         </InfoWindow>
         
@@ -70,5 +76,5 @@ new window.google.maps.marker({
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyC5sGvzBNZYzK3BpH9AHkGZa-wXp998FO8'
+  apiKey: keys
 })(MapContainer);

@@ -2,14 +2,14 @@ import React from "react";
 import { useAuth0 } from "../../react-auth0-wrapper";
 import { Link } from "react-router-dom";
 import "./style.css";
-import NavAdmin from '../Navadmin/index'
 
-const Nav = () => {
+const Sidebar = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   return (
-    <nav className="navbar navbar-expand-md theme-color-dark navbar-dark sticky-top">
+    <nav className="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
       <div className="container">
+      {/* <a className="navbar-brand" href="/">Home</a> */}
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -51,8 +51,11 @@ const Nav = () => {
       {
   isAuthenticated && (
     <React.Fragment>
+      <br />      
       <NavAdmin />
-    </React.Fragment>
+       <li  className="nav-item"><Link to="/profile" className="nav-link">Profile</Link></li>
+       <li  className="nav-item"><Link to="/external-api" className="nav-link">External API</Link></li>
+      </React.Fragment>
   )}
   {isAuthenticated && <li  className="nav-item"><button onClick={() => logout()}>Log out</button></li>}
 

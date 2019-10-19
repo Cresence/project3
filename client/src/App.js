@@ -24,14 +24,15 @@ import News from "./pages/News";
 import PostDetail from "./pages/PostDetail"
 import "./style.css";
 
+
 function App() {
   const { loading } = useAuth0();
 
-  // if (loading) {
-  //   return (
-  //     <div>Loading...</div>
-  //   );
-  // }
+  if (loading) {
+    return (
+      <div>Loading...</div>
+    );
+  }
 
   return (
     <Router>
@@ -53,10 +54,9 @@ function App() {
           {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/news" component={News} />
           <Route exact path="/post-detail/:id" component={PostDetail} />
-
-          <Route component={NoMatch} />
           <PrivateRoute path="/profile" component={Profile} /> 
           <PrivateRoute path="/external-api" component={ExternalApi} />       
+          <Route component={NoMatch} />
           </Switch>
          <Footer />
       </div>
