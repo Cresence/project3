@@ -1,10 +1,9 @@
 // src/components/Profile.js
 import Navadmin from '../components/Navadmin/index'
-import React, { Fragment } from "react";
+import React from "react";
 import { useAuth0 } from "../react-auth0-wrapper";
 
 var keys = require('../keys');
-console.log(keys.adminEmail);
 
 
 const Profile = () => {
@@ -16,24 +15,29 @@ const Profile = () => {
     );
   }
 
-  console.log(user);
+  console.log(user.email);
+  console.log(keys.adminEmail.id);
 
-    for (var i = 0; i < keys.adminEmail.length; i++) {
-      if (user.email === i) {
-        console.log('Admin Logged In...');
-        // return <Navadmin />
+  let adminBar = (keys) =>{
+    console.log(keys);
+    return keys.map(e => {
+      console.log(e)
+      if (user.email === e) {
+        console.log("Admin User")
+        return <Navadmin />
       } else {
-        console.log('Regular User Logged In...');
-      };
-    }  
-
+        console.log("Reg User")
+      }
+    });
+};
   return (
-    <Fragment>
+    <>
+      {adminBar(keys.adminEmail.id)}
       <img src={user.picture} alt="Profile" />
       <h2>{user.name}</h2>
       <p>{user.email}</p>
       <code>{JSON.stringify(user, null, 2)}</code>
-    </Fragment>
+    </>
   );
 };
 

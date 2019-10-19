@@ -54,8 +54,6 @@ function App() {
           {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/news" component={News} />
           <Route exact path="/post-detail/:id" component={PostDetail} />
-
-          <Route component={NoMatch} />
           <PrivateRoute path="/profile" component={Profile} /> 
           <PrivateRoute path="/external-api" component={ExternalApi} />       
           <Route component={NoMatch} />

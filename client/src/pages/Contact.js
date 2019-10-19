@@ -99,10 +99,6 @@ handleFormSubmit = event => {
           Submit
         </FormBtn>
       </form>
-<<<<<<< HEAD
-      <form action="/uploads" method="post" enctype="multipart/form-data">  <input type="file" name="picture" /></form>
-      <br/>
-=======
         <div className="alert alert-success alert-dismissible" style={{display: this.state.success}}>
           <button type="button" className="close" data-dismiss="alert">&times;</button>
           Thank You for Contacting Us!.
@@ -112,7 +108,6 @@ handleFormSubmit = event => {
           Please Complete the form before Submition !
         </div>
         </div>
->>>>>>> c4b98a77c1382b46cd88bcadd476eefe599a345a
         </Col>
         <Col size="sm-6">
         <div className="contact-right-section">

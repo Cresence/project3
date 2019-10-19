@@ -5,6 +5,8 @@ function Navadmin() {
     
     <div className="left-navigationbar">
         <ul>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/external-api">External-Api</a></li>
           <li><a href="/admin/testimonial"><i className="fas fa-tasks"></i> Manage Testimonial</a></li>
           <li><a href="/admin/news"><i className="fas fa-newspaper"></i> Manage News</a></li>
           <li><a href="/admin/booking"><i className="fas fa-pen"></i> Manage Booking</a> </li>

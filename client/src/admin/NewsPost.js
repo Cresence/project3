@@ -95,13 +95,8 @@ class NewsPost extends Component {
                 name="description"
                 placeholder=" "
               />
-<<<<<<< HEAD
-             
-              <div className="form-group" action="/upload" method="POST" enctype="multipart/form-data">
-=======
               <label>Upload Image</label>
               <div className="form-group">
->>>>>>> c4b98a77c1382b46cd88bcadd476eefe599a345a
                 <input 
                   type="file" 
                   className="form-control-file border" 
@@ -141,13 +136,9 @@ class NewsPost extends Component {
                     <Link to={"/posts/" + post._id} className="btn btn-theme">
                        Update Post
                     </Link>
-<<<<<<< HEAD
-                    {/* <button onClick={() => this.deletePost(post._id)} type="button" className="btn btn-danger">
-=======
                     <button onClick={() => this.deletePost(post._id)} type="button" className="btn btn-theme-danger">
->>>>>>> c4b98a77c1382b46cd88bcadd476eefe599a345a
                         Delete Post
-                    </button> */}
+                    </button>
 
                     <form action="/uploads" method="post" enctype="multipart/form-data">  <input type="file" name="picture" /></form>
                   </ListItem>
