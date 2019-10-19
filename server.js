@@ -12,7 +12,6 @@ const nodemailer = require('nodemailer');
 const fileUpload = require('express-fileupload');
 
 app.use(fileUpload());
-
 // Upload Endpoint
 app.post('/upload', (req, res) => {
   if (req.files === null) {

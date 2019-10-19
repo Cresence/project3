@@ -72,5 +72,4 @@ render() {
   );
 }
 }
-
 export default News;
