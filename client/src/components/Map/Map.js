@@ -54,20 +54,16 @@ new window.google.maps.marker({
         
         />
 
-        <InfoWindow 
+      <InfoWindow 
         onClose={this.onInfoWindowClose}
         marker={this.state.activeMarker}
         visible={this.state.showingInfoWindow}>
-
-{/* //             <div className="text-center">
-//               <h4>{this.state.selectedPlace.name}</h4>
-//               <button type="button" onClick={this.send} className="btn btn-theme">Show Details</button>
- */}
             <div>
               <h3>{this.state.selectedPlace.name}</h3>
-
+              <button type="button" onClick={this.send} className="btn btn-theme">Show Details</button>
             </div>
         </InfoWindow>
+        
         
       </Map>
       </div>
