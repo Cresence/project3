@@ -6,7 +6,7 @@ import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Navadmin from "../components/Navadmin";
 import {Mainheading} from "../components/Mainheading"
-import FileUpload from '../components/FileUpload';
+// import FileUpload from '../components/FileUpload';
 import axios from 'axios';
 
 class NewsPost extends Component {
@@ -180,7 +180,7 @@ class NewsPost extends Component {
                 onClick={this.onSubmit}
               />
               </Fragment>
-              <FileUpload></FileUpload>
+
 
               <FormBtn onClick={this.handleFormSubmit} >
                Add Post
