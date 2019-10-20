@@ -25,7 +25,8 @@ class PostDetail extends Component {
           <Col size="sm-12">
             <Mainheading  color="dark">News Detail</Mainheading>
             <article>
-              <img src={this.state.post.post_image ? this.state.post.post_image :"https://placehold.it/128x197?text=No%20Preview" } alt="news-post"/>
+              <img src={this.state.post.post_image ? this.state.post.post_image :"https://placehold.it/128x197?text=No%20Preview" } 
+              alt="news-post" className="img-fluid"/>
               <h3>Title : {this.state.post.news_title}</h3>
               <h5>Category : {this.state.post.category}</h5>
               <h6>News Post Date: {this.state.post.date}</h6>

@@ -22,7 +22,10 @@ class NewsPost extends Component {
 
     file: "",
     filename:"Choose File",
-    uploadedFile:""
+    uploadedFile:"",
+    message:"",
+    messagestatus:"none",
+    messagestatusclass:"",
   };
 
   componentDidMount() {
@@ -32,7 +35,7 @@ class NewsPost extends Component {
   loadPosts = () => {
     API.getPosts()
       .then(res =>
-        this.setState({ posts: res.data, news_title: "", category: "", description: "",date: "",post_image: "" })
+        this.setState({ posts: res.data, news_title: "", category: "", description: "",date: "", filename: "Choose File",messagestatus:"none"  })
       )
       .catch(err => console.log(err));
   };
@@ -52,7 +55,7 @@ class NewsPost extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.news_title && this.state.category && this.state.description) {
+    if (this.state.news_title && this.state.category && this.state.description && this.state.filePath) {
       API.savePost({
         news_title: this.state.news_title,
         category: this.state.category,
@@ -79,8 +82,17 @@ class NewsPost extends Component {
   
   onSubmit = async e => {
     e.preventDefault();
+   
+    this.setState({messagestatus: "block"});
     const formData = new FormData();
-    formData.append('file', this.state.file);
+    // // date time
+    // var today = new Date();
+    // var date = today.getFullYear()+''+(today.getMonth()+1)+''+today.getDate();
+    // var time = today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+    // var dateTime = date+''+time;
+    // console.log(dateTime);
+    // // date time end
+    formData.append('file', this.state.file );
 
     try{
       const res=await axios.post('/upload', formData, {
@@ -88,23 +100,20 @@ class NewsPost extends Component {
           'Content-Type': 'multipart/form-data'
         }
       });
-      const { fileName, filePath } = res.data;
-      console.log(res.data);
-      // date time
-      var today = new Date();
-      var date = today.getFullYear()+''+(today.getMonth()+1)+''+today.getDate();
-      var time = today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
-      var dateTime = date+''+time;
-      console.log(dateTime);
-      // date time end
+      // const { fileName, filePath } = res.data;
+      // console.log(res.data);
+      
       this.setState({fileName: res.data.fileName, filePath: res.data.filePath});
       // setUploadedFile({ fileName, filePath });
-
+      this.setState({uploadedFile: res.data.fileName + res.data.filePath});
+      this.setState({message : "File Uploaded Successfully", messagestatusclass: "success"})
     } catch(err){
       if(err.response.status=== 500){
-        console.log("Server error")
+        // console.log("Server error")
+        this.setState({message : "Server error", messagestatusclass: "danger"})
       }else{
-        console.log(err.response.data.msg)
+        // console.log(err.response.data.msg)
+        this.setState({message : err.response.data.msg, messagestatusclass: "danger"})
       }
     }
 
@@ -159,8 +168,15 @@ class NewsPost extends Component {
                 value={this.state.post_image}
                 onChange={this.handleInputChange}
               /> */}
+
+            <div className={`alert alert-${this.state.messagestatusclass} alert-dismissible`} style={{display: this.state.messagestatus}}>
+              <button type="button" className="close" data-dismiss="alert">&times;</button>
+              {this.state.message}
+            </div>
+
+              
               <Fragment>
-                <div className='custom-file mb-4'>
+                <div className='custom-file'>
                   <input
                     type='file'
                     className='custom-file-input'
@@ -179,6 +195,15 @@ class NewsPost extends Component {
                 className='btn btn-primary btn-block mt-4'
                 onClick={this.onSubmit}
               />
+              
+              {/* { this.state.uploadedFile ? 
+              <div>
+                <h5 className="text-center">Image uploaded Successfully </h5>
+                <p>{this.state.fileName}</p>
+                <img  src={this.state.filePath} alt="path"/>
+              </div>: " "
+              } */}
+
               </Fragment>
 
 
