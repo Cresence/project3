@@ -5,6 +5,7 @@ import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import {Mainheading} from "../components/Mainheading"
+import {runInThisContext} from "vm";
 
 class Booknow extends Component {
   state = {
@@ -17,8 +18,25 @@ class Booknow extends Component {
     select_date_from: "",
     success:"none",
     danger:"none",
-    count: 0
+    count: 0,
+    days: 0,
+    price: 20
   };
+
+  handlePrice = () => {
+    const totalprice = this.state.price;
+    return this.handleDate() * totalprice;
+  }
+
+  handleDate = () => {
+    const date1 = new Date(this.state.select_date_from); 
+    const date2 = new Date(this.state.select_date_to); 
+    const Difference_In_Time = date2.getTime() - date1.getTime(); 
+    const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+
+    return Difference_In_Days
+
+  }
 
   handleClickPlus = () => {
     var newCount = this.state.count + 1;
@@ -39,11 +57,13 @@ class Booknow extends Component {
     }
   }
 
+ 
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
-    });
+    });  
   };
   loadPage = () => {
     this.setState({success:"block", danger:"none"})
@@ -64,7 +84,8 @@ class Booknow extends Component {
       this.state.select_pet &&
       this.state.select_pet_size &&
       this.state.select_date_to &&
-      this.state.select_date_from ) {
+      this.state.select_date_from,
+      this.state.count ) {
     API.saveBookhotel({
       owner_name: this.state.owner_name,
       pet_name: this.state.pet_name,
@@ -72,6 +93,7 @@ class Booknow extends Component {
       select_pet_size: this.state.select_pet_size,
       select_date_to: this.state.select_date_to,
       select_date_from: this.state.select_date_from,
+      count: this.state.count,
     })
       .then(res => this.loadPage())
       .catch(err => console.log(err));
@@ -82,6 +104,10 @@ class Booknow extends Component {
   };
   
   render() {
+
+    const days = this.handleDate()
+    const price = this.handlePrice()
+   
     return (
       <div className="py-5">
       <Container >
@@ -135,16 +161,15 @@ class Booknow extends Component {
 
               <br/>
 
-            
-              <h6 className="card-title">$20 per night</h6>
-              <h6 className="card-title">Nights Total: </h6>
+              <h6 className="card-title" value={this.state.priceUpdate}>Price per night per Animal: 20</h6>
+              <h6 className="card-title">Nights Total: { !days ? 0 : days}</h6>
               <div>
-              <p>Animal Amount: {this.state.count}</p>
-             
+              <p>How many animals? {this.state.count}</p>
               <button type="button" class="btn btn-primary" onClick={this.handleClickMinus}><i class="fas fa-minus-circle"></i></button>
               <button type="button" class="btn btn-primary" onClick={this.handleClickPlus}><i class="fas fa-plus-circle"></i></button>
               </div>
 
+              <h6 className="card-title" value={price}>Total Price of stay: ${!price ? 0 : price} </h6>
               <hr/>
 
               <label htmlFor="petsize">Select Date:</label>
@@ -155,6 +180,7 @@ class Booknow extends Component {
                         type="date" 
                         value={this.state.select_date_from}
                         onChange={this.handleInputChange}
+                        onClick={this.handleDate}
                         name="select_date_from"
                         placeholder="Pet Name (required)"
                         min="1000-01-01"
@@ -167,6 +193,7 @@ class Booknow extends Component {
                         type="date" 
                         value={this.state.select_date_to}
                         onChange={this.handleInputChange}
+                        onClick={this.handleDate}
                         name="select_date_to"
                         placeholder="Pet Name (required)"
                         min="1000-01-01"

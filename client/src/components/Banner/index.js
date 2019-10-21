@@ -24,36 +24,36 @@ function Banner() {
       <div className="carousel-item active">
         <img src={banner1} alt="Los Angeles" width="1100" height="500" />
         <div className="carousel-caption">
-          <h3>Los Angeles</h3>
-          <p>We had such a great time in LA!</p>
+          <h3>Introducing</h3>
+          <p>The ultimate hotel experience!</p>
         </div>   
       </div>
       <div className="carousel-item">
         <img src={banner2} alt="Chicago" width="1100" height="500"/>
         <div className="carousel-caption">
-          <h3>Chicago</h3>
-          <p>Thank you, Chicago!</p>
+          <h3>Great food!</h3>
+          <p>Enhancing Life around great food and treats.</p>
         </div>   
       </div>
       <div className="carousel-item">
         <img src={banner3} alt="New York" width="1100" height="500"/>
         <div className="carousel-caption">
-          <h3>New York</h3>
-          <p>We love the Big Apple!</p>
+          <h3>Comfy Bed!</h3>
+          <p>Luxurious bedding.</p>
         </div>   
       </div>
       <div className="carousel-item">
         <img src={banner4} alt="New York" width="1100" height="500"/>
         <div className="carousel-caption">
-          <h3>New York</h3>
-          <p>We love the Big Apple!</p>
+          <h3>Clean Space!</h3>
+          <p>All spaces are clean and organized.</p>
         </div>   
       </div>
       <div className="carousel-item">
         <img src={banner5} alt="New York" width="1100" height="500"/>
         <div className="carousel-caption">
-          <h3>New York</h3>
-          <p>We love the Big Apple!</p>
+          <h3>Play time!</h3>
+          <p>Lots of toys and activites.</p>
         </div>   
       </div>
     </div>

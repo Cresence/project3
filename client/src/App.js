@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
-import Receipt from "./pages/Receipt";
+import Results from "./pages/Results";
 import UpdateTestimonial from "./admin/UpdateTestimonial";
 import Booknow from "./pages/Booknow";
 import NoMatch from "./pages/NoMatch";
@@ -46,7 +46,7 @@ function App() {
           <Route exact path="/services" component={Services} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/booknow" component={Booknow} />
-          <Route exact path="/Receipt" component={Receipt} />
+          <Route exact path="/Results" component={Results} />
           <Route exact path="/admin" component={Dashboard} />
           <Route exact path="/admin/testimonial" component={Testimonial} />
           <Route exact path="/testimonials/:id" component={UpdateTestimonial} />

@@ -120,10 +120,10 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://user:P@ssw0rd@project3-8sn7w.mongodb.net/test");
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://user:P@ssw0rd@project3-8sn7w.mongodb.net/test");
 const mongoURI = "mongodb+srv://user:P@ssw0rd@project3-8sn7w.mongodb.net/test";
 
-const conn = mongoose.createConnection(mongoURI);
+const conn = mongoose.createConnection(process.env.MONGODB_URI || mongoURI);
 
 let gfs;
 
