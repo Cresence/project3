@@ -45,8 +45,9 @@ render() {
                 <li className="list-group-item" key={post._id}>
                     <div className="image-box">
                       {console.log( post.post_image)}
+                      <div className="img-inner">
                       <img src={post.post_image ?  post.post_image :"https://placehold.it/128x197?text=No%20Preview" } alt="news-post"/>
-                      
+                      </div>
                     </div>
                     <div className="content-box">
                       <h4> {post.news_title}</h4>
