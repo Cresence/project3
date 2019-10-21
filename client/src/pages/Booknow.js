@@ -57,6 +57,7 @@ class Booknow extends Component {
       [name]: value
     });  
   };
+  
   loadPage = () => {
     this.setState({success:"block", danger:"none"})
     this.setState({ 
