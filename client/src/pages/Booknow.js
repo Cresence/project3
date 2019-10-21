@@ -24,8 +24,9 @@ class Booknow extends Component {
   };
 
   handlePrice = () => {
+    const animalCount = this.state.count;
     const totalprice = this.state.price;
-    return this.handleDate() * totalprice;
+    return this.handleDate() * totalprice * animalCount;
   }
 
   handleDate = () => {
@@ -56,8 +57,6 @@ class Booknow extends Component {
       });
     }
   }
-
- 
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -161,15 +160,14 @@ class Booknow extends Component {
 
               <br/>
 
-              <h6 className="card-title" value={this.state.priceUpdate}>Price per night per Animal: 20</h6>
-              <h6 className="card-title">Nights Total: { !days ? 0 : days}</h6>
+              <p value={this.state.priceUpdate}>Price per night per animal: $20</p>
+              
               <div>
               <p>How many animals? {this.state.count}</p>
               <button type="button" class="btn btn-primary" onClick={this.handleClickMinus}><i class="fas fa-minus-circle"></i></button>
               <button type="button" class="btn btn-primary" onClick={this.handleClickPlus}><i class="fas fa-plus-circle"></i></button>
               </div>
 
-              <h6 className="card-title" value={price}>Total Price of stay: ${!price ? 0 : price} </h6>
               <hr/>
 
               <label htmlFor="petsize">Select Date:</label>
@@ -201,6 +199,9 @@ class Booknow extends Component {
                     />
                   </Col>
               </Row>
+              <h6 className="card-title" id='dayDiv' value={days}>Total of nights: { !days ? 0 : days}</h6>
+
+              <h6 className="card-title" id='priceDiv' value={price}>Total Price: ${!price ? 0 : price} </h6>
        
               <FormBtn onClick={this.handleFormSubmit} >
               Submit
