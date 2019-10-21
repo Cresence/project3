@@ -24,7 +24,8 @@ class PostDetail extends Component {
         <Row>
           <Col size="sm-12">
             <Mainheading  color="dark">News Detail</Mainheading>
-            <article>
+            <div className="news-detail" >
+
               <img src={this.state.post.post_image ? this.state.post.post_image :"https://placehold.it/128x197?text=No%20Preview" } 
               alt="news-post" className="img-fluid"/>
               <h3>Title : {this.state.post.news_title}</h3>
@@ -33,7 +34,7 @@ class PostDetail extends Component {
               <p>
                 Discription : {this.state.post.description}
               </p>
-            </article>
+            </div>
           </Col>
         </Row>
         
