@@ -4,8 +4,10 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
-import {Mainheading} from "../components/Mainheading";
-import PaypalButton from"../components/PaypalButton";
+import {Mainheading} from "../components/Mainheading"
+import {runInThisContext} from "vm";
+import PaypalButton from "../components/PaypalButton"
+
 class Booknow extends Component {
   state = {
     bookhotels: [],
@@ -18,9 +20,25 @@ class Booknow extends Component {
     success:"none",
     danger:"none",
     count: 0,
-    days: 0
+    days: 0,
+    price: 20
   };
 
+  handlePrice = () => {
+    const animalCount = this.state.count;
+    const totalprice = this.state.price;
+    return this.handleDate() * totalprice * animalCount;
+  }
+
+  handleDate = () => {
+    const date1 = new Date(this.state.select_date_from); 
+    const date2 = new Date(this.state.select_date_to); 
+    const Difference_In_Time = date2.getTime() - date1.getTime(); 
+    const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+
+    return Difference_In_Days
+
+  }
 
   handleClickPlus = () => {
     var newCount = this.state.count + 1;
@@ -98,6 +116,7 @@ class Booknow extends Component {
   render() {
 
     const days = this.handleDate()
+    const price = this.handlePrice()
    
     return (
       <div className="py-5">
@@ -152,14 +171,12 @@ class Booknow extends Component {
 
               <br/>
 
-            
-              <h6 className="card-title">$20 per night</h6>
-              <h6 className="card-title">Nights Total: {  days}</h6>
+              <p value={this.state.priceUpdate}>Price per night per animal: $20</p>
+              
               <div>
-              <p>Animal Amount: {this.state.count}</p>
-             
-              <button type="button" className="btn btn-primary" onClick={this.handleClickMinus}><i className="fas fa-minus-circle"></i></button>
-              <button type="button" className="btn btn-primary" onClick={this.handleClickPlus}><i className="fas fa-plus-circle"></i></button>
+              <p>How many animals? {this.state.count}</p>
+              <button type="button" class="btn btn-primary" onClick={this.handleClickMinus}><i class="fas fa-minus-circle"></i></button>
+              <button type="button" class="btn btn-primary" onClick={this.handleClickPlus}><i class="fas fa-plus-circle"></i></button>
               </div>
 
               <hr/>
@@ -193,6 +210,9 @@ class Booknow extends Component {
                     />
                   </Col>
               </Row>
+              <h6 className="card-title" id='dayDiv' value={days}>Total of nights: { !days ? 0 : days}</h6>
+
+              <h6 className="card-title" id='priceDiv' value={price}>Total Price: ${!price ? 0 : price} </h6>
        
               <FormBtn onClick={this.handleFormSubmit} >
               Submit
