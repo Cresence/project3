@@ -125,11 +125,10 @@ handleFormSubmit = event => {
 
         <h5>Connect with us!</h5>
         <ul className="list-inline social-media-link">
-        <li className="list-inline-item" >
-        <p><a href="#"><i className="fab fa-instagram"/></a></p></li>
-        <li className="list-inline-item"><p><a href="#"><i className="fab fa-facebook-square"/></a></p></li>
-        <li className="list-inline-item"><p><a href="#"><i className="fab fa-twitter"/></a></p></li>
-        <li className="list-inline-item"><p><a href="#"><i className="fab fa-youtube"/></a></p></li>
+        <li className="list-inline-item"><p><a href="https://www.instagram.com/" target="_blank"><i className="fab fa-instagram"/></a></p></li>
+        <li className="list-inline-item"><p><a href="https://www.facebook.com/" target="_blank"><i className="fab fa-facebook-square"/></a></p></li>
+        <li className="list-inline-item"><p><a href="https://twitter.com/" target="_blank"><i className="fab fa-twitter"/></a></p></li>
+        <li className="list-inline-item"><p><a href="https://youtube.com" target="_blank"><i className="fab fa-youtube"/></a></p></li>
         </ul>
         </div>
         </Col>
