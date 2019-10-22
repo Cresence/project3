@@ -25,7 +25,8 @@
 
 #carouselExampleFade .pet-name{
   text-align: center;
-  background-color: #ff7d77;
+  background-color: #ff3d5d;
+  background-image: linear-gradient(#ff3d5d 0%,#ff9595 , #ff3d5d 60%);
   padding: 10px;
   font-size: 1.2rem;
 

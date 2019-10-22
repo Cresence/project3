@@ -21,13 +21,10 @@ class Booknow extends Component {
     days: 0,
     price: 20,
     total_price: 0,
-    id:"",
+
     success:"none",
     danger:"none",
-    submitBtn:"block",
-    paynowBtn:"none",
-
-    // count: 0,
+   // count: 0,
     // days: 0,
     // price: 20
   };
@@ -36,20 +33,28 @@ class Booknow extends Component {
     const animalCount = this.state.pet_count;
     const price = this.state.price;
     const total=this.handleDate() * price * animalCount;
-   
-    return total;
-    // this.setState({total_price: total})
+    
+    console.log(total)
+    console.log(this.handlePrice)
+    // return total;
+    this.setState({total_price: total})
 
   }
 
-  handleDate = () => {
+  handleDate = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
     const date1 = new Date(this.state.select_date_from); 
     const date2 = new Date(this.state.select_date_to); 
     const Difference_In_Time = date2.getTime() - date1.getTime(); 
     const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
 
     return Difference_In_Days
-    // this.setState({days:Difference_In_Days})
+    // // this.setState({days:Difference_In_Days})
+    // console.log(typeof Difference_In_Days)
+    // console.log(date1)
   }
 
   handleClickPlus = () => {
@@ -59,8 +64,8 @@ class Booknow extends Component {
 
   handleClickMinus = () => {
     var newCount = this.state.pet_count - 1;
-    this.setState({count: newCount });
-    if(this.state.count === 0){
+    this.setState({pet_count: newCount });
+    if(this.state.pet_count=== 0){
       this.setState({
         pet_count:0
       });
@@ -89,8 +94,7 @@ class Booknow extends Component {
     });  
   };
   loadPage = () => {
-    this.setState({success:"block", danger:"none", submitBtn:"none",
-    paynowBtn:"block",})
+    this.setState({success:"block", danger:"none"})
     this.setState({ 
       owner_name: "", 
       pet_name: "", 
@@ -98,12 +102,22 @@ class Booknow extends Component {
       select_pet_size:"",
       select_date_to: "",
       select_date_from: "",
-      pet_count:""
     })
   };
   handleFormSubmit = event => {
     event.preventDefault();
-   
+    console.log(
+      this.state.owner_name + " " +
+      this.state.pet_name + " " +
+      this.state.select_pet + " " +
+      this.state.select_pet_size + " " +
+      this.state.select_date_to + " " +
+      this.state.select_date_from + " " +
+      this.state.pet_count + " " +
+      this.state.days + " " +
+      this.state.price  + " " +
+      this.state.totalprice 
+    )
     if (
       this.state.owner_name && 
       this.state.pet_name &&
@@ -112,9 +126,9 @@ class Booknow extends Component {
       this.state.select_date_to &&
       this.state.select_date_from &&
       this.state.pet_count && 
-      this.handleDate() &&
+      this.state.days &&
       this.state.price  && 
-      this.handlePrice() 
+      this.state.totalprice 
        ) {
     API.saveBookhotel({
       owner_name: this.state.owner_name,
@@ -123,15 +137,12 @@ class Booknow extends Component {
       select_pet_size: this.state.select_pet_size,
       select_date_to: this.state.select_date_to,
       select_date_from: this.state.select_date_from,
-      pet_count: this.state.pet_count,
-      days:  this.handleDate(),
+      pet_count: this.state.count,
+      days: this.state.days,
       price: this.state.price,
-      total_price:  this.handlePrice(),
+      total_price: this.state.total_price,
     })
-      .then(res => {
-        console.log(res.data._id);
-        this.setState({id:res.data._id})
-        this.loadPage()})
+      .then(res => this.loadPage())
       .catch(err => console.log(err));
   }
     else{
@@ -141,8 +152,10 @@ class Booknow extends Component {
   
   render() {
 
-    const days = this.handleDate()
-    const price = this.handlePrice()
+    // const days = this.handleDate()
+    // const price = this.handlePrice()
+    
+   
     return (
       <div className="py-5">
       <Container >
@@ -196,7 +209,7 @@ class Booknow extends Component {
 
               <br/>
 
-              <p value={this.state.priceUpdate}>Price per night per animal: $20</p>
+              <p>Price per night per animal: $20</p>
               
               <div>
               <p>How many animals? {this.state.pet_count}</p>
@@ -213,8 +226,7 @@ class Booknow extends Component {
                     <Input
                         type="date" 
                         value={this.state.select_date_from}
-                        onChange={this.handleInputChange}
-                        onClick={this.handleDate}
+                        onChange={this.handleDate}
                         name="select_date_from"
                         placeholder="Pet Name (required)"
                         min="1000-01-01"
@@ -226,8 +238,7 @@ class Booknow extends Component {
                     <Input
                         type="date" 
                         value={this.state.select_date_to}
-                        onChange={this.handleInputChange}
-                        onClick={this.handleDate}
+                        onChange={this.handleDate}
                         name="select_date_to"
                         placeholder="Pet Name (required)"
                         min="1000-01-01"
@@ -235,16 +246,14 @@ class Booknow extends Component {
                     />
                   </Col>
               </Row>
-              <h6 className="card-title" id='dayDiv' value={days}>Total of nights: { !days ? 0 : days}</h6>
+              <h6 className="card-title" id='dayDiv' value={this.state.days}>Total of nights: { !this.state.days ? 0 : this.state.days}</h6>
 
-              <h6 className="card-title" id='priceDiv' value={price}>Total Price: ${!price ? 0 : price} </h6>
+              <h6 className="card-title" id='priceDiv' value={this.state.total_price}>Total Price: ${!this.state.total_price ? 0 :this.state.total_price} </h6>
        
-              <FormBtn onClick={this.handleFormSubmit}  style={{display: this.state.submitBtn}} >
+              <FormBtn onClick={this.handleFormSubmit} >
               Submit
               </FormBtn>
-              
-              <a className="btn" href={"/payment/" + this.state.id} style={{display: this.state.paynowBtn}}>Pay Now</a>
-            
+              <a className="btn" href="/payment">Pay Now</a>
             </form>
             <div className="alert alert-success alert-dismissible" style={{display: this.state.success}}>
               <button type="button" className="close" data-dismiss="alert">&times;</button>
