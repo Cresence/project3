@@ -50,19 +50,22 @@ function Product({ product }) {
     <div>
       {error && <div>Uh oh, an error occurred! {error.message}</div>}
       <h4>
-        {product.description} for ${product.price}
+        {product.description}
       </h4>
+      <h5><strong>Total Price: </strong> $ {product.price}</h5>
+      <h5><strong>Pet Name: </strong> {product.name}</h5>
       {/* <img alt={product.description} src={product.image} width="200" /> */}
       <div ref={paypalRef} />
     </div>
   );
 }
 
-function App() {
+function App(props) {
+  console.log(props);
   const product = {
-    price: 3.33,
-    name: 'comfy chair',
-    description: 'fancy chair, like new',
+    price: props.price,
+    name: props.name,
+    description: 'Select Payment Method',
     // image: chair,
   };
 

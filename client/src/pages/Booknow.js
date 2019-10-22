@@ -175,8 +175,8 @@ class Booknow extends Component {
               
               <div>
               <p>How many animals? {this.state.count}</p>
-              <button type="button" class="btn btn-primary" onClick={this.handleClickMinus}><i class="fas fa-minus-circle"></i></button>
-              <button type="button" class="btn btn-primary" onClick={this.handleClickPlus}><i class="fas fa-plus-circle"></i></button>
+              <button type="button" className="btn btn-primary" onClick={this.handleClickMinus}><i className="fas fa-minus-circle"></i></button>
+              <button type="button" className="btn btn-primary" onClick={this.handleClickPlus}><i className="fas fa-plus-circle"></i></button>
               </div>
 
               <hr/>
@@ -217,7 +217,7 @@ class Booknow extends Component {
               <FormBtn onClick={this.handleFormSubmit} >
               Submit
               </FormBtn>
-              <PaypalButton />
+              <a className="btn" href="/payment">Pay Now</a>
             </form>
             <div className="alert alert-success alert-dismissible" style={{display: this.state.success}}>
               <button type="button" className="close" data-dismiss="alert">&times;</button>
