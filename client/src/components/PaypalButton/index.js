@@ -1,7 +1,7 @@
 // import './App.css';
 import React, { useState, useRef, useEffect } from 'react';
-// import chair from './chair.jpg';
-// import gif from './giphy.gif';
+import {Mainheading} from "../Mainheading"
+
 
 function Product({ product }) {
   const [paidFor, setPaidFor] = useState(false);
@@ -40,17 +40,18 @@ function Product({ product }) {
   if (paidFor) {
     return (
       <div className="text-center">
-        <h1 className="text-success">Congrats, Your  Booking is Conformed {product.name}!</h1>
+        <h3 className="text-success">Congrats, Your  Booking is Conformed !</h3>
         <a href="#" className="btn btn-theme">Print Your Receipt</a>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className="payment-box">
       {error && <div><h1 className="text-danger text-center">Uh oh, an error occurred! {error.message}</h1></div>}
       {/* <a href="#" className="btn btn-theme">Print Your Receipt</a> */}
-      <table className="table table-bordered">
+      <Mainheading color="dark">Pay Now</Mainheading>
+      <table className="table ">
         <tbody>
           <tr>
             <th scope="row">Total Price:</th>
@@ -66,7 +67,7 @@ function Product({ product }) {
           </tr>
           <tr>
             <th scope="row">Booking:</th>
-            <td>{product.select_date_from} <strong> To </strong>{product.select_date_to}</td>
+            <td>{product.select_date_from} <strong> To </strong> {product.select_date_to}</td>
           </tr>
           <tr>
             <th scope="row">No Of Days:</th>

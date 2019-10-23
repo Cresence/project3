@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
-import {Mainheading} from "../components/Mainheading"
+
 import PaypalButton from "../components/PaypalButton"
 //import React, { useState, useRef, useEffect } from 'react';
+import jsPDF from 'jspdf'
 
 class Payment extends Component {
   state = {
@@ -42,7 +43,16 @@ class Payment extends Component {
      }))
     .catch(err => console.log(err));
   }
- 
+ // jspdf generator function
+ jsPDFGenerator=()=>{
+  var doc=new jsPDF('p', 'pt');
+  //add text
+  doc.text(20,20, 'this.state.abc')
+  doc.setFont('courier');
+  doc.setFontType('normal');
+  doc.text(20,30,'This is text with courier font');
+  doc.save("generate.pdf");
+}
   render() {
       return(
         <Container>
@@ -50,7 +60,7 @@ class Payment extends Component {
             <Row>
                 <Col size="3"></Col>
                 <Col size="6">
-                  <Mainheading color="dark">Pay Now</Mainheading>
+                 
                   {this.state.loading? <PaypalButton 
                       price= {this.state.price}
                       name= {this.state.pet_name}
@@ -65,7 +75,11 @@ class Payment extends Component {
                       total_price= {this.state.total_price}
                       id= {this.state.id}
                       />:" "}
-                  
+                  <div className="text-center">
+                    <button className="btn btn-theme" onClick={this.jsPDFGenerator}>
+                      Print Your Receipt
+                    </button>
+                  </div>
                 </Col>
                 <Col size="3"></Col>
             </Row>
