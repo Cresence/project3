@@ -70,8 +70,8 @@ class Booknow extends Component {
     });  
   };
   loadPage = () => {
-    this.setState({success:"block", danger:"none", submitBtn:"none",
-    paynowBtn:"block",})
+    this.setState({success:"none", danger:"none", submitBtn:"none",
+    paynowBtn:"inline-block",})
     this.setState({ 
       owner_name: "", 
       pet_name: "", 
@@ -220,9 +220,9 @@ class Booknow extends Component {
               <br/>
               <label className="card-title" id='priceDiv' value={price}>Total Price: <span className ="custom-span">${!price ? 0 : price} </span></label>
               <br/>
-              <FormBtn onClick={this.handleFormSubmit}  style={{display: this.state.submitBtn}} >
+              <button className="btn" onClick={this.handleFormSubmit}  style={{display: this.state.submitBtn}} >
               Submit
-              </FormBtn>
+              </button>
               
               <a className="btn" href={"/payment/" + this.state.id} style={{display: this.state.paynowBtn}}>Pay Now</a>
             

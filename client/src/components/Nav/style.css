@@ -11,3 +11,6 @@ nav .decor_semicircle {
     left: 0;
     bottom: -10px;
 }
+.navbar-dark .navbar-nav .nav-link{
+    color:#fff;
+}
