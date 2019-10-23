@@ -27,19 +27,13 @@ class Booknow extends Component {
     submitBtn:"block",
     paynowBtn:"none",
 
-    // count: 0,
-    // days: 0,
-    // price: 20
   };
 
   handlePrice = () => {
     const animalCount = this.state.pet_count;
     const price = this.state.price;
-    const total=this.handleDate() * price * animalCount;
-   
+    const total=this.handleDate() * price * animalCount;  
     return total;
-    // this.setState({total_price: total})
-
   }
 
   handleDate = () => {
@@ -47,9 +41,7 @@ class Booknow extends Component {
     const date2 = new Date(this.state.select_date_to); 
     const Difference_In_Time = date2.getTime() - date1.getTime(); 
     const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
-
     return Difference_In_Days
-    // this.setState({days:Difference_In_Days})
   }
 
   handleClickPlus = () => {
@@ -70,17 +62,6 @@ class Booknow extends Component {
       });
     }
   }
-
-
-  // handleDate = () => {
-  //   const date1 = new Date(this.state.select_date_from); 
-  //   const date2 = new Date(this.state.select_date_to); 
-  //   const Difference_In_Time = date2.getTime() - date1.getTime(); 
-  //   const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
-
-  //   return Difference_In_Days
-  //   this.setState({days:Difference_In_Days})
-  // }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -121,15 +102,15 @@ class Booknow extends Component {
       pet_name: this.state.pet_name,
       select_pet: this.state.select_pet,
       select_pet_size: this.state.select_pet_size,
-      select_date_to: this.state.select_date_to,
       select_date_from: this.state.select_date_from,
+      select_date_to: this.state.select_date_to,
       pet_count: this.state.pet_count,
       days:  this.handleDate(),
       price: this.state.price,
       total_price:  this.handlePrice(),
     })
       .then(res => {
-        console.log(res.data._id);
+        //console.log(res.data._id);
         this.setState({id:res.data._id})
         this.loadPage()})
       .catch(err => console.log(err));
@@ -196,17 +177,17 @@ class Booknow extends Component {
 
               <br/>
 
-              <p value={this.state.priceUpdate}>Price per night per animal: $20</p>
+              <label value={this.state.priceUpdate}>Price per night per animal: <span className ="custom-span">$20 </span> </label>
               
-              <div>
-              <p>How many animals? {this.state.pet_count}</p>
-              <button type="button" className="btn btn-primary" onClick={this.handleClickMinus}><i className="fas fa-minus-circle"></i></button>
-              <button type="button" className="btn btn-primary" onClick={this.handleClickPlus}><i className="fas fa-plus-circle"></i></button>
+              <div className="add-pet-box">
+                <button type="button" className="btn btn-primary btn-left" onClick={this.handleClickMinus}><i className="fas fa-minus-circle"></i></button>
+                <label>No Of Pets: <span className ="custom-span">{this.state.pet_count}</span></label>
+                <button type="button" className="btn btn-primary btn-right" onClick={this.handleClickPlus}><i className="fas fa-plus-circle"></i></button>
               </div>
-
-              <hr/>
-
+              <br/>
+              <div>
               <label htmlFor="petsize">Select Date:</label>
+              </div>
               <Row>
               <Col size="sm-6"> 
                     <label >From</label>
@@ -235,10 +216,10 @@ class Booknow extends Component {
                     />
                   </Col>
               </Row>
-              <h6 className="card-title" id='dayDiv' value={days}>Total of nights: { !days ? 0 : days}</h6>
-
-              <h6 className="card-title" id='priceDiv' value={price}>Total Price: ${!price ? 0 : price} </h6>
-       
+              <label className="card-title" id='dayDiv' value={days}>Total of nights: <span className ="custom-span">{ !days ? 0 : days}</span></label>
+              <br/>
+              <label className="card-title" id='priceDiv' value={price}>Total Price: <span className ="custom-span">${!price ? 0 : price} </span></label>
+              <br/>
               <FormBtn onClick={this.handleFormSubmit}  style={{display: this.state.submitBtn}} >
               Submit
               </FormBtn>

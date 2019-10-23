@@ -13,8 +13,12 @@ class ManageBooking extends Component {
     pet_name: "",
     select_pet: "",
     select_pet_size:"",
-    select_date_to: "",
     select_date_from: "",
+    select_date_to: "",
+    pet_count:  0,
+    days: 0,
+    price: 0,
+    total_price: 0,
   };
 
   componentDidMount() {
@@ -30,8 +34,12 @@ class ManageBooking extends Component {
             pet_name: "", 
             select_pet: "",
             select_pet_size:"",
-            select_date_to: "",
             select_date_from: "",
+            select_date_to: "",
+            pet_count:  0,
+            days: 0,
+            price: 0,
+            total_price: 0,
         })
       )
       .catch(err => console.log(err));
@@ -64,9 +72,15 @@ class ManageBooking extends Component {
                     <p><strong>Pet Nick Name :</strong> {bookhotel.pet_name}</p>
                     <p><strong>Pet Name :</strong> {bookhotel.select_pet}</p>
                     <p><strong>Pet Size :</strong> {bookhotel.select_pet_size}</p>
-                    <p><strong>Start Booking Date:</strong> {bookhotel.select_date_to}</p>
-                    <p><strong>End Booking Date:</strong> {bookhotel.select_date_from}</p>
-                      
+                    <p><strong>Start Booking Date :</strong>{bookhotel.select_date_from}</p>
+                    <p><strong>End Booking Date :</strong> {bookhotel.select_date_to}</p>
+                    <p><strong>No of Pets :</strong> {bookhotel.pet_count}</p>
+                   
+                    <p><strong>No of Days :</strong> {bookhotel.days}</p>
+                    <p><strong>Price per pet :</strong> {bookhotel.price}</p>
+                    <p><strong>Total Price :</strong> {bookhotel.total_price}</p>
+   
+
                     {/* <Link to={"/bookhotels/" + bookhotel._id} className="btn btn-theme">
                        Update Bookhotel
                     </Link> */}
