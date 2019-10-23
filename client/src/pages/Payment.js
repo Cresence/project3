@@ -47,10 +47,19 @@ class Payment extends Component {
  jsPDFGenerator=()=>{
   var doc=new jsPDF('p', 'pt');
   //add text
-  doc.text(20,20, 'this.state.abc')
+  doc.text(20,30, "Your Receipt")
   doc.setFont('courier');
   doc.setFontType('normal');
-  doc.text(20,30,'This is text with courier font');
+  doc.text(20,60, "Booking Id    : " + this.state.id);
+  doc.text(20,80, "Owner Name    : " + this.state.owner_name);
+  doc.text(20,100,"Pet Nick Name : " + this.state.pet_name);
+  doc.text(20,120,"Pet Category  : " + this.state.select_pet);
+  doc.text(20,140,"Pet Size      : " + this.state.select_pet_size);
+  doc.text(20,160,"Booking Date  : " + this.state.select_date_from + " To " + this.state.select_date_to);
+  doc.text(20,180,"No. of Pet    : " + this.state.pet_count);
+  doc.text(20,200,"No. of Days   : " + this.state.days);
+  doc.text(20,220,"Price         : " + this.state.price);
+  doc.text(20,240,"Total Price   : " + this.state.total_price);
   doc.save("generate.pdf");
 }
   render() {
@@ -74,12 +83,9 @@ class Payment extends Component {
                       days= {this.state.days}
                       total_price= {this.state.total_price}
                       id= {this.state.id}
+                      jsPDFGenerator={this.jsPDFGenerator}
                       />:" "}
-                  <div className="text-center">
-                    <button className="btn btn-theme" onClick={this.jsPDFGenerator}>
-                      Print Your Receipt
-                    </button>
-                  </div>
+                  
                 </Col>
                 <Col size="3"></Col>
             </Row>

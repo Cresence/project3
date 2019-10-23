@@ -3,7 +3,18 @@ import { Col, Row, Container } from "../components/Grid";
 import {Mainheading} from "../components/Mainheading"
 function About() {
   return (
-    <div class="py-5">
+    <div>
+    <div className="aboutus-banner">
+    <Container>
+      <Row >
+        <Col size="sm-12">
+        <Mainheading color="light">We Are Pet Lovers</Mainheading>
+        </Col>
+      </Row>
+    </Container>
+    </div>
+    <div className="py-5">
+      
     <Container>
       <Row >
         <Col size="sm-12">
@@ -17,7 +28,7 @@ function About() {
       </Row>
     </Container>
     </div>
-       
+    </div> 
   );
 }
 

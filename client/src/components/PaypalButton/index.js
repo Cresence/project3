@@ -41,7 +41,9 @@ function Product({ product }) {
     return (
       <div className="text-center">
         <h3 className="text-success">Congrats, Your  Booking is Conformed !</h3>
-        <a href="#" className="btn btn-theme">Print Your Receipt</a>
+        <button className="btn btn-theme" onClick={product.jsPDFGenerator} >
+          Print Your Receipt
+        </button>
       </div>
     );
   }
@@ -51,6 +53,7 @@ function Product({ product }) {
       {error && <div><h1 className="text-danger text-center">Uh oh, an error occurred! {error.message}</h1></div>}
       {/* <a href="#" className="btn btn-theme">Print Your Receipt</a> */}
       <Mainheading color="dark">Pay Now</Mainheading>
+      
       <table className="table ">
         <tbody>
           <tr>
@@ -91,7 +94,7 @@ function App(props) {
     select_date_from: props.select_date_from,
     pet_count: props.pet_count,
     days:props.days,
-
+    jsPDFGenerator:props.jsPDFGenerator,
   };
 
   return (

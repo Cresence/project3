@@ -61,7 +61,8 @@ nav button{
     margin: 30px auto;
 }
 .news-section{
-    background-color: grey;
+    /* background-color: grey; */
+    border-radius: 0px;
 }
 .news-section .image-box{
     float: left;
@@ -151,7 +152,7 @@ nav button{
 }
 .left-navigationbar{
     float: left;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 20px 0px;
 }
 .left-navigationbar ul{
@@ -218,4 +219,16 @@ nav button{
 .payment-box .table th,
 .payment-box .table strong{
     color: #ff3d5d;
+}
+.aboutus-banner{
+    background-color: grey;
+    background-image: url(../src/images/bg-2.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    background-size: cover;
+    padding: 100px 0px;
+}
+.aboutus-banner .main-heading .light:after{
+    border-top: 1px solid #a2a2a200;
 }
