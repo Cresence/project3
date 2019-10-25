@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth0 } from "../../react-auth0-wrapper";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./style.css";
 import NavAdmin from '../Navadmin/index'
 

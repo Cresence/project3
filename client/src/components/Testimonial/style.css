@@ -29,7 +29,8 @@
 #myTestimonial .fa-angle-right:before
 {
   color: #fff;
-  background-color: #ff7d77;
+  background-color: #ff3d5d;
+  background-image: linear-gradient(#ff3d5d 0%,#ff9595 , #ff3d5d 60%);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -42,9 +43,10 @@
 #myTestimonial .fa-angle-left:hover:before,
 #myTestimonial .fa-angle-right:hover:before{
   background-color: #000b88;
+  background-image: linear-gradient(#000758 0%,#0068b2 , #00075B 60%);
 }
 #myTestimonial .carousel-indicators li{
-  background-color: #ff3f36;
+  background-color: #ff3d5d;
   width: 10px;
     height: 10px;
     border-radius: 50%;

@@ -22,6 +22,7 @@ import ManageBooking from "./admin/ManageBooking"
 // import Login from "./admin/Login"
 import News from "./pages/News";
 import PostDetail from "./pages/PostDetail"
+import Payment from "./pages/Payment"
 import "./style.css";
 
 
@@ -51,6 +52,7 @@ function App() {
           <Route exact path="/admin/news" component={NewsPost} />
           <Route exact path="/posts/:id" component={UpdatePost} />
           <Route exact path="/admin/booking" component={ManageBooking} />
+          <Route exact path="/payment/:id" component={Payment} />
           {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/news" component={News} />
           <Route exact path="/post-detail/:id" component={PostDetail} />
