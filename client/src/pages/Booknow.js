@@ -71,6 +71,7 @@ class Booknow extends Component {
       [name]: value
     });  
   };
+  
   loadPage = () => {
     this.setState({success:"none", danger:"none", submitBtn:"none",
     paynowBtn:"inline-block",})

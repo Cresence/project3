@@ -62,5 +62,13 @@ export default {
   postContact: function(postData) {
     return axios.post("/api/form", postData);
   },
+
+  postImage: function(postImageData) {
+    return axios.post("/api/images", postImageData);
+  },
+
+  getImages: function() {
+    return axios.get("/api/images");
+  }
 };
 

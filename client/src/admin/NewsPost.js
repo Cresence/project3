@@ -8,6 +8,8 @@ import Navadmin from "../components/Navadmin";
 import {Mainheading} from "../components/Mainheading"
 // import FileUpload from '../components/FileUpload';
 import axios from 'axios';
+import { Cloud9 } from "aws-sdk";
+import { userInfo } from "os";
 
 class NewsPost extends Component {
   state = {
@@ -19,6 +21,7 @@ class NewsPost extends Component {
     post_image:"",
     success:"none",
     danger:"none",
+    image_url: "",
 
     file: "",
     filename:"Choose File",
@@ -26,11 +29,62 @@ class NewsPost extends Component {
     message:"",
     messagestatus:"none",
     messagestatusclass:"",
+
+    clicked: false
   };
 
   componentDidMount() {
     this.loadPosts();
+    this.loadImage();
   }
+
+//   onChangeHandler = event => {
+//     // console.log(event.target.files[0]);
+//     // const {lastModified, lastModifiedDate, name, size, type} = event.target.files[0];
+//     const img = event.target.files[0];
+//     img.src = URL.createObjectURL(img)
+//     console.log(img.src);
+//     // this.setState({
+//     //   lastModified: lastModified,
+//     //   lastModifiedDate: lastModifiedDate,
+//     //   name: name,
+//     //   size: size,
+//     //   type: type
+//     // })
+//   }
+
+// //   onClickHandler = () => {
+// //     const data = new FormData()
+// //     data.append('file', this.state.selectedFile)
+// //     // if (this.state.lastModified && this.state.lastModifiedDate && this.state.name && this.state.size && this.state.type) {
+// //     // API.postImage({
+// //     //   lastModified: this.state.lastModified,
+// //     //   lastModifiedDate: this.state.lastModifiedDate,
+// //     //   name: this.state.name,
+// //     //   size: this.state.size,
+// //     //   type: this.state.type
+// //     // })
+// //     //   .then(res => {
+// //     //     console.log(res);
+// //     //   })
+// //     //   .catch(err => console.log(err));
+// //   // }
+// //   axios.post('/img_data', data, {
+// //     // Nothing happens here?
+// //   })
+// //     .then(res => console.log(res.statusText))
+// //     .catch(err => console.log(err))
+// // }
+  loadImage = () => {
+    API.getImages()
+    .then(({data}) => {
+      // console.log(data[0].url)
+      this.setState({ image_url: data[0].url })
+    });
+  };
+
+  // handleClicked = () => this.state.clicked ? this.loadImage : null
+  
 
   loadPosts = () => {
     API.getPosts()
@@ -54,13 +108,13 @@ class NewsPost extends Component {
   };
 
   handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.news_title && this.state.category && this.state.description && this.state.filePath) {
+    event.preventDefault();    
+    if (this.state.news_title && this.state.category && this.state.description && this.state.image_url) {
       API.savePost({
         news_title: this.state.news_title,
         category: this.state.category,
         description: this.state.description,
-        post_image: this.state.filePath 
+        image_url: this.state.image_url
       })
         .then(res => {
           this.setState({success:"block", danger:"none"})
@@ -79,6 +133,17 @@ class NewsPost extends Component {
     this.setState({file:e.target.files[0]});
     this.setState({filename:e.target.files[0].name});
   };
+
+  // saveImage = () => {
+  //   axios.post('upload', {
+  //     name: user.name,
+  //     url: response.url
+  //   })
+  //     .then(res => {
+  //       this.setState({success:"block", danger:"none"})
+  //     })
+  //     .catch(err => console.log(err));
+  // }
   
   onSubmit = async e => {
     e.preventDefault();
@@ -107,8 +172,9 @@ class NewsPost extends Component {
       // setUploadedFile({ fileName, filePath });
       this.setState({uploadedFile: res.data.fileName + res.data.filePath});
       this.setState({message : "File Uploaded Successfully", messagestatusclass: "success"})
+      // this.setState({clicked: true});
     } catch(err){
-      if(err.response.status=== 500){
+      if(err.res.status=== 500){
         // console.log("Server error")
         this.setState({message : "Server error", messagestatusclass: "danger"})
       }else{
@@ -116,7 +182,7 @@ class NewsPost extends Component {
         this.setState({message : err.response.data.msg, messagestatusclass: "danger"})
       }
     }
-
+    
   }
 
   

@@ -5,7 +5,11 @@ import "./style.css";
 import NavAdmin from '../Navadmin/index'
 
 const Nav = () => {
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const logoutWithRedirect = () =>
+    logout({
+      returnTo: window.location.origin
+    });
 
   return (
     <nav className="navbar navbar-expand-md theme-color-dark navbar-dark sticky-top">
@@ -38,9 +42,7 @@ const Nav = () => {
         {!isAuthenticated && (
         <li  className="nav-item">
         <button
-          onClick={() =>
-            loginWithRedirect({})
-          }
+          onClick={() => loginWithRedirect({})}
         >
           Log in
         </button>
@@ -50,11 +52,11 @@ const Nav = () => {
       
       {
   isAuthenticated && (
-    <React.Fragment>
+    <>
       <NavAdmin />
-    </React.Fragment>
+    </>
   )}
-  {isAuthenticated && <li  className="nav-item"><button onClick={() => logout()}>Log out</button></li>}
+  {isAuthenticated && <li  className="nav-item"><button onClick={() => logoutWithRedirect()}>Log out</button></li>}
 
         </ul>
 
