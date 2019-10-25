@@ -232,3 +232,32 @@ nav button{
 .aboutus-banner .main-heading .light:after{
     border-top: 1px solid #a2a2a200;
 }
+.services-page .card{
+    border-radius: 0;
+}
+.services-page .card img{
+    padding: .25rem;
+    background-color: #fff;
+}
+.services-page .card-body{
+    padding-top: 0;
+}
+.services-page .card-title{
+    text-align: center;
+    background-color: #ff3d5d;
+    background-image: linear-gradient(#ff3d5d 0%,#ff9595 , #ff3d5d 60%);
+    padding: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0px -20px 15px;
+}
+.services-bottom-section{
+    background-color: grey;
+    background-image: url(../src/images/services-bottom-bg.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    background-size: cover;
+    color: #fff;
+    margin-top: 3rem;
+}

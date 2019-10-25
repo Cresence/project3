@@ -30,6 +30,7 @@ class Booknow extends Component {
   };
 
   handlePrice = () => {
+    
     const animalCount = this.state.pet_count;
     const price = this.state.price;
     const total=this.handleDate() * price * animalCount;  
@@ -51,8 +52,8 @@ class Booknow extends Component {
 
   handleClickMinus = () => {
     var newCount = this.state.pet_count - 1;
-    this.setState({count: newCount });
-    if(this.state.count === 0){
+    this.setState({pet_count: newCount });
+    if(this.state.pet_count === 0){
       this.setState({
         pet_count:0
       });
@@ -62,6 +63,7 @@ class Booknow extends Component {
       });
     }
   }
+  
 
   handleInputChange = event => {
     const { name, value } = event.target;
