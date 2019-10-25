@@ -56,7 +56,7 @@ function App() {
           <Route exact path="/post-detail/:id" component={PostDetail} />
           <PrivateRoute path="/profile" component={Profile} /> 
           <PrivateRoute path="/external-api" component={ExternalApi} />       
-          <Route component={NoMatch} />
+          {/* <Route component={NoMatch} /> */}
           </Switch>
          <Footer />
       </div>
