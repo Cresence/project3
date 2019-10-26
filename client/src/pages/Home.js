@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Banner from "../components/Banner";
 import Testimonial from "../components/Testimonial";
 import ImageSlider from "../components/ImageSlider";
@@ -24,7 +25,13 @@ render() {
             <Mainheading color="dark">Best hotel for your pet!</Mainheading>
             <h5 className="text-center">We offer a broad range of services to pamper your pet.</h5>
             <div className="text-center">
-                <a className="btn btn-info" href="/booknow"> Book Now</a>
+                <Link className="btn btn-info"  
+              to={{
+                pathname: "/booknow",
+                // state: user
+                }}
+            >Book Hotel</Link>
+
             </div>
           </Col>
         </Row>

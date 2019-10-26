@@ -3,6 +3,7 @@ import { useAuth0 } from "../../react-auth0-wrapper";
 // import { Link } from "react-router-dom";
 import "./style.css";
 import NavAdmin from '../Navadmin/index'
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -11,6 +12,7 @@ const Nav = () => {
       returnTo: window.location.origin
     });
 
+    console.log(user);
   return (
     <nav className="navbar navbar-expand-md theme-color-dark navbar-dark sticky-top">
       <div className="container">
@@ -20,22 +22,27 @@ const Nav = () => {
       <div className="collapse navbar-collapse" id="collapsibleNavbar">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <a className="nav-link" href="/">Home</a>
+            <Link className="nav-link" to="/">Home</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/about">About Us</a>
+            <Link className="nav-link" to="/about">About Us</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/services">Services</a>
+            <Link className="nav-link" to="/services">Services</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/news">News and  Announcements</a>
+            <Link className="nav-link" to="/news">News and  Announcements</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/contact">Contact Us</a>
+            <Link className="nav-link" to="/contact">Contact Us</Link>
           </li>  
           <li className="nav-item">
-            <a className="nav-link" href="/booknow">Book Hotel</a>
+            <Link className="nav-link"  
+              to={{
+                pathname: "/booknow",
+                state: user
+                }}
+            >Book Hotel</Link>
           </li>  
         </ul>
         <ul className="navbar-nav ml-auto">
@@ -50,16 +57,15 @@ const Nav = () => {
       )}
 
       
-      {
-  isAuthenticated && (
-    <>
-      <NavAdmin />
-    </>
-  )}
+      {isAuthenticated && (
+      <span>
+          <li className="nav-item">
+              <Link to="/profile" className="nav-link" >Profile</Link>&nbsp;
+          </li>
+      </span>  
+      )}
   {isAuthenticated && <li  className="nav-item"><button onClick={() => logoutWithRedirect()}>Log out</button></li>}
-
         </ul>
-
       </div>  
       </div>
       <div className="decor_semicircle"></div>
