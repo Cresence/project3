@@ -24,6 +24,7 @@ import News from "./pages/News";
 import PostDetail from "./pages/PostDetail"
 import Payment from "./pages/Payment"
 import "./style.css";
+import history from './utils/history'
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
   // }
 
   return (
-    <Router>
+    <Router history={history}>
       <div>
         <Headertop />
         <Nav />
@@ -46,12 +47,12 @@ function App() {
           <Route exact path="/services" component={Services} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/booknow" component={Booknow} />
-          <Route exact path="/admin" component={Dashboard} />
-          <Route exact path="/admin/testimonial" component={Testimonial} />
+          <PrivateRoute exact path="/admin" component={Dashboard} />
+          <PrivateRoute exact path="/admin/testimonial" component={Testimonial} />
           <Route exact path="/testimonials/:id" component={UpdateTestimonial} />
-          <Route exact path="/admin/news" component={NewsPost} />
-          <Route exact path="/posts/:id" component={UpdatePost} />
-          <Route exact path="/admin/booking" component={ManageBooking} />
+          <PrivateRoute exact path="/admin/news" component={NewsPost} />
+          <PrivateRoute exact path="/posts/:id" component={UpdatePost} />
+          <PrivateRoute exact path="/admin/booking" component={ManageBooking} />
           <Route exact path="/payment/:id" component={Payment} />
           {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/news" component={News} />

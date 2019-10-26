@@ -8,6 +8,7 @@ import {Mainheading} from "../components/Mainheading"
 import {runInThisContext} from "vm";
 // import PaypalButton from "../components/PaypalButton"
 
+
 class Booknow extends Component {
   state = {
     bookhotels: [],
@@ -127,6 +128,8 @@ class Booknow extends Component {
   
   render() {
 
+    console.log(this.props);
+    
     const days = this.handleDate()
     const price = this.handlePrice()
     return (
@@ -225,9 +228,10 @@ class Booknow extends Component {
               <br/>
               <label className="card-title" id='priceDiv' value={price}>Total Price: <span className ="custom-span">${!price ? 0 : price} </span></label>
               <br/>
-              <button className="btn" onClick={this.handleFormSubmit}  style={{display: this.state.submitBtn}} >
+
+              {this.props.location.state ? <button className="btn" onClick={this.handleFormSubmit}  style={{display: this.state.submitBtn}} >
               Submit
-              </button>
+              </button> : <p>Login to Book</p>}
               
               <a className="btn" href={"/payment/" + this.state.id} style={{display: this.state.paynowBtn}}>Pay Now</a>
             
