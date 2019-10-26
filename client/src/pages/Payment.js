@@ -21,6 +21,7 @@ class Payment extends Component {
     total_price:"",
     id:0,
     loading: false,
+    booking_status:""
   };
   componentDidMount() {
     this.loadBookhotel();  
@@ -39,7 +40,8 @@ class Payment extends Component {
       price: res.data.price,
       total_price:res.data.total_price,
       id:res.data._id,
-      loading: true
+      loading: true,
+      booking_status:res.data.booking_status,
      }))
     .catch(err => console.log(err));
   }
@@ -62,12 +64,25 @@ class Payment extends Component {
   doc.text(20,240,"Total Price   : " + this.state.total_price);
   doc.save("generate.pdf");
 }
+
+handleUpdateBookingStatus = event => {
+  event.preventDefault();
+    API.updateBookhotel(this.props.match.params.id, {
+      booking_status: "true",
+    })
+    .then(res =>  console.log("Booking status updates"))
+    .catch(err => console.log(err));
+  
+};
   render() {
       return(
         <Container>
             <div className="py-5">
             <Row>
-                <Col size="3"></Col>
+                <Col size="3">
+
+                  {/* <button onClick={this.handleUpdateBookingStatus}>Click me</button> */}
+                </Col>
                 <Col size="6">
                  
                   {this.state.loading? <PaypalButton 
@@ -84,6 +99,8 @@ class Payment extends Component {
                       total_price= {this.state.total_price}
                       id= {this.state.id}
                       jsPDFGenerator={this.jsPDFGenerator}
+                      booking_status={this.state.booking_status}
+                      handleUpdateBookingStatus={this.state.handleUpdateBookingStatus}
                       />:" "}
                   
                 </Col>

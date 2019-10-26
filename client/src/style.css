@@ -6,6 +6,13 @@
 body{
     background-image: url(../src/images/main-bg4.png);
     background-image: url(../src/images/main-bg4.jpg);
+
+    
+    background-image: url(../src/images/brick-wall-dark.png);
+    background-image: url(../src/images/dark-brick-wall.png);
+    background-image: url(../src/images/dark-tire.png);
+    background-image: url(../src/images/foggy-birds1.png);
+
     background-size: 263px;
     font-family: 'Roboto Slab', serif;
 }
@@ -208,8 +215,14 @@ nav button{
     padding-top: 10px;
 }
 .custom-span{
-    color: #0f25c1;
-    font-weight: bold;
+        font-weight: bold;
+        background-color: #00075b;
+        min-width: 50px;
+        display: inline-block;
+        text-align: center;
+        padding: 0 10px;
+        color: #fff;
+        box-shadow: 1px 2px 6.5px #b3b3b3;
 }
 .payment-box table{
     box-shadow: 1px 2px 6.5px #d0d0d0;
@@ -261,3 +274,38 @@ nav button{
     color: #fff;
     margin-top: 3rem;
 }
+.admin-booking ul{
+    padding: 0;
+    list-style-type: none;
+}
+.admin-booking ul li{
+    border: 1px solid #e7e7e7;
+    padding: 20px 20px 5px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+@media only screen and (max-width: 992px) {
+    .navbar-dark .navbar-nav .nav-link {
+        font-size: 14px;
+    }
+    
+}
+@media only screen and (max-width: 768px) {
+    .navbar-dark .navbar-nav li{
+        border-bottom: 1px solid #848484;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .header-top .social-media-link{
+        margin-top: 10px;
+    }
+    .header-top .social-media-link i{
+        font-size: 20px;
+        width: 27px;
+        height: 27px;
+        padding-top: 3px;
+    }
+    .header-top .list-inline-item{
+        margin-right: 0.3rem;
+    }
+  }
