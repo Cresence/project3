@@ -15,18 +15,12 @@ const Profile = () => {
     );
   }
 
-  console.log(user.email);
-  console.log(keys.adminEmail.id);
-
   let adminBar = (keys) =>{
-    console.log(keys);
     return keys.map(e => {
-      console.log(e)
       if (user.email === e) {
-        console.log("Admin User")
         return <Navadmin />
       } else {
-        console.log("Reg User")
+        return null
       }
     });
 };
@@ -35,7 +29,7 @@ const Profile = () => {
       {adminBar(keys.adminEmail.id)}
       <img src={user.picture} alt="Profile" />
       <h2>{user.name}</h2>
-      <p>{user.email}</p>
+      {user.email === user.name ? null : <p>{user.email}</p>}
       <code>{JSON.stringify(user, null, 2)}</code>
     </>
   );

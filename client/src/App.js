@@ -19,23 +19,15 @@ import Testimonial from "./admin/Testimonial";
 import NewsPost from "./admin/NewsPost";
 import UpdatePost from "./admin/UpdatePost";
 import ManageBooking from "./admin/ManageBooking"
-// import Login from "./admin/Login"
 import News from "./pages/News";
 import PostDetail from "./pages/PostDetail"
 import Payment from "./pages/Payment"
 import "./style.css";
-import history from './utils/history'
 
 
 function App() {
   const { loading } = useAuth0();
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
-
-  // if (loading) {
-  //   return (
-  //     <div>Loading...</div>
-  //   );
-  // }
   return (
     <Router>
       <div>
@@ -54,7 +46,6 @@ function App() {
           <PrivateRoute exact path="/posts/:id" component={UpdatePost} />
           <PrivateRoute exact path="/admin/booking" component={ManageBooking} />
           <Route exact path="/payment/:id" component={Payment} />
-          {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/news" component={News} />
           <Route exact path="/post-detail/:id" component={PostDetail} />
           <PrivateRoute path="/profile" component={Profile} /> 
