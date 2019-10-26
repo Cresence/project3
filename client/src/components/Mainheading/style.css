@@ -5,6 +5,7 @@
     margin-bottom: 1.5em;
     text-align: center;
     text-shadow: 1px 0px 1.5px #000;
+    text-transform: capitalize;
     /* font-size: 2em; */
   }
   .main-heading .tile_underline {
