@@ -11,7 +11,7 @@ function Services() {
       <Row>
         <Col size="sm-12">
         <Mainheading  color="dark">Pet Services</Mainheading>
-        <p>We welcome your pet at our comfy place at Sandy’s. We will be sure to accommodate your pets needs and hospitality. We take care of the following animals:</p> 
+        <p className="text-center">We welcome your pet at our comfy place at Sandy’s. We will be sure to accommodate your pets needs and hospitality. We take care of the following animals:</p> 
 
         <div className="card-deck">
         <div className="card">
