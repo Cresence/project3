@@ -11,8 +11,6 @@ const Nav = () => {
     logout({
       returnTo: window.location.origin
     });
-
-    console.log(user);
   return (
     <nav className="navbar navbar-expand-md theme-color-dark navbar-dark sticky-top">
       <div className="container">

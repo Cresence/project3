@@ -29,15 +29,15 @@ import history from './utils/history'
 
 function App() {
   const { loading } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   // if (loading) {
   //   return (
   //     <div>Loading...</div>
   //   );
   // }
-
   return (
-    <Router history={history}>
+    <Router>
       <div>
         <Headertop />
         <Nav />
@@ -46,7 +46,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/services" component={Services} />
           <Route exact path="/contact" component={Contact} />
-          <Route exact path="/booknow" component={Booknow} />
+          <Route exact path="/booknow" render={(props) => <Booknow {...props} isAuth={isAuthenticated} />} />
           <PrivateRoute exact path="/admin" component={Dashboard} />
           <PrivateRoute exact path="/admin/testimonial" component={Testimonial} />
           <Route exact path="/testimonials/:id" component={UpdateTestimonial} />
@@ -59,7 +59,7 @@ function App() {
           <Route exact path="/post-detail/:id" component={PostDetail} />
           <PrivateRoute path="/profile" component={Profile} /> 
           <PrivateRoute path="/external-api" component={ExternalApi} />       
-          {/* <Route component={NoMatch} /> */}
+          <Route component={NoMatch} />
           </Switch>
          <Footer />
       </div>
