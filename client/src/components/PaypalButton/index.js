@@ -44,8 +44,7 @@ function Product({ product }) {
         <button className="btn btn-theme" onClick={product.jsPDFGenerator} >
           Print Your Receipt
         </button>
-
-        {/* {product.handleUpdateBookingStatus()} */}
+        {product.handleUpdateBookingStatus()}
       </div>
     );
   }
@@ -54,6 +53,7 @@ function Product({ product }) {
     <div className="payment-box">
       {error && <div><h1 className="text-danger text-center">Uh oh, an error occurred! {error.message}</h1></div>}
       <Mainheading color="dark">Pay Now</Mainheading>
+     
       <table className="table ">
         <tbody>
           <tr>
