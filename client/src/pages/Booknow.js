@@ -65,6 +65,17 @@ class Booknow extends Component {
       });
     }
   }
+
+  getToday = () => {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+    
+    today = mm + '/' + dd + '/' + yyyy;
+
+    return today;
+  }
   
 
   handleInputChange = event => {
@@ -127,7 +138,7 @@ class Booknow extends Component {
   };
   
   render() {
-    
+    const todaysDate = this.getToday
     const days = this.handleDate()
     const price = this.handlePrice()
     return (
@@ -204,7 +215,7 @@ class Booknow extends Component {
                         onClick={this.handleDate}
                         name="select_date_from"
                         placeholder="Pet Name (required)"
-                        min="1000-01-01"
+                        min={todaysDate.toString()}
                         max="3000-12-31" 
                     />
                   </Col>
@@ -217,7 +228,7 @@ class Booknow extends Component {
                         onClick={this.handleDate}
                         name="select_date_to"
                         placeholder="Pet Name (required)"
-                        min="1000-01-01"
+                        min={todaysDate.toString()}
                         max="3000-12-31" 
                     />
                   </Col>
