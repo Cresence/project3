@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import images from "../images"
+import smallpetimage from "../images/small-pet.jpg"
 import {Mainheading} from "../components/Mainheading"
 
 function Services() {
@@ -43,7 +44,7 @@ function Services() {
           </div>
         </div>
         <div className="card">
-        <img src={`${images[4]}`} alt="banner" width="100%"/>
+        <img src={smallpetimage} alt="banner" width="100%"/>
           <div className="card-body">
             <h5 className="card-title">Small Animal</h5>
             <ul>

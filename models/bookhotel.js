@@ -13,6 +13,7 @@ const bookhotelSchema = new Schema({
   days: {type: Number},
   price: {type: Number},
   total_price: {type: Number},
+  booking_status: String
 });
 
 const Bookhotel = mongoose.model("Bookhotel", bookhotelSchema);

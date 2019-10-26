@@ -9,13 +9,13 @@ function Headertop() {
     <div className="header-top">
       <div className="container">
         <div className="row">
-          <div className="col-sm-4">
+          <div className="col col-sm-6 ">
 
           <img src={SandyspetHotel_LOGO} alt="logo" width="100%" className="logo"/>
 
 
           </div>
-          <div className="col-sm-8">
+          <div className="col col-sm-6">
           <ul className="list-inline social-media-link">
               <li className="list-inline-item">
                 <p><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram" aria-hidden="true"></i></a></p>

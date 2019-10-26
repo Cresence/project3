@@ -21,6 +21,7 @@ class Booknow extends Component {
     days: 0,
     price: 20,
     total_price: 0,
+    booking_status:"false",
     id:"",
     success:"none",
     danger:"none",
@@ -111,6 +112,7 @@ class Booknow extends Component {
       days:  this.handleDate(),
       price: this.state.price,
       total_price:  this.handlePrice(),
+      booking_status:this.state.booking_status,
     })
       .then(res => {
         //console.log(res.data._id);
