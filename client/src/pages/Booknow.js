@@ -127,8 +127,6 @@ class Booknow extends Component {
   };
   
   render() {
-
-    console.log(this.props);
     
     const days = this.handleDate()
     const price = this.handlePrice()
@@ -229,7 +227,7 @@ class Booknow extends Component {
               <label className="card-title" id='priceDiv' value={price}>Total Price: <span className ="custom-span">${!price ? 0 : price} </span></label>
               <br/>
 
-              {this.props.location.state ? <button className="btn" onClick={this.handleFormSubmit}  style={{display: this.state.submitBtn}} >
+              {this.props.isAuth ? <button className="btn" onClick={this.handleFormSubmit}  style={{display: this.state.submitBtn}} >
               Submit
               </button> : <p>Login to Book</p>}
               

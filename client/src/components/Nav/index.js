@@ -11,8 +11,6 @@ const Nav = () => {
     logout({
       returnTo: window.location.origin
     });
-
-    console.log(user);
   return (
     <nav className="navbar navbar-expand-md theme-color-dark navbar-dark sticky-top">
       <div className="container">
@@ -43,7 +41,12 @@ const Nav = () => {
                 state: user
                 }}
             >Book Hotel</Link>
-          </li>  
+          </li>
+          {isAuthenticated && (
+          <li className="nav-item">
+              <Link to="/profile" className="nav-link" >Profile</Link>&nbsp;
+          </li>
+          )}
         </ul>
         <ul className="navbar-nav ml-auto">
         {!isAuthenticated && (
@@ -57,13 +60,6 @@ const Nav = () => {
       )}
 
       
-      {isAuthenticated && (
-      <span>
-          <li className="nav-item">
-              <Link to="/profile" className="nav-link" >Profile</Link>&nbsp;
-          </li>
-      </span>  
-      )}
   {isAuthenticated && <li  className="nav-item"><button onClick={() => logoutWithRedirect()}>Log out</button></li>}
         </ul>
       </div>  
