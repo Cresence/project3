@@ -130,6 +130,28 @@ handleFormSubmit = event => {
         <li className="list-inline-item"><p><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"/></a></p></li>
         <li className="list-inline-item"><p><a href="https://youtube.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-youtube"/></a></p></li>
         </ul>
+
+
+        <h5>Our Hours:</h5>
+        <table className="table table-borderless">
+        <thead>
+          <tr>
+            <th>Sunday</th>
+            <td>9am - 6pm</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Monday - Friday</th>
+            <td>9am - 9pm</td>
+          </tr>
+          <tr>
+          <th>Saturday</th>
+            <td>9am - 7pm</td>
+          </tr>
+          
+        </tbody>
+      </table>
         </div>
         </Col>
       </Row>

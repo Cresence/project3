@@ -42,13 +42,14 @@ app.post('/upload', (req, res) => {
     }
 
     try {
-      cloudinary.uploader.upload(`${__dirname}/client/public/uploads/${file.name}`, res => {
-        console.log(res.url);
+      cloudinary.uploader.upload(`${__dirname}/client/public/uploads/${file.name}`, response => {
+        console.log(response.url);
+        // console.log(res);
         db.Image.create({
           name: file.name,
-          url: res.url
+          url: response.url
         })
-        // res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
+        res.json({ url: response.url });
         // res.status(200);
       });
     }
