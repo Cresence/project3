@@ -123,7 +123,7 @@ function Services() {
             <li>Webcams are available whenever you miss your pet</li>
           </ul>
           <p>We can schedule to pick up your family pet in a luxury fashion to our facility within a 30 mile radius. Just let us know when!</p>
-          <p>Call us at 1-800-Sandys</p>
+          <p>Call us at + 01 234 567 89</p>
         </Col>
       </Row>
     </Container>
