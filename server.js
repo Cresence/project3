@@ -20,8 +20,6 @@ cloudinary.config({
   api_secret: "yYbYsfUzQcY3WlsmE844b0cctj4"
 });
 
-require('./ImgModel');
-
 //File upload Code start
 const fileUpload = require('express-fileupload');
 

@@ -41,7 +41,12 @@ const Nav = () => {
                 state: user
                 }}
             >Book Hotel</Link>
-          </li>  
+          </li>
+          {isAuthenticated && (
+          <li className="nav-item">
+              <Link to="/profile" className="nav-link" >Profile</Link>&nbsp;
+          </li>
+          )}
         </ul>
         <ul className="navbar-nav ml-auto">
         {!isAuthenticated && (
@@ -55,13 +60,6 @@ const Nav = () => {
       )}
 
       
-      {isAuthenticated && (
-      <span>
-          <li className="nav-item">
-              <Link to="/profile" className="nav-link" >Profile</Link>&nbsp;
-          </li>
-      </span>  
-      )}
   {isAuthenticated && <li  className="nav-item"><button onClick={() => logoutWithRedirect()}>Log out</button></li>}
         </ul>
       </div>  
