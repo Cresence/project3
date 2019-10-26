@@ -78,8 +78,17 @@ class NewsPost extends Component {
   loadImage = () => {
     API.getImages()
     .then(({data}) => {
-      // console.log(data[0].url)
-      this.setState({ image_url: data[0].url })
+      if (data) {
+        console.log(data[0].url)
+        return (
+        data[0].url,
+        this.setState({ image_url: data[0].url }),
+        this.setState({message : "File Uploaded Successfully", messagestatusclass: "success"})
+        )      
+        } else {
+        return null;
+      }
+     // this.setState({ image_url: data[0].url })
     });
   };
 
@@ -164,7 +173,7 @@ class NewsPost extends Component {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      });
+      }).then(res => this.setState({image_url: res.data.url }));
       // const { fileName, filePath } = res.data;
       // console.log(res.data);
       
@@ -174,7 +183,8 @@ class NewsPost extends Component {
       this.setState({message : "File Uploaded Successfully", messagestatusclass: "success"})
       // this.setState({clicked: true});
     } catch(err){
-      if(err.res.status=== 500){
+      if(err){
+        console.log(err)
         // console.log("Server error")
         this.setState({message : "Server error", messagestatusclass: "danger"})
       }else{
@@ -298,7 +308,7 @@ class NewsPost extends Component {
                     <h6><strong>Category : </strong> {post.category}</h6>
                     <p><strong>Description : </strong> {post.description}</p>
                     <p><strong>Date : </strong> {post.date}</p>
-                    <p><strong>Image Url : </strong>{post.post_image}</p>
+                    <p><strong>Image Url : </strong>{post.image_url}</p>
 
                       
                     <Link to={"/posts/" + post._id} className="btn btn-theme">

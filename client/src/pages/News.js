@@ -14,7 +14,7 @@ class News extends Component {
         category: "",
         description: "",
         date:"",
-        post_image: "",
+        image_url: "",
       };
     
       componentDidMount() {
@@ -44,9 +44,9 @@ render() {
                 {this.state.posts.map(post => (
                 <li className="list-group-item" key={post._id}>
                     <div className="image-box">
-                      {console.log( post.post_image)}
+                      {console.log( post.image_url)}
                       <div className="img-inner">
-                      <img src={post.post_image ?  post.post_image :"https://placehold.it/128x197?text=No%20Preview" } alt="news-post"/>
+                      <img src={post.image_url ?  post.image_url :"https://placehold.it/128x197?text=No%20Preview" } alt="news-post"/>
                       </div>
                     </div>
                     <div className="content-box">
