@@ -65,8 +65,8 @@ class Payment extends Component {
   doc.save("generate.pdf");
 }
 
-handleUpdateBookingStatus = event => {
-  event.preventDefault();
+handleUpdateBookingStatus = ( ) => {
+  // event.preventDefault();
     API.updateBookhotel(this.props.match.params.id, {
       booking_status: "true",
     })
@@ -80,7 +80,6 @@ handleUpdateBookingStatus = event => {
             <div className="py-5">
             <Row>
                 <Col size="3">
-
                   {/* <button onClick={this.handleUpdateBookingStatus}>Click me</button> */}
                 </Col>
                 <Col size="6">
@@ -100,7 +99,7 @@ handleUpdateBookingStatus = event => {
                       id= {this.state.id}
                       jsPDFGenerator={this.jsPDFGenerator}
                       booking_status={this.state.booking_status}
-                      handleUpdateBookingStatus={this.state.handleUpdateBookingStatus}
+                      handleUpdateBookingStatus={this.handleUpdateBookingStatus}
                       />:" "}
                   
                 </Col>
