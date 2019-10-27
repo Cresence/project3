@@ -3,14 +3,20 @@
     min-height: 100vh;
     padding-bottom: 77px;
 }
+
+@font-face {
+    font-family: Buenos;
+    src: url(../src/fontfamily/BuenosAiresTrial-Regular.otf);
+}
 body{
     background-image: url(../src/images/main-bg4.png);
     background-image: url(../src/images/main-bg4.jpg);
     background-image: url(../src/images/foggy-birds1.png);
     background-attachment: fixed;
     /* background-size: 263px; */
-    font-family: 'Roboto Slab', serif;
+    font-family: Buenos;
 }
+
 nav button{
     background-color: #ff3d5d;
     background-image: linear-gradient(#ff3d5d 0%,#ff9595 , #ff3d5d 60%);
@@ -244,14 +250,16 @@ nav button{
     border-top: 1px solid #a2a2a200;
 }
 .services-page .card{
-    border-radius: 0;
+    border-radius: 40px;
 }
 .services-page .card img{
     padding: .25rem;
     background-color: #fff;
+    border-radius: 40px;
 }
 .services-page .card-body{
     padding-top: 0;
+    
 }
 .services-page .card-title{
     text-align: center;
@@ -307,3 +315,15 @@ nav button{
         margin-right: 0.3rem;
     }
   }
+
+  /* services */
+.services-page .card img
+  {
+      transition: all 0.3s ease-out;
+  }
+.services-page .card:hover img{
+    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    transform: scale(0.9, 0.9);
+    transition: all 0.2s ease-out;
+}
+
