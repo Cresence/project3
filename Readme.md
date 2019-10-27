@@ -27,3 +27,8 @@ Front-End and Back-End Technologies used:
 * [Mongoose](https://mongoosejs.com/)
 * [Axios](https://www.npmjs.com/package/axios)
 * [FontAwesome](https://fontawesome.com/)
+* [Nodemailer](https://nodemailer.com/about/)
+* [Multer's GridFS storage engine](https://www.npmjs.com/package/multer-gridfs-storage)
+* [Multer](https://www.npmjs.com/package/multer)
+* [Method Override](https://www.npmjs.com/package/method-override)
+* [jspdf](https://www.npmjs.com/package/jspdf)
