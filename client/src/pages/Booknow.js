@@ -240,7 +240,10 @@ class Booknow extends Component {
 
               {this.props.isAuth ? <button className="btn" onClick={this.handleFormSubmit}  style={{display: this.state.submitBtn}} >
               Submit
-              </button> : <p>Login to Book</p>}
+              </button> : <div className="alert alert-danger alert-dismissible">
+              <button type="button" className="close" data-dismiss="alert">&times;</button>
+              Login to Book
+            </div>}
               
               <a className="btn" href={"/payment/" + this.state.id} style={{display: this.state.paynowBtn}}>Pay Now</a>
             
