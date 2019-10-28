@@ -44,7 +44,7 @@ const Nav = () => {
           </li>
           {isAuthenticated && (
           <li className="nav-item">
-              <Link to="/profile" className="nav-link" >Profile</Link>&nbsp;
+              <Link to="/profile" className="nav-link" >Profile</Link>
           </li>
           )}
         </ul>

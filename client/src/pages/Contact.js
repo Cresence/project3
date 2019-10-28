@@ -123,7 +123,7 @@ handleFormSubmit = event => {
           </li>
         </ul>
 
-        <h5>Connect with us!</h5>
+        <h5 className="text-color-blue"><strong>Connect With Us!</strong></h5>
         <ul className="list-inline social-media-link">
         <li className="list-inline-item"><p><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"/></a></p></li>
         <li className="list-inline-item"><p><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-square"/></a></p></li>
@@ -132,26 +132,12 @@ handleFormSubmit = event => {
         </ul>
 
 
-        <h5>Our Hours:</h5>
-        <table className="table table-borderless">
-        <thead>
-          <tr>
-            <th>Sunday</th>
-            <td>9am - 6pm</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Monday - Friday</th>
-            <td>9am - 9pm</td>
-          </tr>
-          <tr>
-          <th>Saturday</th>
-            <td>9am - 7pm</td>
-          </tr>
-          
-        </tbody>
-      </table>
+        <h5 className="text-color-blue"><strong>Our Hours:</strong></h5>
+
+        <p><strong className="text-color-blue">Sunday : </strong>9am - 6pm</p>
+        <p><strong className="text-color-blue">Monday - Friday : </strong>9am - 9pm</p>
+        <p><strong className="text-color-blue">Saturday : </strong>9am - 7pm</p>
+
         </div>
         </Col>
       </Row>

@@ -87,6 +87,12 @@ nav button{
     object-fit: cover;
     height: 100%;
     border: 5px solid #fff;
+    transition: all 0.3s ease-out;
+  }
+.news-section li:hover .image-box img{
+    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    transform: scale(1.1, 1.1);
+    transition: all 0.2s ease-out;
 }
 
 .news-section .content-box{
@@ -250,12 +256,13 @@ nav button{
     border-top: 1px solid #a2a2a200;
 }
 .services-page .card{
-    border-radius: 40px;
+    border-radius: 0px;
+    /* border-radius: 40px; */
 }
 .services-page .card img{
     padding: .25rem;
     background-color: #fff;
-    border-radius: 40px;
+    /* border-radius: 40px; */
 }
 .services-page .card-body{
     padding-top: 0;
@@ -293,6 +300,8 @@ nav button{
 @media only screen and (max-width: 992px) {
     .navbar-dark .navbar-nav .nav-link {
         font-size: 14px;
+        padding-right: .3rem;
+        padding-left: .3rem;
     }
     
 }
@@ -315,7 +324,34 @@ nav button{
         margin-right: 0.3rem;
     }
   }
+  .profile-box img{
+    max-width: 200px;
+    border-radius: 50%;
+    border: 5px solid #ff3d5d;
+    box-shadow: 1px 2px 6.5px #000;
+    transition: all 0.3s ease-out;
 
+  }
+  .profile-box img:hover{
+    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    transform: scale(0.9, 0.9);
+    transition: all 0.2s ease-out;
+  }
+  .news-detail img{
+    box-shadow: 1px 2px 6.5px #000;
+    max-width: 450px;
+    border: 5px solid #fff;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-out;
+  }
+  .news-detail img:hover{
+    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    transform: scale(1.1, 1.1);
+    transition: all 0.2s ease-out;
+  }
+  .image-url-news{
+
+  }
   /* services */
 .services-page .card img
   {

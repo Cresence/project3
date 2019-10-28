@@ -28,11 +28,11 @@ class PostDetail extends Component {
 
               <img src={this.state.post.image_url ? this.state.post.image_url :"https://placehold.it/128x197?text=No%20Preview" } 
               alt="news-post" className="img-fluid"/>
-              <h3>Title : {this.state.post.news_title}</h3>
-              <h5>Category : {this.state.post.category}</h5>
-              <h6>News Post Date: {this.state.post.date}</h6>
+              <h3><strong className="text-color-blue">Title : </strong>{this.state.post.news_title}</h3>
+              <h5><strong className="text-color-blue">Category : </strong>{this.state.post.category}</h5>
+              <h6><strong className="text-color-blue">News Post Date: </strong>{this.state.post.date}</h6>
               <p>
-                Discription : {this.state.post.description}
+              <strong className="text-color-blue">Discription : </strong>{this.state.post.description}
               </p>
             </div>
           </Col>

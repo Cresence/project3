@@ -50,7 +50,7 @@ render() {
                       </div>
                     </div>
                     <div className="content-box">
-                      <h4> {post.news_title}</h4>
+                      <h4 className="text-color-blue"> {post.news_title}</h4>
                       <h5> {post.category}</h5>
                       
                       <p> {post.date}</p>
@@ -64,7 +64,7 @@ render() {
                 ))}
               </ul>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3 className="text-color-blue text-center">No Results to Display</h3>
             )}
           </Col>
         </Row>

@@ -308,7 +308,7 @@ class NewsPost extends Component {
                     <h6><strong>Category : </strong> {post.category}</h6>
                     <p><strong>Description : </strong> {post.description}</p>
                     <p><strong>Date : </strong> {post.date}</p>
-                    <p><strong>Image Url : </strong>{post.image_url}</p>
+                    <p><strong>Image Url : </strong><span className="image-url-news">{post.image_url}</span></p>
 
                       
                     <Link to={"/posts/" + post._id} className="btn btn-theme">
