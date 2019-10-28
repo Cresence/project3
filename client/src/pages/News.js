@@ -31,6 +31,7 @@ class News extends Component {
     
 
 render() {
+  
   return (
     <div className="py-5">
     <Container>
@@ -44,7 +45,6 @@ render() {
                 {this.state.posts.map(post => (
                 <li className="list-group-item" key={post._id}>
                     <div className="image-box">
-                      {console.log( post.image_url)}
                       <div className="img-inner">
                       <img src={post.image_url ?  post.image_url :"https://placehold.it/128x197?text=No%20Preview" } alt="news-post"/>
                       </div>
@@ -53,7 +53,7 @@ render() {
                       <h4 className="text-color-blue"> {post.news_title}</h4>
                       <h5> {post.category}</h5>
                       
-                      <p> {post.date}</p>
+                      <p> {post.date.slice(0, 10)}</p>
 
                         
                       <Link to={"/post-detail/" + post._id} className="btn btn-theme">

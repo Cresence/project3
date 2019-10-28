@@ -326,7 +326,10 @@ nav button{
 }
 @media only screen and (max-width: 768px) {
     .navbar-dark .navbar-nav li{
-        border-bottom: 1px solid #848484;
+        border-bottom: 1px solid rgba(132, 132, 132, 0.56);
+    }
+    .aboutus-banner{
+        padding: 50px 0px;
     }
 }
 @media only screen and (max-width: 500px) {
