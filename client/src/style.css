@@ -129,6 +129,16 @@ nav button{
     font-size: 19px;
     box-shadow: 1px 2px 6.5px #504f4f;
     margin-right: 10px;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+.contact-right-section i:hover{
+   /* box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22); */
+    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+
 }
 .contact-right-section p{
     margin-bottom: 0;
@@ -143,12 +153,21 @@ nav button{
     text-align: center;
     font-weight: bold;
     margin-right: 0;
-    padding-top: 5px;
-    font-size: 28px;
+    padding-top: 7px;
+    font-size: 24px;
     width: 40px;
     height: 40px;
     box-shadow: none;
     border: 1px solid #e0e3e7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border-radius: 50%;
+    
+}
+.social-media-link i:hover{
+    box-shadow: 0px 0px 10.5px #9c9c9c;
+    /* box-shadow: 0 0 0 8px rgba(255,255,255,0.3); */
+    animation: fa-spin 2s infinite linear;
 }
 .social-media-link i.fa-instagram{
     background: -webkit-linear-gradient(#ff5757 , #bd00de);
@@ -349,9 +368,9 @@ nav button{
     transform: scale(1.1, 1.1);
     transition: all 0.2s ease-out;
   }
-  .image-url-news{
+  /* .image-url-news{
 
-  }
+  } */
   /* services */
 .services-page .card img
   {
