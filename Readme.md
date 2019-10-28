@@ -17,6 +17,8 @@ App Features:
 * Google Map Api
 * PayPal
 
+![](client/src/images/ss_1.png)
+
 Front-End and Back-End Technologies used:
 * [React](https://reactjs.org/)
 * [Bootstrap](https://getbootstrap.com/)
@@ -36,3 +38,6 @@ Front-End and Back-End Technologies used:
 * [Express File-Upload](https://www.npmjs.com/package/express-fileupload)(Simple express middleware for uploading files)
 * [Cors](https://www.npmjs.com/package/cors)(Node.js package providing a connect/express middleware)
 * [Cloudinary](https://www.npmjs.com/package/cloudinary)(A cloud service that offers a solution to a web application's entire image management pipeline)
+
+
+Future Updates:
