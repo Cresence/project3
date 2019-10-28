@@ -34,12 +34,20 @@
   #demo .carousel-indicators{
     bottom: 10px;
   }
+  #demo .carousel-caption h3{
+    font-size: 1.2rem;
+    margin-bottom: 0;
+  }
+  .carousel-indicators li{
+    width: 15px;
+  }
 }
 @media only screen and (max-width: 480px) {
   #demo .carousel-caption h3{
-    font-size: 1rem;
+    font-size: .7rem;
+    margin-bottom: 0;
   }
   #demo .carousel-caption p{
-    font-size: .7rem;
+    font-size: .6rem;
   }
 }

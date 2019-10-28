@@ -30,7 +30,7 @@ class PostDetail extends Component {
               alt="news-post" className="img-fluid"/>
               <h3><strong className="text-color-blue">Title : </strong>{this.state.post.news_title}</h3>
               <h5><strong className="text-color-blue">Category : </strong>{this.state.post.category}</h5>
-              <h6><strong className="text-color-blue">News Post Date: </strong>{this.state.post.date}</h6>
+              <h6><strong className="text-color-blue">News Post Date: </strong>{this.state.post.date ? this.state.post.date.slice(0, 10) : null}</h6>
               <p>
               <strong className="text-color-blue">Discription : </strong>{this.state.post.description}
               </p>
