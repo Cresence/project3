@@ -91,13 +91,15 @@ app.post('/api/form',(req, res)=>{
   console.log(req.body)
   nodemailer.createTestAccount((err,account) =>{
     const htmlEmail=`
-    <h3>Contact Details</h3>
-    <ul>
-        <li>Name: ${req.body.name} </li>
-        <li>Email: ${req.body.email} </li>
+    <center>
+    <img src="https://mighty-waters-45866.herokuapp.com/static/media/SandyspetHotel_LOGO.6fa1637c.gif" width="250px" />
+    <h2>Contact Details</h2>
+      <p><strong>Name: </strong>${req.body.name} </p>
+      <p><strong>Email: </strong>${req.body.email} </p>
     </ul>
-    <h3>Message <h3>
-    <p> ${req.body.message} </p>
+    <h2>Message </h2>
+      <p> ${req.body.message} </p>
+    </center>
     `
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
