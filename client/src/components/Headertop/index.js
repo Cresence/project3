@@ -10,9 +10,9 @@ function Headertop() {
       <div className="container">
         <div className="row">
           <div className="col col-sm-6 ">
-
-          <img src={SandyspetHotel_LOGO} alt="logo" width="100%" className="logo"/>
-
+            <a href="/">
+              <img src={SandyspetHotel_LOGO} alt="logo" width="100%" className="logo"/>
+            </a>
 
           </div>
           <div className="col col-sm-6">
