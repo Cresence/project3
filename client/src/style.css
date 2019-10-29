@@ -31,6 +31,7 @@ nav button{
     color: #fff;
     margin-right: 10px;
     border: 5px solid transparent;
+    -moz-border-image: url(../src/images/border-img.png) 30 round;
   -webkit-border-image: url(../src/images/border-img.png) 30 round; /* Safari 3.1-5 */
   -o-border-image: url(../src/images/border-img.png) 30 round; /* Opera 11-12.1 */
   border-image: url(../src/images/border-img.png) 30 round;
