@@ -390,7 +390,7 @@ nav button{
     width: 100%;
     max-width: 450px;
     border: 5px solid #fff;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     transition: all 0.3s ease-out;
   }
   .news-detail img:hover{
@@ -412,13 +412,13 @@ nav button{
     transition: all 0.2s ease-out;
 }
 
-.navbar-toggler-icon{
+/* .navbar-toggler-icon{
     width: 1em;
     height: 1em;
-}
+}*/
 .navbar-toggler{
     padding: .20rem .75rem;
-}
+} 
 
 .image-url-news strong{
     overflow: hidden;
