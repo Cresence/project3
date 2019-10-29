@@ -111,7 +111,7 @@ function Services() {
     <div className="services-bottom-section py-5">
     <Container>
       <Row>
-        <Col size="Col-sm-12">
+        <Col size="sm-12">
           <Mainheading color="light">All rooms include:</Mainheading>
           <ul>
             <li>24/7 onsite care &#38; on-call veterinarian</li>

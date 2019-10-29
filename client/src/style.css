@@ -337,13 +337,22 @@ nav button{
         margin-top: 10px;
     }
     .header-top .social-media-link i{
-        font-size: 20px;
+        font-size: 16px;
         width: 27px;
         height: 27px;
-        padding-top: 3px;
+        padding-top: 5px;
     }
     .header-top .list-inline-item{
         margin-right: 0.3rem;
+    }
+    .news-section .image-box{
+        float: initial;
+        margin: 0 auto;
+    }
+    .news-section .content-box{
+        float: initial;
+        padding-left: 0;
+        text-align: center;
     }
   }
   .profile-box img{
@@ -359,8 +368,12 @@ nav button{
     transform: scale(0.9, 0.9);
     transition: all 0.2s ease-out;
   }
+  .news-detail{
+      padding: 20px;
+  }
   .news-detail img{
     box-shadow: 1px 2px 6.5px #000;
+    width: 100%;
     max-width: 450px;
     border: 5px solid #fff;
     margin-bottom: 20px;
@@ -385,3 +398,10 @@ nav button{
     transition: all 0.2s ease-out;
 }
 
+.navbar-toggler-icon{
+    width: 1em;
+    height: 1em;
+}
+.navbar-toggler{
+    padding: .20rem .75rem;
+}
