@@ -17,7 +17,7 @@ App Features:
 * Google Map Api
 * PayPal
 
-![](client/src/images/ss_1.png)
+![](client/src/images/sandy-responsive.png)
 
 Front-End and Back-End Technologies used:
 * [React](https://reactjs.org/)
