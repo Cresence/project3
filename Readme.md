@@ -1,4 +1,4 @@
-![](client/src/images/SandyspetHotel_LOGO.gif)
+![](client/src/images/SandyspetHotel_LOGO2readme.gif)
 
 ### About Sandy's Hotel
 
