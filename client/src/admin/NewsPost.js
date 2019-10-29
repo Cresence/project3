@@ -186,7 +186,7 @@ class NewsPost extends Component {
       if(err){
         console.log(err)
         // console.log("Server error")
-        this.setState({message : "Server error", messagestatusclass: "danger"})
+        //this.setState({message : "Server error", messagestatusclass: "danger"})
       }else{
         // console.log(err.response.data.msg)
         this.setState({message : err.response.data.msg, messagestatusclass: "danger"})

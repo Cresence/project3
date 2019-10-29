@@ -18,16 +18,16 @@ function Headertop() {
           <div className="col col-sm-6">
           <ul className="list-inline social-media-link">
               <li className="list-inline-item">
-                <p><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram" aria-hidden="true"></i></a></p>
+                <p><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram"><i className="fab fa-instagram" aria-hidden="true"></i></a></p>
               </li>
               <li className="list-inline-item">
-                <p><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-square" aria-hidden="true"></i></a></p>
+                <p><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" title="Facebook"><i className="fab fa-facebook-square" aria-hidden="true"></i></a></p>
               </li>
               <li className="list-inline-item">
-                <p><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter" aria-hidden="true"></i></a></p>
+                <p><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" title="Twitter"><i className="fab fa-twitter" aria-hidden="true"></i></a></p>
               </li>
               <li className="list-inline-item">
-                <p><a href="https://youtube.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-youtube" aria-hidden="true"></i></a></p>
+                <p><a href="https://youtube.com" target="_blank" rel="noopener noreferrer" title="Youtube"><i className="fab fa-youtube" aria-hidden="true"></i></a></p>
               </li>
             </ul>
           </div>
