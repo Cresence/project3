@@ -331,6 +331,10 @@ nav button{
     .aboutus-banner{
         padding: 50px 0px;
     }
+    .left-navigationbar{
+        width: 100%;
+    }
+
 }
 @media only screen and (max-width: 500px) {
     .header-top .social-media-link{
@@ -354,6 +358,16 @@ nav button{
         padding-left: 0;
         text-align: center;
     }
+  }
+  @media only screen and (max-width: 400px) {
+    .header-top .list-inline-item {
+        margin-right: 0.2rem;
+    }
+    .header-top .social-media-link i{
+        width: 25px;
+        height: 25px;
+    }
+
   }
   .profile-box img{
     max-width: 200px;
@@ -404,4 +418,15 @@ nav button{
 }
 .navbar-toggler{
     padding: .20rem .75rem;
+}
+
+.image-url-news strong{
+    overflow: hidden;
+    display: inline-block;
+}
+.image-url-news span{
+    max-width: 200px;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
 }
