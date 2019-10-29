@@ -116,7 +116,7 @@ handleFormSubmit = event => {
             <p><i className="fas fa-map-marker-alt fa-2x" /> Philadelphia, PA 19140, USA</p>
           </li>
           <li>
-            <p><i className="fas fa-phone mt-4 fa-2x" /> + 01 234 567 89</p>
+            <p><i className="fas fa-phone mt-4 fa-2x" /> 2155350610</p>
           </li>
           <li>
             <p><i className="fas fa-envelope mt-4 fa-2x" /> contact@mdbootstrap.com</p>
