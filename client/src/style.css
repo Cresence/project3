@@ -9,8 +9,8 @@
     src: url(../src/fontfamily/BuenosAiresTrial-Regular.otf);
 }
 body{
-    background-image: url(../src/images/main-bg4.png);
-    background-image: url(../src/images/main-bg4.jpg);
+    /* background-image: url(../src/images/main-bg4.png);
+    background-image: url(../src/images/main-bg4.jpg); */
     background-image: url(../src/images/foggy-birds1.png);
     background-attachment: fixed;
     /* background-size: 263px; */
