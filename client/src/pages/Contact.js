@@ -125,10 +125,10 @@ handleFormSubmit = event => {
 
         <h5 className="text-color-blue"><strong>Connect With Us!</strong></h5>
         <ul className="list-inline social-media-link">
-        <li className="list-inline-item"><p><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"/></a></p></li>
-        <li className="list-inline-item"><p><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-square"/></a></p></li>
-        <li className="list-inline-item"><p><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"/></a></p></li>
-        <li className="list-inline-item"><p><a href="https://youtube.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-youtube"/></a></p></li>
+        <li className="list-inline-item"><p><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram"><i className="fab fa-instagram"/></a></p></li>
+        <li className="list-inline-item"><p><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" title="Facebook"><i className="fab fa-facebook-square"/></a></p></li>
+        <li className="list-inline-item"><p><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" title="Twitter"><i className="fab fa-twitter"/></a></p></li>
+        <li className="list-inline-item"><p><a href="https://youtube.com" target="_blank" rel="noopener noreferrer" title="Youtube"><i className="fab fa-youtube"/></a></p></li>
         </ul>
 
 
