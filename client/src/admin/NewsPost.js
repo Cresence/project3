@@ -38,48 +38,10 @@ class NewsPost extends Component {
     this.loadImage();
   }
 
-//   onChangeHandler = event => {
-//     // console.log(event.target.files[0]);
-//     // const {lastModified, lastModifiedDate, name, size, type} = event.target.files[0];
-//     const img = event.target.files[0];
-//     img.src = URL.createObjectURL(img)
-//     console.log(img.src);
-//     // this.setState({
-//     //   lastModified: lastModified,
-//     //   lastModifiedDate: lastModifiedDate,
-//     //   name: name,
-//     //   size: size,
-//     //   type: type
-//     // })
-//   }
-
-// //   onClickHandler = () => {
-// //     const data = new FormData()
-// //     data.append('file', this.state.selectedFile)
-// //     // if (this.state.lastModified && this.state.lastModifiedDate && this.state.name && this.state.size && this.state.type) {
-// //     // API.postImage({
-// //     //   lastModified: this.state.lastModified,
-// //     //   lastModifiedDate: this.state.lastModifiedDate,
-// //     //   name: this.state.name,
-// //     //   size: this.state.size,
-// //     //   type: this.state.type
-// //     // })
-// //     //   .then(res => {
-// //     //     console.log(res);
-// //     //   })
-// //     //   .catch(err => console.log(err));
-// //   // }
-// //   axios.post('/img_data', data, {
-// //     // Nothing happens here?
-// //   })
-// //     .then(res => console.log(res.statusText))
-// //     .catch(err => console.log(err))
-// // }
   loadImage = () => {
     API.getImages()
     .then(({data}) => {
       if (data) {
-        console.log(data[0].url)
         return (
         data[0].url,
         this.setState({ image_url: data[0].url }),

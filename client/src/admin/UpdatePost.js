@@ -4,6 +4,8 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import Navadmin from "../components/Navadmin";
 import {Mainheading} from "../components/Mainheading"
+import { Link, Redirect } from 'react-router-dom'
+
 class Detail extends Component {
   state = {
     post: {},
@@ -11,6 +13,7 @@ class Detail extends Component {
     category: "",
     description: "",
     date:"",
+    redirect: false
   };
   componentDidMount() {
     this.loadPosts();
@@ -23,7 +26,6 @@ class Detail extends Component {
       news_title: res.data.news_title,
       category: res.data.category,
       description: res.data.description,
-      
      }))
     .catch(err => console.log(err));
   }
@@ -43,11 +45,19 @@ class Detail extends Component {
         description: this.state.description,
         post_image: this.state.post_image,
       })
-        .then(res =>  window.location.href='/admin/news')
+        .then(res =>  this.setState({ redirect: true }))
         .catch(err => console.log(err));
     }
   };
+
   render() {
+
+    const { redirect } = this.state;
+
+     if (redirect) {
+       return <Redirect to='/admin/news'/>;
+     }
+
     return (
       <div>
       <Navadmin />
@@ -72,12 +82,6 @@ class Detail extends Component {
                 <option value="News">News</option>
               </select>
               <br/>
-              {/* <Input
-                value={this.state.category}
-                onChange={this.handleInputChange}
-                name="category"
-                placeholder="category"
-              /> */}
               <label>Update Description</label>
               <TextArea
                 value={this.state.description}
@@ -88,6 +92,7 @@ class Detail extends Component {
               
               <FormBtn
                 disabled={!(this.state.news_title && this.state.category && this.state.description)}
+                style={{display: this.state.formBtn}}
                 onClick={this.handleFormSubmit}
               >
                Update Post

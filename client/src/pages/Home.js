@@ -27,8 +27,7 @@ render() {
             <div className="text-center">
                 <Link className="btn btn-info"  
               to={{
-                pathname: "/booknow",
-                // state: user
+                pathname: "/booknow"
                 }}
             >Book Hotel</Link>
 
