@@ -4,6 +4,8 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import Navadmin from "../components/Navadmin";
 import {Mainheading} from "../components/Mainheading"
+import { Link, Redirect } from 'react-router-dom'
+
 class Detail extends Component {
   state = {
     testimonial: {},
@@ -38,11 +40,17 @@ class Detail extends Component {
         address: this.state.address,
         description: this.state.description
       })
-      .then(res =>  window.location.href='/admin/testimonial')
+      .then(res =>  this.setState({ redirect: true }))
       .catch(err => console.log(err));
     }
   };
   render() {
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to='/admin/testimonial'/>;
+    }
+
     return (
       <div>
       <Navadmin />
