@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.555.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "cloudinary": "^1.16.0",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
