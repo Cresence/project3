@@ -18,6 +18,9 @@
     "concurrently": "^4.1.0",
     "nodemon": "^1.19.4"
   },
+  "engine": {
+    "node": "<=15.14.0"
+  },
   "dependencies": {
     "aws-sdk": "^2.1310.0",
     "axios": "^0.18.0",
@@ -32,7 +35,7 @@
     "jspdf": "^1.5.3",
     "jwks-rsa": "^1.12.3",
     "method-override": "^3.0.0",
-    "mongoose": "^5.13.15",
+    "mongoose": "^5.4.13",
     "multer": "^1.4.4",
     "multer-gridfs-storage": "^3.3.0",
     "nodemailer": "^6.9.1",
