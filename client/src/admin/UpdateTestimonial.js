@@ -4,7 +4,7 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import Navadmin from "../components/Navadmin";
 import {Mainheading} from "../components/Mainheading"
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class Detail extends Component {
   state = {

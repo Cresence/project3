@@ -26,8 +26,7 @@ import "./style.css";
 
 
 function App() {
-  const { loading } = useAuth0();
-  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   return (
     <Router>
       <div>
