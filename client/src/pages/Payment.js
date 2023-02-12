@@ -4,7 +4,7 @@ import { Col, Row, Container } from "../components/Grid";
 
 import PaypalButton from "../components/PaypalButton"
 //import React, { useState, useRef, useEffect } from 'react';
-import jsPDF from 'jspdf'
+// import jsPDF from 'jspdf'
 
 class Payment extends Component {
   state = {
@@ -45,25 +45,25 @@ class Payment extends Component {
      }))
     .catch(err => console.log(err));
   }
- // jspdf generator function
- jsPDFGenerator=()=>{
-  var doc=new jsPDF('p', 'pt');
-  //add text
-  doc.text(20,30, "Your Receipt")
-  doc.setFont('courier');
-  doc.setFontType('normal');
-  doc.text(20,60, "Booking Id    : " + this.state.id);
-  doc.text(20,80, "Owner Name    : " + this.state.owner_name);
-  doc.text(20,100,"Pet Nick Name : " + this.state.pet_name);
-  doc.text(20,120,"Pet Category  : " + this.state.select_pet);
-  doc.text(20,140,"Pet Size      : " + this.state.select_pet_size);
-  doc.text(20,160,"Booking Date  : " + this.state.select_date_from + " To " + this.state.select_date_to);
-  doc.text(20,180,"No. of Pet    : " + this.state.pet_count);
-  doc.text(20,200,"No. of Days   : " + this.state.days);
-  doc.text(20,220,"Price         : " + this.state.price);
-  doc.text(20,240,"Total Price   : " + this.state.total_price);
-  doc.save("generate.pdf");
-}
+ // jspdf generator function - Commented out, package-lock.json dependencies change is breaking build.
+//  jsPDFGenerator=()=>{
+//   var doc=new jsPDF('p', 'pt');
+//   //add text
+//   doc.text(20,30, "Your Receipt")
+//   doc.setFont('courier');
+//   doc.setFontType('normal');
+//   doc.text(20,60, "Booking Id    : " + this.state.id);
+//   doc.text(20,80, "Owner Name    : " + this.state.owner_name);
+//   doc.text(20,100,"Pet Nick Name : " + this.state.pet_name);
+//   doc.text(20,120,"Pet Category  : " + this.state.select_pet);
+//   doc.text(20,140,"Pet Size      : " + this.state.select_pet_size);
+//   doc.text(20,160,"Booking Date  : " + this.state.select_date_from + " To " + this.state.select_date_to);
+//   doc.text(20,180,"No. of Pet    : " + this.state.pet_count);
+//   doc.text(20,200,"No. of Days   : " + this.state.days);
+//   doc.text(20,220,"Price         : " + this.state.price);
+//   doc.text(20,240,"Total Price   : " + this.state.total_price);
+//   doc.save("generate.pdf");
+// }
 
 handleUpdateBookingStatus = ( ) => {
   // event.preventDefault();
@@ -97,7 +97,7 @@ handleUpdateBookingStatus = ( ) => {
                       days= {this.state.days}
                       total_price= {this.state.total_price}
                       id= {this.state.id}
-                      jsPDFGenerator={this.jsPDFGenerator}
+                      // jsPDFGenerator={this.jsPDFGenerator}
                       booking_status={this.state.booking_status}
                       handleUpdateBookingStatus={this.handleUpdateBookingStatus}
                       />:" "}

@@ -41,8 +41,8 @@ function Product({ product }) {
     return (
       <div className="text-center">
         <h3 className="text-success">Congrats, Your  Booking is Conformed !</h3>
-        <button className="btn btn-theme" onClick={product.jsPDFGenerator} >
-          Print Your Receipt
+        {/* <button className="btn btn-theme" onClick={product.jsPDFGenerator} >
+          Print Your Receipt */}
         </button>
         {product.handleUpdateBookingStatus()}
       </div>
@@ -93,7 +93,7 @@ function App(props) {
     select_date_from: props.select_date_from,
     pet_count: props.pet_count,
     days:props.days,
-    jsPDFGenerator:props.jsPDFGenerator,
+    // jsPDFGenerator:props.jsPDFGenerator,
     booking_status:props.booking_status,
     handleUpdateBookingStatus:props.handleUpdateBookingStatus,
   };
