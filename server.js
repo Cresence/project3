@@ -12,9 +12,9 @@ const db = require("./models");
 const cloudinary = require('cloudinary');
 
 cloudinary.config({
-  cloud_name: "hclrafapv",
-  api_key: "568959517744279",
-  api_secret: "yYbYsfUzQcY3WlsmE844b0cctj4"
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 //File upload Code start
@@ -53,25 +53,19 @@ app.post('/upload', (req, res) => {
 
 //File upload Code End
 
-// Set up Auth0 configuration
-const authConfig = {
-  domain: "dev-2pm3nnjy.auth0.com",
-  audience: "https://hotel-cauliflower.com/api"
-};
-
 // Define middleware that validates incoming bearer tokens
-// using JWKS from dev-2pm3nnjy.auth0.com
+// using JWKS from Auth0 site
 const checkJwt = jwt({
   secret: jwksRsa.expressJwtSecret({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: `https://${authConfig.domain}/.well-known/jwks.json`
+    jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
   }),
 
   audience: authConfig.audience,
-  issuer: `https://${authConfig.domain}/`,
-  algorithm: ["RS256"]
+  issuer: `https://${process.env.AUTH0_DOMAIN}/`,
+  algorithms: ["RS256"]
 });
 
 // Define an endpoint that must be called with an access token
@@ -101,8 +95,8 @@ app.post('/api/form',(req, res)=>{
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-          user: 'shubhi.test.upenn@gmail.com',
-          pass: 'rnkdssbn'
+          user: process.env.EMAIL_A_NAME,
+          pass: process.env.EMAIL_A_PASS
       },
       tls:{
         rejectUnauthorized:false
@@ -110,9 +104,9 @@ app.post('/api/form',(req, res)=>{
     });
 
     let mailOptions={
-      from: '"Sandy Pet Hotel" <test@testaccount.com>',
-      to: 'dheeru.singh228@gmail.com',
-      replyTo: 'test@testaccount.com',
+      from:  `"Sandy Pet Hotel" ${EMAIL_C_NAME}>`,
+      to: process.env.EMAIL_B_NAME,
+      replyTo: process.env.EMAIL_C_NAME,
       subject:'Sandy Pet Hotel',
       text: req.body.message,
       html: htmlEmail
