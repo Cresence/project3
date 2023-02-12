@@ -43,7 +43,7 @@ function Product({ product }) {
         <h3 className="text-success">Congrats, Your  Booking is Conformed !</h3>
         {/* <button className="btn btn-theme" onClick={product.jsPDFGenerator} >
           Print Your Receipt */}
-        </button>
+        {/* </button> */}
         {product.handleUpdateBookingStatus()}
       </div>
     );
