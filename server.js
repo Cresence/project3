@@ -10,6 +10,7 @@ const nodemailer = require('nodemailer');
 const Schema = mongoose.Schema;
 const db = require("./models");
 const cloudinary = require('cloudinary');
+require('dotenv').config();
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -63,7 +64,7 @@ const checkJwt = jwt({
     jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
   }),
 
-  audience: authConfig.audience,
+  audience: process.env.AUTH0_AUDIENCE,
   issuer: `https://${process.env.AUTH0_DOMAIN}/`,
   algorithms: ["RS256"]
 });

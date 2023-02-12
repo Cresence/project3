@@ -8,8 +8,6 @@ import Navadmin from "../components/Navadmin";
 import {Mainheading} from "../components/Mainheading"
 // import FileUpload from '../components/FileUpload';
 import axios from 'axios';
-import { Cloud9 } from "aws-sdk";
-import { userInfo } from "os";
 
 class NewsPost extends Component {
   state = {
