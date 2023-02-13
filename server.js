@@ -140,7 +140,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://devladev:z1IW0nwiFOOwkLmM@cluster0.yc9prxe.mongodb.net/?retryWrites=true&w=majority");
 
 app.get("/api/images", (req, res) => {
   db.Image.findAll({}).then(result => res.json(result));

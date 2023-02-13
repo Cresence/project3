@@ -24,7 +24,7 @@ class Dashboard extends Component {
   loadTestimonials = () => {
     API.getTestimonials()
       .then(res =>
-        this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
+        !res ? this.setState({ testimonials: null, person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
       )
       .catch(err => console.log(err));
   };
