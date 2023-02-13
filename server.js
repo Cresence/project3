@@ -146,7 +146,11 @@ mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || process.env.MY_MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI || process.env.MY_MONGODB_URI).then(() => {
+  console.log("Connected to Database")
+}).catch((err) => {
+    console.log("Not Connected to Database ERROR! ", err);
+});;
 
 
 app.get("/api/images", (req, res) => {
