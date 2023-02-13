@@ -139,8 +139,15 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
+// Fix Mongoose depreciation messages
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
+
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://devladev:z1IW0nwiFOOwkLmM@cluster0.yc9prxe.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect(process.env.MONGODB_URI || process.env.MY_MONGODB_URI);
+
 
 app.get("/api/images", (req, res) => {
   db.Image.findAll({}).then(result => res.json(result));
