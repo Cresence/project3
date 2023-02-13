@@ -39,21 +39,19 @@ class NewsPost extends Component {
   loadImage = () => {
     API.getImages()
     .then(({data}) => {
-      if (data) {
-        return (
-        data[0].url,
+      if (!data) {
+        return null
+        } else {
+        try { return (
+        !data[0].url ? null : data[0].url,
         this.setState({ image_url: data[0].url }),
         this.setState({message : "File Uploaded Successfully", messagestatusclass: "success"})
-        )      
-        } else {
-        return null;
-      }
-     // this.setState({ image_url: data[0].url })
+        );
+      } catch (err) {
+        console.log("Data/Image Not Loaded");
+      }}
     });
-  };
-
-  // handleClicked = () => this.state.clicked ? this.loadImage : null
-  
+  };  
 
   loadPosts = () => {
     API.getPosts()
@@ -144,7 +142,7 @@ class NewsPost extends Component {
       // this.setState({clicked: true});
     } catch(err){
       if(err){
-        console.log(err)
+        // console.log(err)
         // console.log("Server error")
         //this.setState({message : "Server error", messagestatusclass: "danger"})
       }else{
