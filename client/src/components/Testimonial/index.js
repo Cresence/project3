@@ -24,14 +24,13 @@ class Testimonial extends  Component{
     };
   
 render(){
-  
   return (
     <div id="myTestimonial" className="carousel slide" data-ride="carousel">
-        {!this.state.testimonials.length ? (
+        {this.state.testimonials.length === 0 ? (
             <h3 className="text-center">No Results to Display</h3>
           ) : (
            	<div className="carousel-inner">
-              {this.state.testimonials.map((testimonial, index) => (
+              {!this.state.testimonials.map ? <h3 className="text-center">No Results to Display</h3> : this.state.testimonials.map((testimonial, index) => (
               
                 <div className={index === 0 ? 'item carousel-item active' : 'item carousel-item'} key={testimonial._id}>
                 <div className="img-box"><img src={`${testimonial_img}`} alt="" /></div>
