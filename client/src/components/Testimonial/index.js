@@ -18,7 +18,7 @@ class Testimonial extends  Component{
     loadTestimonials = () => {
       API.getTestimonials()
         .then(res =>
-          !res ? this.setState({ testimonials: null, person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
+          !res ? this.setState({ testimonials: [], person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
         )
         .catch(err => console.log(err));
     };
