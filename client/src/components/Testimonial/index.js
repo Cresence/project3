@@ -16,18 +16,20 @@ class Testimonial extends  Component{
     }
     
     loadTestimonials = () => {
-        API.getTestimonials()
-          .then(res =>
-            this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
-          )
-          .catch(err => console.log(err));
+      API.getTestimonials()
+        .then(res =>
+          !res ? this.setState({ testimonials: null, person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
+        )
+        .catch(err => console.log(err));
     };
-
+  
 render(){
   
   return (
     <div id="myTestimonial" className="carousel slide" data-ride="carousel">
-        {this.state.testimonials.length ? (
+        {!this.state.testimonials.length ? (
+            <h3 className="text-center">No Results to Display</h3>
+          ) : (
            	<div className="carousel-inner">
               {this.state.testimonials.map((testimonial, index) => (
               
@@ -39,9 +41,7 @@ render(){
               ))}
             </div>
             
-          ) : (
-            <h3 className="text-center">No Results to Display</h3>
-          )}
+          ) }
 			
 				<ol className="carousel-indicators">
         {this.state.testimonials.map((testimonial, index) => (
