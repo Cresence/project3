@@ -44,7 +44,7 @@ render(){
 			
 				<ol className="carousel-indicators">
         {this.state.testimonials.map((testimonials, index) => (
-					<li data-target="#myTestimonial" data-slide-to={index} className={!!index ? 'active' : ''} key={testimonials._id}></li>
+					<li data-target="#myTestimonial" data-slide-to={index} className={!index ? 'active' : ''} key={testimonials._id}></li>
           ))}
         </ol>  
        
