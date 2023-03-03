@@ -43,7 +43,9 @@ render(){
           ) }
 			
 				<ol className="carousel-indicators">
-        {this.state.testimonials.map((testimonials, index) => (
+        {!this.state.testimonials.length ? (
+            <h3 className="text-center">No Results to Display</h3>
+          ) : this.state.testimonials.map((testimonials, index) => (
 					<li data-target="#myTestimonial" data-slide-to={index} className={!index ? 'active' : ''} key={testimonials._id}></li>
           ))}
         </ol>  
