@@ -27,7 +27,9 @@ render(){
   
   return (
     <div id="myTestimonial" className="carousel slide" data-ride="carousel">
-        {this.state.testimonials.length ? (
+        {this.state.testimonials.length === 0 || this.state.testimonials === null ? (
+            <h3 className="text-center">No Results to Display</h3>
+          ) : (
            	<div className="carousel-inner">
               {this.state.testimonials.map((testimonial, index) => (
               
@@ -39,12 +41,10 @@ render(){
               ))}
             </div>
             
-          ) : (
-            <h3 className="text-center">No Results to Display</h3>
           )}
 			
 				<ol className="carousel-indicators">
-        {this.state.testimonials.map((testimonial, index) => (
+        {this.state.testimonials.length === 0 || this.state.testimonials === null ? (<span></span>) : this.state.testimonials.map((testimonial, index) => (
 					<li data-target="#myTestimonial" data-slide-to={index} className={index === 0 ? 'active' : ''} key={testimonial._id}></li>
           ))}
         </ol>  
