@@ -5,8 +5,7 @@ import { Col, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Navadmin from "../components/Navadmin";
-import {Mainheading} from "../components/Mainheading"
-import Testimonial from "../components/Testimonial";
+import {Mainheading} from "../components/Mainheading";
 
 class Dashboard extends Component {
   state = {
@@ -62,6 +61,11 @@ class Dashboard extends Component {
   };
   
   render() {
+    const localTestimonials = () => {
+      let e = [];
+      e = this.state.testimonials || [];
+      return e;
+    }  
     return (
       <div>
       <Navadmin />
@@ -109,9 +113,9 @@ class Dashboard extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Mainheading color="dark">Testimonials List</Mainheading>
-            {this.state.testimonials.length ? (
+            {localTestimonials().length ? (
               <List>
-                {this.state.testimonials.map(testimonial => (
+                {localTestimonials().map(testimonial => (
                 <ListItem key={testimonial._id}>
                     <h5><strong>Person Name :</strong> {testimonial.person_name}</h5>
                     <h6><strong>Address :</strong> {testimonial.address}</h6>
