@@ -24,13 +24,19 @@ class Testimonial extends  Component{
     };
   
 render(){
+  const localTestimonials = () => {
+    let e = []
+    this.componentDidMount();
+    e = this.state.testimonials;
+    return e;
+  }
   return (
     <div id="myTestimonial" className="carousel slide" data-ride="carousel">
         {!this.state.testimonials.length ? (
             <h3 className="text-center">No Results to Display</h3>
           ) : (
            	<div className="carousel-inner">
-              {!this.state.testimonials.map ? <h3 className="text-center">No Results to Display</h3> : this.state.testimonials.map((testimonials, index) => (
+              {!localTestimonials.map ? <h3 className="text-center">No Results to Display</h3> : localTestimonials.map((testimonials, index) => (
               
                 <div className={!index ? 'item carousel-item active' : 'item carousel-item'} key={testimonials._id}>
                 <div className="img-box"><img src={`${testimonial_img}`} alt="" /></div>
@@ -45,7 +51,7 @@ render(){
 				<ol className="carousel-indicators">
         {!this.state.testimonials ? (
             <h3 className="text-center">No Results to Display</h3>
-          ) : this.state.testimonials.forEach((testimonials, index) => (
+          ) : this.state.testimonials.map((testimonials, index) => (
 					<li data-target="#myTestimonial" data-slide-to={index} className={!index ? 'active' : ''} key={testimonials._id}></li>
           ))}
         </ol>  
