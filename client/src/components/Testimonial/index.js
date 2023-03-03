@@ -47,7 +47,7 @@ render(){
             <h3 className="text-center">No Results to Display</h3>
           ) : this.state.testimonials.map((testimonials, index) => (
 					<li data-target="#myTestimonial" data-slide-to={index} className={!index ? 'active' : ''} key={testimonials._id}></li>
-          ))}
+          ).catch(err => console.log(err)))}
         </ol>  
        
 		<a className="carousel-control left carousel-control-prev" href="#myTestimonial" data-slide="prev">
