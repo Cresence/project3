@@ -18,24 +18,24 @@ class Testimonial extends  Component{
     loadTestimonials = () => {
       API.getTestimonials()
         .then(res =>
-          !res ? this.setState({ testimonials: [], person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
+          !res ? this.setState({ testimonials: [], person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data || [], person_name: "", address: "", description: "" })
         )
         .catch(err => console.log(err));
     };
   
 render(){
   const localTestimonials = () => {
-    let e = []
-    e = this.state.testimonials;
+    let e = [];
+    e = this.state.testimonials || [];
     return e;
   }
   return (
     <div id="myTestimonial" className="carousel slide" data-ride="carousel">
-        {!localTestimonials() ? (
+        {localTestimonials().length ? (
             <h3 className="text-center">No Results to Display</h3>
           ) : (
            	<div className="carousel-inner">
-              {!localTestimonials().map ? <h3 className="text-center">No Results to Display</h3> : localTestimonials().map((testimonials, index) => (
+              {localTestimonials().map((testimonials, index) => (
               
                 <div className={!index ? 'item carousel-item active' : 'item carousel-item'} key={testimonials._id}>
                 <div className="img-box"><img src={`${testimonial_img}`} alt="" /></div>
@@ -48,7 +48,7 @@ render(){
           ) }
 			
 				<ol className="carousel-indicators">
-        {!localTestimonials() ? (
+        {localTestimonials().length ? (
             <h3 className="text-center">No Results to Display</h3>
           ) : localTestimonials().map((testimonials, index) => (
 					<li data-target="#myTestimonial" data-slide-to={index} className={!index ? 'active' : ''} key={testimonials._id}></li>
