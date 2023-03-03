@@ -6,6 +6,7 @@ import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Navadmin from "../components/Navadmin";
 import {Mainheading} from "../components/Mainheading"
+import Testimonial from "../components/Testimonial";
 
 class Dashboard extends Component {
   state = {
@@ -136,4 +137,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default Testimonial;
