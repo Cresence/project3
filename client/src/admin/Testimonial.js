@@ -24,7 +24,7 @@ class Dashboard extends Component {
   loadTestimonials = () => {
     API.getTestimonials()
       .then(res =>
-        !res ? this.setState({ testimonials: [], person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data || [], person_name: "", address: "", description: "" })
+        !res ? this.setState({ testimonials: [], person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
       )
       .catch(err => console.log(err));
   };
@@ -61,11 +61,7 @@ class Dashboard extends Component {
   };
   
   render() {
-    const localTestimonials = () => {
-      let e = [];
-      e = this.state.testimonials || [];
-      return e;
-    }  
+    const localTestimonials = this.state.testimonials || []
     return (
       <div>
       <Navadmin />
@@ -113,9 +109,9 @@ class Dashboard extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Mainheading color="dark">Testimonials List</Mainheading>
-            {localTestimonials().length ? (
+            {localTestimonials.length ? (
               <List>
-                {localTestimonials().map(testimonial => (
+                {localTestimonials.map(testimonial => (
                 <ListItem key={testimonial._id}>
                     <h5><strong>Person Name :</strong> {testimonial.person_name}</h5>
                     <h6><strong>Address :</strong> {testimonial.address}</h6>

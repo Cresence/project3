@@ -16,40 +16,37 @@ class Testimonial extends  Component{
     }
     
     loadTestimonials = () => {
-      API.getTestimonials()
-        .then(res =>
-          !res ? this.setState({ testimonials: [], person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data || [], person_name: "", address: "", description: "" })
-        )
-        .catch(err => console.log(err));
+        API.getTestimonials()
+          .then(res =>
+            this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
+          )
+          .catch(err => console.log(err));
     };
-  
+
 render(){
-  const localTestimonials = () => {
-    let e = [];
-    e = this.state.testimonials || [];
-    return e;
-  }
+  
   return (
     <div id="myTestimonial" className="carousel slide" data-ride="carousel">
-        {localTestimonials().length ? (
+        {this.state.testimonials.length ? (
            	<div className="carousel-inner">
-              {localTestimonials().map((testimonials, index) => (
-                <div className={index.length ? 'item carousel-item active' : 'item carousel-item'} key={testimonials._id}>
+              {this.state.testimonials.map((testimonial, index) => (
+              
+                <div className={index === 0 ? 'item carousel-item active' : 'item carousel-item'} key={testimonial._id}>
                 <div className="img-box"><img src={`${testimonial_img}`} alt="" /></div>
-                <p className="testimonial">{testimonials.description}</p>
-                <p className="overview"><b>{testimonials.person_name}</b>, {testimonials.address}</p>
+                <p className="testimonial">{testimonial.description}</p>
+                <p className="overview"><b>{testimonial.person_name}</b>, {testimonial.address}</p>
               </div>
               ))}
             </div>
             
-          ) : ( <h3 className="text-center">No Results to Display</h3> )};
+          ) : (
+            <h3 className="text-center">No Results to Display</h3>
+          )}
 			
 				<ol className="carousel-indicators">
-        {localTestimonials().length ? localTestimonials().map((testimonials, index) => (
-					<li data-target="#myTestimonial" data-slide-to={index} className={!index ? 'active' : ''} key={testimonials._id}></li>
-          )) : (
-            <span>Nothing to see here.</span>
-          )};
+        {this.state.testimonials.map((testimonial, index) => (
+					<li data-target="#myTestimonial" data-slide-to={index} className={index === 0 ? 'active' : ''} key={testimonial._id}></li>
+          ))}
         </ol>  
        
 		<a className="carousel-control left carousel-control-prev" href="#myTestimonial" data-slide="prev">
