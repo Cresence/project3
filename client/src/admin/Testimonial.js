@@ -137,4 +137,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Testimonial;
+export default Dashboard;
