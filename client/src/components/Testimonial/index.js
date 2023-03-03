@@ -18,7 +18,7 @@ class Testimonial extends  Component{
     loadTestimonials = () => {
       API.getTestimonials()
         .then(res =>
-          !res ? this.setState({ testimonials: [], person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data || [], person_name: "", address: "", description: "" })
+          res.size ? this.setState({ testimonials: [], person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
         )
         .catch(err => console.log(err));
     };
@@ -30,7 +30,7 @@ render(){
   if (this.state.length === 0) {
     delay(100)
   } else {
-    e = this.state.testimonials
+    e = this.state.testimonials;
   };
   return e
   }
@@ -39,6 +39,13 @@ return (
         {localTestimonials().length ? (
            	<div className="carousel-inner">
               {localTestimonials().map((testimonials, index) => (
+              
+                <div className={!index ? 'item carousel-item active' : 'item carousel-item'} key={testimonials._id}>
+                <div className="img-box"><img src={`${testimonial_img}`} alt="" /></div>
+                <p className="testimonial">{testimonials.description}</p>
+                <p className="overview"><b>{testimonials.person_name}</b>, {testimonials.address}</p>
+              </div>
+              )) || [].map((testimonials, index) => (
               
                 <div className={!index ? 'item carousel-item active' : 'item carousel-item'} key={testimonials._id}>
                 <div className="img-box"><img src={`${testimonial_img}`} alt="" /></div>
