@@ -30,12 +30,12 @@ render(){
             <h3 className="text-center">No Results to Display</h3>
           ) : (
            	<div className="carousel-inner">
-              {!this.state.testimonials.map ? <h3 className="text-center">No Results to Display</h3> : this.state.testimonials.map((testimonial, index) => (
+              {!this.state.testimonials.map ? <h3 className="text-center">No Results to Display</h3> : this.state.testimonials.map((testimonials, index) => (
               
-                <div className={!!index ? 'item carousel-item active' : 'item carousel-item'} key={testimonial._id}>
+                <div className={!index ? 'item carousel-item active' : 'item carousel-item'} key={testimonials._id}>
                 <div className="img-box"><img src={`${testimonial_img}`} alt="" /></div>
-                <p className="testimonial">{testimonial.description}</p>
-                <p className="overview"><b>{testimonial.person_name}</b>, {testimonial.address}</p>
+                <p className="testimonial">{testimonials.description}</p>
+                <p className="overview"><b>{testimonials.person_name}</b>, {testimonials.address}</p>
               </div>
               ))}
             </div>
