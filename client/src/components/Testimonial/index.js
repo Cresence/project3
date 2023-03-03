@@ -45,7 +45,7 @@ render(){
           ) : ( <h3 className="text-center">No Results to Display</h3> )};
 			
 				<ol className="carousel-indicators">
-        {localTestimonials().length ? : localTestimonials().map((testimonials, index) => (
+        {localTestimonials().length ? localTestimonials().map((testimonials, index) => (
 					<li data-target="#myTestimonial" data-slide-to={index} className={!index ? 'active' : ''} key={testimonials._id}></li>
           )) : (
             <span>Nothing to see here.</span>
