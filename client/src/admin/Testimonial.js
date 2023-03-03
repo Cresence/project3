@@ -61,17 +61,18 @@ class Dashboard extends Component {
   };
   
   render() {
-    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    // const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     const localTestimonials = () => {
-    let e = [];
-    if (this.state.length === 0) {
-      delay(100)
-    } else {
-      e = this.state.testimonials
-    };
-    return e
+      if (this.state.size === 0) {
+        return [];
+      } else if (this.state.size !== 0) {
+        return this.state.testimonials
+      } else {
+        console.log(this.state);
+        return [];
+      }
     }
-        return (
+          return (
       <div>
       <Navadmin />
       <Container fluid>

@@ -24,28 +24,22 @@ class Testimonial extends  Component{
     };
   
 render(){
-  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  // const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
   const localTestimonials = () => {
-  let e = [];
-  if (this.state.length === 0) {
-    delay(100)
-  } else {
-    e = this.state.testimonials;
-  };
-  return e
+    if (this.state.size === 0) {
+      return [];
+    } else if (this.state.size !== 0) {
+      return this.state.testimonials
+    } else {
+      console.log(this.state);
+      return [];
+    }
   }
 return (
     <div id="myTestimonial" className="carousel slide" data-ride="carousel">
         {localTestimonials().length ? (
            	<div className="carousel-inner">
               {localTestimonials().map((testimonials, index) => (
-              
-                <div className={!index ? 'item carousel-item active' : 'item carousel-item'} key={testimonials._id}>
-                <div className="img-box"><img src={`${testimonial_img}`} alt="" /></div>
-                <p className="testimonial">{testimonials.description}</p>
-                <p className="overview"><b>{testimonials.person_name}</b>, {testimonials.address}</p>
-              </div>
-              )) || [].map((testimonials, index) => (
               
                 <div className={!index ? 'item carousel-item active' : 'item carousel-item'} key={testimonials._id}>
                 <div className="img-box"><img src={`${testimonial_img}`} alt="" /></div>
