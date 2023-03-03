@@ -24,7 +24,7 @@ class Dashboard extends Component {
   loadTestimonials = () => {
     API.getTestimonials()
       .then(res =>
-        !res ? this.setState({ testimonials: [], person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
+        res.length ? this.setState({ testimonials: [], person_name: "", address: "", description: "" }) : this.setState({ testimonials: res.data, person_name: "", address: "", description: "" })
       )
       .catch(err => console.log(err));
   };
@@ -61,12 +61,17 @@ class Dashboard extends Component {
   };
   
   render() {
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     const localTestimonials = () => {
-      let e;
-      e = this.state.testimonials || [];
-      return e;
+    let e = [];
+    if (this.state.length === 0) {
+      delay(100)
+    } else {
+      e = this.state.testimonials
+    };
+    return e
     }
-    return (
+        return (
       <div>
       <Navadmin />
       <Container fluid>

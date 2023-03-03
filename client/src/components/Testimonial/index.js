@@ -24,12 +24,17 @@ class Testimonial extends  Component{
     };
   
 render(){
+  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
   const localTestimonials = () => {
-    let e;
-    e = this.state.testimonials || [];
-    return e;
+  let e = [];
+  if (this.state.length === 0) {
+    delay(100)
+  } else {
+    e = this.state.testimonials
+  };
+  return e
   }
-  return (
+return (
     <div id="myTestimonial" className="carousel slide" data-ride="carousel">
         {localTestimonials().length ? (
            	<div className="carousel-inner">
