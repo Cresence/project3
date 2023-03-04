@@ -55,6 +55,7 @@ class ManageBooking extends Component {
  
 
   render() {
+    const localBook = () => Array.isArray(localBook()) !== true ? [] : this.state.bookhotels;
     return (
       <div>
       <Navadmin />
@@ -65,9 +66,9 @@ class ManageBooking extends Component {
           <Col size=" sm-12">
             <Mainheading color="dark">Booking List</Mainheading>
            
-            {this.state.bookhotels.length ? (
+            {localBook().length ? (
               <ul>
-                {this.state.bookhotels.map(bookhotel => (
+                {localBook().map(bookhotel => (
                 <li key={bookhotel._id}>
                     <Row>
                       <Col size="sm-4">
