@@ -24,7 +24,7 @@ class Dashboard extends Component {
   loadTestimonials = () => {
     API.getTestimonials()
       .then(res =>
-        res.size ? this.setState({ testimonials: [], person_name: "", address: "", description: "" }) : this.setState({ testimonials: Array.isArray(res.data), person_name: "", address: "", description: "" })
+        Array.isArray(res.data) && res.data.length ? this.setState({ testimonials: res.data, person_name: "", address: "", description: "" }) : this.setState({ testimonials: [], person_name: "", address: "", description: "" })
       )
       .catch(err => console.log(err));
   };
@@ -61,8 +61,6 @@ class Dashboard extends Component {
   };
   
   render() {
-    // const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-    const localTestimonials = this.state.testimonials;
           return (
       <div>
       <Navadmin />
@@ -110,9 +108,9 @@ class Dashboard extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Mainheading color="dark">Testimonials List</Mainheading>
-            {localTestimonials.length ? (
+            {Array.isArray(this.state.testimonials) && this.state.testimonials.length ? (
               <List>
-                {Array.isArray(localTestimonials).map(testimonial => (
+                {this.state.testimonials.map(testimonial => (
                 <ListItem key={testimonial._id}>
                     <h5><strong>Person Name :</strong> {testimonial.person_name}</h5>
                     <h6><strong>Address :</strong> {testimonial.address}</h6>
@@ -128,7 +126,10 @@ class Dashboard extends Component {
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
+              <div>
+                <h3>No Results to Display</h3> <button onClick={() => this.loadTestimonials()} className="btn btn-theme">Refresh List</button>
+              </div>
+               
             )}
           </Col>
         </div>

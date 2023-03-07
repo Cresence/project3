@@ -43,7 +43,7 @@ class NewsPost extends Component {
         return null
         } else {
         try { return (
-        !data[0].url ? null : data[0].url,
+        data[0].url.length ? null : data[0].url,
         this.setState({ image_url: data[0].url }),
         this.setState({message : "File Uploaded Successfully", messagestatusclass: "success"})
         );
@@ -56,7 +56,7 @@ class NewsPost extends Component {
   loadPosts = () => {
     API.getPosts()
       .then(res =>
-       !res ?  this.setState({ posts: [], news_title: "", category: "", description: "",date: "", filename: "Choose File",messagestatus:"none"  }) : this.setState({ posts: res.data, news_title: "", category: "", description: "",date: "", filename: "Choose File",messagestatus:"none"  })
+        res => Array.isArray(res.data) && res.data.length ?  this.setState({ posts: res.data, news_title: "", category: "", description: "",date: "", filename: "Choose File",messagestatus:"none"  }) : this.setState({ posts: [], news_title: "", category: "", description: "",date: "", filename: "Choose File",messagestatus:"none"  })
       )
       .catch(err => console.log(err));
   };
