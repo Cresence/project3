@@ -55,7 +55,7 @@ class ManageBooking extends Component {
  
 
   render() {
-    const localBook = () => Array.isArray(localBook()) !== true ? [] : this.state.bookhotels;
+    const localBook = () => Array.isArray(this.state.bookhotels) !== true ? [] : this.state.bookhotels;
     return (
       <div>
       <Navadmin />
