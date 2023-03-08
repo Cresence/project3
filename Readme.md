@@ -2,8 +2,9 @@
 
 ### About Sandy's Hotel
 
-Deployed with Heroku:
-[Click Here for Demo](https://mighty-waters-45866.herokuapp.com/)
+~~[Deprecated] Deployed with Heroku:~~
+Deployed with Render:
+[Click Here for Demo](https://sandys-pet-hotel.onrender.com/)
 
 > Welcome to our full-stack application of a concept pet hotel located in Philadelphia, PA. This application is for pet parents who need a place to take care of their animals while they are temporarily away. This application was built with React. Users can login or signup with their GitHub or Google Account. This website allows users to view our pet hotel's services, book a reservation, and contact us. On the admin side, admin may control their news and announcements posts, testimonials which can be updated and posted on their home page. Admin can view which customers have booked with them.
 
