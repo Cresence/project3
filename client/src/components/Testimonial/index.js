@@ -22,7 +22,6 @@ class Testimonial extends  Component{
     };
   
 render(){
-  console.log(this.state.testimonials);
   return (
       <div id="myTestimonial" className="carousel slide" data-ride="carousel">
           {Array.isArray(this.state.testimonials) && this.state.testimonials.length ? (
